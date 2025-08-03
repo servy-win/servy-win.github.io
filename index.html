@@ -33,7 +33,7 @@
              0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
       </svg>
     </a>
-    <p>Turn Any Application into a Windows Service</p>
+    <p>Turn Any App into a Windows Service – A Fully Managed Alternative to NSSM</p>
     <a href="https://github.com/aelassas/servy/releases/latest" class="download-btn" target="_blank">
       Download Servy
     </a>
@@ -45,6 +45,15 @@
       <p>
         Servy is a utility that lets you run any app as a Windows service. It's designed to be simple and efficient.
       </p>
+      <p>
+        Servy solves a common limitation of Windows services by allowing you to set a custom working directory. When you
+        create a service with <code>sc</code>, the default working directory is always <code>C:\Windows\System32</code>,
+        and there's no built-in way to change that. This breaks many applications that rely on relative paths,
+        configuration files, or assets located in their own folders. Servy lets you explicitly set the startup directory
+        so that your application runs in the right environment, just like it would if launched from a shortcut or
+        command prompt. This ensures your application runs exactly as expected. It is a fully managed, open-source
+        alternative to NSSM, built entirely in C# for simplicity, transparency, and ease of integration.
+      </p>
     </section>
 
     <section>
@@ -52,6 +61,7 @@
       <ul>
         <li>Simple interface</li>
         <li>Run executables as services</li>
+        <li>Supports service name, description, startup type, custom working directory &amp; parameters</li>
         <li>Monitor and manage your services</li>
         <li>Works on Windows 7–11 and Windows Server</li>
       </ul>
