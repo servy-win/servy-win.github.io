@@ -6,9 +6,18 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint . --cache --cache-location .eslintcache",
+    "lint:fix": "eslint . --fix",
+    "validate:html": "html-validate .",
+    "prepare": "husky install"
   },
   "devDependencies": {
-    "vite": "^7.0.4"
+    "@eslint/js": "^9.32.0",
+    "eslint": "^9.32.0",
+    "html-validate": "^9.7.1",
+    "husky": "^9.1.7",
+    "vite": "^7.0.4",
+    "vite-plugin-html": "^3.2.2"
   }
 }
