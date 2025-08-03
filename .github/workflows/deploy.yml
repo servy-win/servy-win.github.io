@@ -24,6 +24,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Validate HTML
+        run: npm run validate:html
+        
       - name: Build
         run: npm run build
 

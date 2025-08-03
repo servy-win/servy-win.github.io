@@ -10,7 +10,7 @@
     "lint": "eslint . --cache --cache-location .eslintcache",
     "lint:fix": "eslint . --fix",
     "validate:html": "html-validate .",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
