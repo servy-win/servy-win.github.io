@@ -73,21 +73,64 @@
 
     <section>
       <h2>Requirements</h2>
+      <p>Servy is available in two versions to support different environments for maximum compatibility with Windows
+        versions.</p>
+
+      <h4>.NET 8.0 Version</h4>
+      <p>This version is recommended for modern systems and includes the latest features and performance enhancements.
+      </p>
       <ul>
-        <li>Windows 7 / 8 / 10 / 11 / Windows Server (x64)</li>
+        <li>Windows 10, Windows 11, or Windows Server (x64)</li>
+        <li><a href="https://dotnet.microsoft.com/en-us/download/dotnet/8.0/runtime" target="_blank">.NET 8.0 Desktop
+            Runtime</a></li>
+      </ul>
+
+      <h4>.NET Framework 4.8 Version</h4>
+      <p>This version is for older systems that require .NET Framework support.</p>
+      <ul>
+        <li>Windows 7, 8, 10, 11, or Windows Server (x64)</li>
         <li><a href="https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net48-web-installer"
             target="_blank">.NET Framework 4.8 Runtime</a></li>
       </ul>
+
+      <p><strong>Administrator privileges are required</strong> to install and manage Windows services.</p>
     </section>
+
 
     <section>
       <h2>How It Works</h2>
       <ol>
-        <li>Select the app you want to run (e.g. `app.exe`)</li>
-        <li>Set the working directory and any parameters</li>
-        <li>Click install and Servy will run it as a background service</li>
+        <li><strong>Install</strong> Servy using the provided installer.</li>
+        <li><strong>Launch Servy</strong> as administrator.</li>
+        <li>Fill in the service details:
+          <ul>
+            <li><code>Service Name</code> (required)</li>
+            <li><code>Service Description</code> (optional)</li>
+            <li><code>Startup Type</code> (optional)</li>
+            <li><code>Process Path</code> (required – path to the executable you want to run)</li>
+            <li><code>Startup Directory</code> (optional – working directory for the process. Defaults to the
+              executable’s directory if not specified.)</li>
+            <li><code>Process Parameters</code> (optional)</li>
+            <li><code>Process Priority</code> (optional)</li>
+            <li><code>Stdout File Path</code> (optional)</li>
+            <li><code>Stderr File Path</code> (optional)</li>
+            <li><code>Rotation Size</code> (optional – in bytes, minimum value is 1 MB (1,048,576 bytes), default is 10
+              MB)</li>
+            <li><code>Heartbeat Interval</code> (optional – interval between health checks of the child process, default
+              is 30 seconds)</li>
+            <li><code>Max Failed Checks</code> (optional – number of consecutive failed health checks before triggering
+              the recovery action, default is 3 attempts)</li>
+            <li><code>Recovery Action</code> (optional – action to take when the max failed checks is reached. Options:
+              Restart Service, Restart Process, Restart Computer, None)</li>
+            <li><code>Max Restart Attempts</code> (optional – maximum number of recovery attempts before stopping
+              further recovery, default is 3 attempts)</li>
+          </ul>
+        </li>
+        <li>Click <strong>Install</strong> to register the service.</li>
+        <li>Start or stop the service directly from <code>services.msc</code> or any Windows service manager.</li>
       </ol>
     </section>
+
   </main>
 
   <footer>
