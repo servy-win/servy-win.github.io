@@ -133,9 +133,15 @@ namespace Servy.Core.IO
         {
             lock (_lock)
             {
-                _writer?.Flush();
-                _writer?.Close();
-                _writer?.Dispose();
+                if (_writer != null)
+                {
+                    _writer.Flush();
+                    _writer.Close();
+                    _writer.Dispose();
+                    _writer = null;
+                }
+
+                GC.SuppressFinalize(this);
             }
         }
     }
