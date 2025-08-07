@@ -55,6 +55,15 @@
         command prompt. This ensures your application runs exactly as expected. It is a fully managed, open-source
         alternative to NSSM, built entirely in C# for simplicity, transparency, and ease of integration.
       </p>
+      <p>
+        Servy is ideal for scenarios where you need to keep non-service applications running reliably in the background.
+        It's especially useful for developers, sysadmins, and IT professionals who want to deploy background processes
+        without rewriting them as Windows services. Typical use cases include running Node.js, Python, or .NET console
+        apps as services; keeping web servers, database sync tools, or custom daemons alive after reboots; and
+        automating task runners or batch scripts in production environments. With built-in health checks, restart
+        policies, and a modern UI, Servy is a powerful alternative to tools like NSSM—without the need for manual
+        configuration or registry edits.
+      </p>
     </section>
 
     <section>
@@ -81,7 +90,8 @@
       </p>
       <ul>
         <li>Supported OS: Windows 10, Windows 11, or Windows Server (x64)</li>
-        <li>Requirements: <a href="https://dotnet.microsoft.com/en-us/download/dotnet/8.0/runtime" target="_blank">.NET 8.0 Desktop
+        <li>Requirements: <a href="https://dotnet.microsoft.com/en-us/download/dotnet/8.0/runtime" target="_blank">.NET
+            8.0 Desktop
             Runtime</a></li>
       </ul>
 
@@ -89,7 +99,8 @@
       <p>This version is for older systems that require .NET Framework support.</p>
       <ul>
         <li>Supported OS: Windows 7, 8, 10, 11, or Windows Server (x64)</li>
-        <li>Requirements: <a href="https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net48-web-installer"
+        <li>Requirements: <a
+            href="https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net48-web-installer"
             target="_blank">.NET Framework 4.8 Runtime</a></li>
       </ul>
 
@@ -127,7 +138,8 @@
           </ul>
         </li>
         <li>Click <strong>Install</strong> to register the service.</li>
-        <li>Start or stop the service directly from Servy, Windows Services (services.msc) or any Windows service manager.</li>
+        <li>Start or stop the service directly from Servy, Windows Services (services.msc) or any Windows service
+          manager.</li>
       </ol>
     </section>
 
