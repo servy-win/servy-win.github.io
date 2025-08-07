@@ -68,6 +68,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\DesignTimeFileDialogService.cs" />
+    <Compile Include="Services\FileDialogService.cs" />
+    <Compile Include="Services\IFileDialogService.cs" />
+    <Compile Include="Services\IMessageBoxService.cs" />
+    <Compile Include="Services\IServiceCommands.cs" />
+    <Compile Include="Services\MessageBoxService.cs" />
+    <Compile Include="Services\ServiceCommands.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RecoveryActionItem.cs" />
     <Compile Include="ViewModels\StartupTypeItem.cs" />
