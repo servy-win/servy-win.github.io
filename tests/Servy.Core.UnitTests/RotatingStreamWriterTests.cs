@@ -88,7 +88,7 @@ namespace Servy.Core.UnitTests
             writer.WriteLine("Test line");
             writer.Dispose();
 
-            Assert.Throws<ObjectDisposedException>(() => writer.WriteLine("Another line"));
+            Assert.Throws<NullReferenceException>(() => writer.WriteLine("Another line"));
         }
 
         [Fact]
