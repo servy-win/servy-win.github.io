@@ -1,6 +1,9 @@
 ﻿using Servy.Core;
+using Servy.Core.Enums;
+using Servy.Core.Services;
 using Servy.Resources;
 using Servy.Services;
+using Servy.ViewModels.Items;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

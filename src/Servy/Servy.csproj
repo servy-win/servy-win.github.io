@@ -75,10 +75,10 @@
     <Compile Include="Services\IServiceCommands.cs" />
     <Compile Include="Services\MessageBoxService.cs" />
     <Compile Include="Services\ServiceCommands.cs" />
+    <Compile Include="ViewModels\Items\ProcessPriorityItem.cs" />
+    <Compile Include="ViewModels\Items\RecoveryActionItem.cs" />
+    <Compile Include="ViewModels\Items\StartupTypeItem.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\RecoveryActionItem.cs" />
-    <Compile Include="ViewModels\StartupTypeItem.cs" />
-    <Compile Include="ViewModels\ProcessPriorityItem.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

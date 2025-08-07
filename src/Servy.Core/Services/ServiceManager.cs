@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Servy.Core.Enums;
+using Servy.Core.Helpers;
+using Servy.Core.Interfaces;
+using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.ServiceProcess;
 using System.Threading;
 
-namespace Servy.Core
+namespace Servy.Core.Services
 {
     /// <summary>
     /// Provides methods to install, uninstall, start, stop, and restart Windows services.
