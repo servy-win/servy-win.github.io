@@ -44,32 +44,23 @@
     <section>
       <h2>What is Servy?</h2>
       <p>
-        Servy is a utility that lets you run any app as a Windows service. It's designed to be simple and efficient.
+        Servy lets you run any app as a Windows service with full control over working directory, startup type, logging,
+        health checks, and parameters. A fully managed alternative to NSSM.
       </p>
       <p>
-        Servy solves a common limitation of Windows services by allowing you to set a custom working directory. When you
-        create a service with <code>sc</code>, the default working directory is always <code>C:\Windows\System32</code>,
-        and there's no built-in way to change that. This breaks many applications that rely on relative paths,
-        configuration files, or assets located in their own folders. Servy lets you explicitly set the startup directory
-        so that your application runs in the right environment, just like it would if launched from a shortcut or
-        command prompt.
+        Servy solves a common limitation of Windows services by allowing you to set a custom working directory. The
+        built-in <code>sc</code> tool only works with applications specifically designed to run as Windows services and
+        always uses
+        <code>C:\Windows\System32</code> with no way to change it. This can break apps that depend on relative paths,
+        configuration
+        files, or local assets. Servy lets you run any app as a service and define the startup directory explicitly,
+        ensuring it behaves exactly as if launched from a shortcut or command prompt.
       </p>
       <p>
-        Servy is ideal for scenarios where you need to keep non-service applications running reliably in the background.
-        It's especially useful for developers, sysadmins, and IT professionals who want to deploy background processes
-        without rewriting them as Windows services. Typical use cases include running Node.js, Python, or .NET console
-        apps as services; keeping web servers, database sync tools, or custom daemons alive after reboots; and
-        automating task runners or batch scripts in production environments. With built-in health checks, restart
-        policies, and a modern UI, Servy is a powerful alternative to tools like NSSM—without the need for manual
-        configuration or registry edits.
+        Servy is perfect for keeping non-service apps running in the background without rewriting them as services. Use
+        it to run Node.js, Python, or .NET apps; keep web servers, sync tools, or daemons alive after reboots; and
+        automate task runners or scripts in production with built-in health checks, restart policies, and a modern UI.
       </p>
-    </section>
-
-    <section>
-      <h2>Why Servy?</h2>
-      <p>Windows services are great but have limitations like fixed working directories and no built-in health checks.
-        Servy fills this gap by providing an easy way to run any app as a service with full control over its environment
-        and recovery options — no coding required.</p>
     </section>
 
     <section>
