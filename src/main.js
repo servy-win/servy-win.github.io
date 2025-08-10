@@ -1,6 +1,24 @@
 import './style.css'
 
 window.addEventListener('DOMContentLoaded', () => {
+  const toggleBtn = document.getElementById('dark-mode-toggle')
+  const root = document.documentElement // html element
+
+  // Initialize from localStorage
+  if (localStorage.getItem('theme') === 'dark') {
+    root.setAttribute('data-theme', 'dark')
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    if (root.getAttribute('data-theme') === 'dark') {
+      root.removeAttribute('data-theme')
+      localStorage.setItem('theme', 'light')
+    } else {
+      root.setAttribute('data-theme', 'dark')
+      localStorage.setItem('theme', 'dark')
+    }
+  })
+
   // Set the current year in the footer
   const yearElement = document.getElementById('year')
   if (yearElement) {

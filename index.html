@@ -22,6 +22,28 @@
 <body>
   <header>
     <h1>Servy</h1>
+
+    <button id="dark-mode-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode" class="dark-mode-toggle">
+      <!-- Moon icon (default) -->
+      <svg class="icon moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path>
+      </svg>
+      <!-- Sun icon (hidden by default) -->
+      <svg class="icon sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+    </button>
+
     <a href="https://github.com/aelassas/servy" class="github-link" target="_blank" rel="noopener"
       aria-label="GitHub repository" title="GitHub repository">
       <svg height="24" viewBox="0 0 16 16" version="1.1" width="24" aria-hidden="true" fill="white">
@@ -41,6 +63,10 @@
   </header>
 
   <main class="container">
+    <section class="cover-image">
+      <img src="/servy.png" alt="Servy Application Screenshot">
+    </section>
+
     <section>
       <h2>What is Servy?</h2>
       <p>
@@ -81,64 +107,24 @@
     </section>
 
     <section>
-      <h2>Requirements</h2>
-      <p>Servy is available in two versions to support different environments for maximum compatibility with Windows
-        versions.</p>
-
-      <h4>.NET 8.0 Version</h4>
+      <h2>Quick Links</h2>
       <ul>
-        <li>Recommended for modern systems and includes the latest features and performance enhancements</li>
-        <li>Published as a self-contained executable and does not require installing the .NET 8.0 Desktop Runtime
-          separately</li>
-        <li>Supported OS: Windows 10, Windows 11, or Windows Server (x64)</li>
-      </ul>
-
-      <h4>.NET Framework 4.8 Version</h4>
-      <ul>
-        <li>For older systems that require .NET Framework support</li>
-        <li>Supported OS: Windows 7, 8, 10, 11, or Windows Server (x64)</li>
-        <li>Requires <a
-            href="https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net48-web-installer"
-            target="_blank">.NET Framework 4.8 Runtime</a></li>
-      </ul>
-
-      <p><strong>Administrator privileges are required</strong> to install and manage Windows services.</p>
-    </section>
-
-
-    <section>
-      <h2>How It Works</h2>
-      <ol>
-        <li><strong>Install</strong> Servy using the provided installer.</li>
-        <li><strong>Launch Servy</strong> as administrator.</li>
-        <li>Fill in the service details:
-          <ul>
-            <li><code>Service Name</code> (required)</li>
-            <li><code>Service Description</code> (optional)</li>
-            <li><code>Startup Type</code> (optional)</li>
-            <li><code>Process Path</code> (required – path to the executable you want to run)</li>
-            <li><code>Startup Directory</code> (optional – working directory for the process. Defaults to the
-              executable’s directory if not specified.)</li>
-            <li><code>Process Parameters</code> (optional)</li>
-            <li><code>Process Priority</code> (optional)</li>
-            <li><code>Stdout File Path</code> (optional)</li>
-            <li><code>Stderr File Path</code> (optional)</li>
-            <li><code>Rotation Size</code> (optional – in bytes, minimum value is 1 MB (1,048,576 bytes), default is 10
-              MB)</li>
-            <li><code>Heartbeat Interval</code> (optional – interval between health checks of the child process, default
-              is 30 seconds)</li>
-            <li><code>Max Failed Checks</code> (optional – number of consecutive failed health checks before triggering
-              the recovery action, default is 3 attempts)</li>
-            <li><code>Recovery Action</code> (optional – action to take when the max failed checks is reached. Options:
-              Restart Service, Restart Process, Restart Computer, None)</li>
-            <li><code>Max Restart Attempts</code> (optional – maximum number of recovery attempts before stopping
-              further recovery, default is 3 attempts)</li>
-          </ul>
+        <li><a href="https://github.com/aelassas/servy/releases/latest" target="_blank"
+            rel="noopener noreferrer">Download</a></li>
+        <li><a href="https://github.com/aelassas/servy/wiki/Installation-Guide" target="_blank"
+            rel="noopener noreferrer">Installation Guide</a></li>
+        <li><a href="https://github.com/aelassas/servy/wiki/Usage" target="_blank" rel="noopener noreferrer">Usage</a>
         </li>
-        <li>Click <strong>Install</strong> to register the service.</li>
-        <li>Start or stop the service directly from Servy, Windows Services (services.msc) or any Windows service
-          manager.</li>
-      </ol>
+        <li><a href="https://github.com/aelassas/servy/wiki/Servy-CLI" target="_blank" rel="noopener noreferrer">CLI</a>
+        </li>
+        <li><a href="https://github.com/aelassas/servy/wiki/Architecture" target="_blank"
+            rel="noopener noreferrer">Architecture</a></li>
+        <li><a href="https://github.com/aelassas/servy/wiki/Building-from-Source" target="_blank"
+            rel="noopener noreferrer">Building from Source</a></li>
+        <li><a href="https://github.com/aelassas/servy/wiki/Troubleshooting" target="_blank"
+            rel="noopener noreferrer">Troubleshooting</a></li>
+        <li><a href="https://github.com/aelassas/servy/wiki/FAQ" target="_blank" rel="noopener noreferrer">FAQ</a></li>
+      </ul>
     </section>
 
     <section>

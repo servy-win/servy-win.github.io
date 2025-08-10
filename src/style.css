@@ -1,17 +1,58 @@
 /* src/style.css */
 
+/* Light theme variables */
 :root {
   --primary: #3498db;
   --secondary: #06f;
   --dark: #2c3e50;
   --light: #ecf0f1;
+
+  --header-dark: #2c3e50;
+  --header-light: #ecf0f1;
+
+  /* Button colors */
+  --btn-bg: var(--primary);
+  --btn-color: #fff;
+  --download-btn-text: #fff;
+  --download-btn-bg: #3498db;
+  --download-btn-hover: #2980b9;
+
+  /* Background & text */
+  --bg-color: #f9f9f9;
+  --text-color: #333;
+  --footer-bg: var(--light);
+  --footer-text: #555;
+  --footer-link: var(--dark);
+}
+
+/* Dark theme variables */
+[data-theme="dark"] {
+  --primary: #5dade2;
+  --secondary: #56BFD7;
+  --dark: #ecf0f1;
+  --light: #2c3e50;
+
+  --header-dark: #23272F;
+  --header-light: #ecf0f1;
+
+  --btn-bg: var(--dark);
+  --btn-color: #fff;
+  --download-btn-text: #fff;
+  --download-btn-bg: #3498db;
+  --download-btn-hover: #2980b9;
+
+  --bg-color: #1B1D24;
+  --text-color: #C8C9CB;
+  --footer-bg: #23272F;
+  --footer-text: #bbb;
+  --footer-link: var(--secondary);
 }
 
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
-  background-color: #f9f9f9;
-  color: #333;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 a {
@@ -19,18 +60,65 @@ a {
 }
 
 header {
-  background-color: var(--dark);
-  color: white;
+  background-color: var(--header-dark);
+  color: var(--header-light);
   padding: 2rem 1rem;
   text-align: center;
 }
 
-.github-link svg {
-  transition: opacity 0.2s;
+/* Dark mode toggle button base styles */
+.dark-mode-toggle {
+  background: var(--header-dark);
+  color: var(--header-light);
+  cursor: pointer;
+  padding: 0.4rem 0.8rem;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: none;
+  position: absolute;
+  top: 6px;
+  right: 6px;
 }
 
-.github-link:hover svg {
-  opacity: 0.7;
+.dark-mode-toggle:hover {
+  opacity: 0.8;
+}
+
+/* SVG icons sizing */
+.dark-mode-toggle .icon {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2;
+  stroke: currentColor;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Show only moon icon by default */
+.dark-mode-toggle .sun {
+  display: none;
+}
+
+/* When dark mode enabled, toggle button styles */
+[data-theme="dark"] .dark-mode-toggle {
+  background: var(--header-dark);
+  color: var(--header-light);
+}
+
+[data-theme="dark"] .dark-mode-toggle:hover {
+  opacity: 0.8;
+}
+
+/* Show sun icon and hide moon icon in dark mode */
+[data-theme="dark"] .dark-mode-toggle .moon {
+  display: none;
+}
+
+[data-theme="dark"] .dark-mode-toggle .sun {
+  display: inline;
 }
 
 header h1 {
@@ -42,12 +130,21 @@ header p {
   font-size: 1.1rem;
 }
 
+.github-link svg {
+  transition: opacity 0.2s;
+  fill: var(--btn-color);
+}
+
+.github-link:hover svg {
+  opacity: 0.8;
+}
+
 .download-btn {
   display: inline-block;
   margin-top: 1.5rem;
   padding: 0.8rem 1.5rem;
-  background: var(--primary);
-  color: white;
+  background: var(--download-btn-bg);
+  color: var(--download-btn-text);
   border-radius: 8px;
   text-decoration: none;
   font-size: 1rem;
@@ -55,7 +152,7 @@ header p {
 }
 
 .download-btn:hover {
-  background: #2980b9;
+  background: var(--download-btn-hover);
 }
 
 .container {
@@ -68,16 +165,35 @@ section {
   margin-bottom: 2rem;
 }
 
+section h2{
+  color: var(--dark);
+}
+
+section p,
+section li {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cover-image img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
 footer {
   text-align: center;
   padding: 1.5rem;
-  background: var(--light);
+  background: var(--footer-bg);
   font-size: 0.9rem;
-  color: #555;
+  color: var(--footer-text);
 }
 
 footer a {
-  color: var(--dark);
+  color: var(--footer-link);
   text-decoration: none;
   font-weight: 500;
 }
