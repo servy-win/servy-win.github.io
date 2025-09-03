@@ -184,9 +184,8 @@ section li {
   border-radius: 8px;
 }
 
-.demo-video {
-  display: flex;
-  justify-content: center;
+#demo-video {
+  border: 0;
 }
 
 footer {
