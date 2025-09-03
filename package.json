@@ -19,5 +19,8 @@
     "husky": "^9.1.7",
     "vite": "^7.0.4",
     "vite-plugin-html": "^3.2.2"
+  },
+  "dependencies": {
+    "lite-youtube-embed": "^0.3.3"
   }
 }
