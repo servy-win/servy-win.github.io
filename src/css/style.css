@@ -14,8 +14,8 @@
   --btn-bg: var(--primary);
   --btn-color: #fff;
   --download-btn-text: #fff;
-  --download-btn-bg: #3498db;
-  --download-btn-hover: #2980b9;
+  --download-btn-bg: #0077C8;
+  --download-btn-hover: #106FBF;
 
   /* Background & text */
   --bg-color: #f9f9f9;
@@ -38,8 +38,8 @@
   --btn-bg: var(--dark);
   --btn-color: #fff;
   --download-btn-text: #fff;
-  --download-btn-bg: #3498db;
-  --download-btn-hover: #2980b9;
+  --download-btn-bg: #0077C8;
+  --download-btn-hover: #106FBF;
 
   --bg-color: #1B1D24;
   --text-color: #C8C9CB;
