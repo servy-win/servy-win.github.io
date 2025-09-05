@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/inject-preload.js",
     "preview": "vite preview",
     "lint": "eslint . --cache --cache-location .eslintcache",
     "lint:fix": "eslint . --fix",

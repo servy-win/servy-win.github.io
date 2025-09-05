@@ -1,7 +1,10 @@
+import process from 'node:process'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
 import { createHtmlPlugin } from 'vite-plugin-html'
+
+const isProd = process.env.NODE_ENV === 'production'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -10,6 +13,7 @@ export default defineConfig({
   root: '.',
   build: {
     outDir: './dist',
+    manifest: true,
     emptyOutDir: true,
     rollupOptions: {
       input: {
@@ -30,6 +34,11 @@ export default defineConfig({
   },
   plugins: [
     createHtmlPlugin({
+      inject: {
+        data: {
+          preloadCss: isProd ? '' : '/src/css/style.css',
+        }
+      },
       minify: {
         removeComments: true,
         collapseWhitespace: true,
