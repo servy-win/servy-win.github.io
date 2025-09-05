@@ -1,10 +1,14 @@
+import { initGA } from './ga.js'
 import 'lite-youtube-embed/src/lite-yt-embed.css'
 import 'lite-youtube-embed'
-import './style.css'
+import '../css/style.css'
 
 window.addEventListener('DOMContentLoaded', () => {
   const toggleBtn = document.getElementById('dark-mode-toggle')
   const root = document.documentElement // html element
+
+  // Initialize Google Analytics
+  initGA('G-VQ7924LC4H')
 
   // Initialize from localStorage
   if (localStorage.getItem('theme') === 'dark') {
