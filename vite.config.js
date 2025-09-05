@@ -16,20 +16,21 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
       },
+      // No manualChunks — let Rollup handle code splitting automatically
     },
     minify: 'terser',
     terserOptions: {
-      compress: { drop_console: false },
-      format: { comments: false },
+      compress: {
+        // Keep console logs, so no drop_console here
+        drop_console: false,
+      },
+      format: {
+        comments: false, // Remove comments from output
+      },
     },
   },
   plugins: [
     createHtmlPlugin({
-      inject: {
-        data: {
-          mainScriptAttrs: 'defer',
-        }
-      },
       minify: {
         removeComments: true,
         collapseWhitespace: true,
