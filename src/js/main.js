@@ -27,23 +27,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // contact form
   const form = document.getElementById('contact-form')
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault()
-
-    const formData = new FormData(form)
-    const response = await fetch(form.action, {
-      method: form.method,
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    })
-
-    if (response.ok) {
-      form.reset() // clear all fields silently
-    } else {
-      alert('Oops! There was a problem submitting your form.')
-    }
-  })
+  if (form) form.reset()
 
   // Set the current year in the footer
   const yearElement = document.getElementById('year')
