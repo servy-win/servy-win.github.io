@@ -25,10 +25,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   })
 
-  // contact form
-  const form = document.getElementById('contact-form')
-  if (form) form.reset()
-
   // Set the current year in the footer
   const yearElement = document.getElementById('year')
   if (yearElement) {
