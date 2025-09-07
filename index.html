@@ -168,6 +168,95 @@
     </section>
 
     <section>
+      <h2>Servy vs NSSM vs WinSW</h2>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Servy</th>
+            <th>NSSM</th>
+            <th>WinSW</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GUI Management</td>
+            <td>✅ Real-time GUI for monitoring and configuration</td>
+            <td>⚪ Basic GUI for service creation</td>
+            <td>❌ Config file only</td>
+          </tr>
+          <tr>
+            <td>CLI / Automation</td>
+            <td>✅ Full CLI support for scripting and deployments</td>
+            <td>✅ CLI only</td>
+            <td>✅ XML config + CLI</td>
+          </tr>
+          <tr>
+            <td>Run any executable as service</td>
+            <td>✅</td>
+            <td>✅</td>
+            <td>✅</td>
+          </tr>
+          <tr>
+            <td>Environment variables &amp; expansion</td>
+            <td>✅ Fully supported</td>
+            <td>⚪ Basic support</td>
+            <td>⚪ Basic support</td>
+          </tr>
+          <tr>
+            <td>Service accounts</td>
+            <td>✅ Local System, local user, or domain</td>
+            <td>⚪ Limited</td>
+            <td>⚪ Limited</td>
+          </tr>
+          <tr>
+            <td>Pre-launch scripts, retries, timeouts</td>
+            <td>✅ Advanced</td>
+            <td>❌</td>
+            <td>❌</td>
+          </tr>
+          <tr>
+            <td>Stdout/stderr logging with rotation</td>
+            <td>✅ Automatic</td>
+            <td>⚪ Basic</td>
+            <td>⚪ Basic</td>
+          </tr>
+          <tr>
+            <td>Health checks &amp; automatic recovery</td>
+            <td>✅</td>
+            <td>❌</td>
+            <td>⚪ Limited</td>
+          </tr>
+          <tr>
+            <td>Notifications &amp; alerts</td>
+            <td>✅ Windows notifications + email</td>
+            <td>❌</td>
+            <td>❌</td>
+          </tr>
+          <tr>
+            <td>Export / Import service configs</td>
+            <td>✅</td>
+            <td>❌</td>
+            <td>❌</td>
+          </tr>
+          <tr>
+            <td>Supported OS</td>
+            <td>Windows 7–11 x64, Server editions</td>
+            <td>Windows 7+</td>
+            <td>Windows 7+</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        Servy is designed for professionals who need reliable, monitored, and fully configurable Windows services,
+        combining a GUI, CLI, logging, notifications, and advanced lifecycle management. NSSM and WinSW are suitable for
+        lightweight service wrapping, but lack monitoring, alerts, and professional-grade management features.
+      </p>
+    </section>
+
+    <section>
       <h2>Support &amp; Contributing</h2>
       <p>
         If this project helped you, saved you time, or inspired you in any way, please consider supporting its future

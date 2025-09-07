@@ -17,6 +17,14 @@
   --custom-btn-bg: #0077C8;
   --custom-btn-hover: #106FBF;
 
+  /* Comparison table */
+  --table-border: #ccc;
+  --table-header-bg: #f5f5f5;
+  --table-row-bg: #ffffff;
+  --table-row-alt-bg: #f9f9f9;
+  --padding: 0.75rem 1rem;
+  --border-radius: 6px;
+
   --form-bg: #fafafa;
   --form-border: #e0e0e0;
   --footer-bg: #f5f5f5;
@@ -46,6 +54,12 @@
   --custom-btn-text: #fff;
   --custom-btn-bg: #0077C8;
   --custom-btn-hover: #010101;
+
+  /* Comparison table */
+  --table-border: #23272F;
+  --table-header-bg: #23272F;
+  --table-row-bg: #1B1D24;
+  --table-row-alt-bg: #23272F;
 
   --form-bg: #23272F;
   --form-border: #23272F;
@@ -212,12 +226,37 @@ section li {
   border: 0;
 }
 
+/* Comparison section */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  color: var(--text-color);
+}
+
+.comparison-table th,
+.comparison-table td {
+  border: 1px solid var(--table-border);
+  padding: var(--padding);
+  text-align: left;
+}
+
+.comparison-table th {
+  background-color: var(--table-header-bg);
+}
+
+.comparison-table tr:nth-child(even) {
+  background-color: var(--table-row-alt-bg);
+}
+
+.comparison-table tr {
+  background-color: var(--table-row-bg);
+}
+
 /* Contact Form */
 #contact {
   background-color: var(--background);
 }
-
-
 
 form {
   display: grid;
@@ -235,7 +274,7 @@ textarea {
   font-size: 1rem;
   border: 1px solid var(--form-border);
   border-radius: var(--border-radius);
-  font-family: inherit; 
+  font-family: inherit;
 }
 
 textarea {
