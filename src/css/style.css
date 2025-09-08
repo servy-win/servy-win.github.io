@@ -258,9 +258,9 @@ pre .code-comment {
 
 /* Comparison section */
 .comparison-table {
+  table-layout: fixed;
   width: 100%;
   border-collapse: collapse;
-  font-family: Arial, sans-serif;
   color: var(--text-color);
 }
 
