@@ -17,6 +17,14 @@
   --custom-btn-bg: #0077C8;
   --custom-btn-hover: #106FBF;
 
+  /* pre code */
+  --code-bg: #f5f5f5;
+  --code-color: #23272f;
+  --code-border: #ccc;
+  --code-comment: #818181;
+  --code-radius: 0.5rem;
+  --code-font: 'Fira Code', monospace;
+
   /* Comparison table */
   --table-border: #ccc;
   --table-header-bg: #f5f5f5;
@@ -54,6 +62,12 @@
   --custom-btn-text: #fff;
   --custom-btn-bg: #0077C8;
   --custom-btn-hover: #106FBF;
+
+  /* pre code */
+  --code-bg: #23272F;
+  --code-color: #cdd6f4;
+  --code-border: #292c3c;
+  --code-comment: #aaa;
 
   /* Comparison table */
   --table-border: #23272F;
@@ -207,6 +221,22 @@ section li {
   height: auto;
   object-fit: contain;
   border-radius: 8px;
+}
+
+pre {
+  background-color: var(--code-bg);
+  color: var(--code-color);
+  padding: 1rem;
+  border-radius: var(--code-radius);
+  font-family: var(--code-font);
+  font-size: 1rem;
+  margin: 0;
+  overflow-x: auto;
+  border: 1px solid var(--code-border);
+}
+
+pre .code-comment {
+  color: var(--code-comment);
 }
 
 .video-container {

@@ -100,27 +100,66 @@
     </section>
 
     <section>
-      <h2>Features</h2>
-      <ul>
-        <li>Clean, simple UI</li>
-        <li>Quickly monitor and manage all installed services with Servy Manager</li>
-        <li>CLI for full scripting and automated deployments</li>
-        <li>Run any executable as a Windows service</li>
-        <li>Set service name, description, startup type, priority, working directory, environment variables,
-          dependencies, and parameters</li>
-        <li>Environment variable expansion supported in both environment variables and process parameters</li>
-        <li>Run services as Local System, local user, or domain account</li>
-        <li>Redirect stdout/stderr to log files with automatic size-based rotation</li>
-        <li>Run pre-launch script execution before starting the service, with retries, timeout, logging and failure
-          handling</li>
-        <li>Prevent orphaned/zombie processes with improved lifecycle management and ensuring resource cleanup</li>
-        <li>Health checks and automatic service recovery</li>
-        <li>Monitor and manage services in real-time</li>
-        <li>Browse and search logs by level, date, and keyword for faster troubleshooting from Servy Manager</li>
-        <li>Export/Import service configurations</li>
-        <li>Service Event Notification alerts on service failures via Windows notifications and email</li>
-        <li>Compatible with Windows 7-11 x64 and Windows Server editions</li>
-      </ul>
+      <h2>Quick Install</h2>
+      <p>
+        You have two options to install Servy. Download and
+        <a href="https://github.com/aelassas/servy/wiki/Installation-Guide#manual-download-and-install" target="_blank"
+          rel="noopener noreferrer">
+          install manually
+        </a>
+        or use a package manager such as Chocolatey.
+      </p>
+      <p>
+        Make sure you have
+        <a href="https://chocolatey.org/install" target="_blank" rel="noopener noreferrer">Chocolatey</a>
+        installed.
+      </p>
+
+      <p>
+        To install Servy quickly, run the following command as administrator from the command line or PowerShell:
+      </p>
+
+      <pre><code>choco install servy</code></pre>
+
+
+      <!--
+      <p>
+        You have two options to install Servy. Download and
+        <a href="https://github.com/aelassas/servy/wiki/Installation-Guide#manual-download-and-install" target="_blank"
+          rel="noopener noreferrer">
+          install manually
+        </a>
+        or use a package manager such as WinGet or Chocolatey.
+      </p>
+
+      <p>
+        Make sure you have
+        <a href="https://learn.microsoft.com/en-us/windows/package-manager/winget/" target="_blank"
+          rel="noopener noreferrer">
+          WinGet
+        </a>
+        or
+        <a href="https://chocolatey.org/install" target="_blank" rel="noopener noreferrer">
+          Chocolatey
+        </a>
+        installed.
+      </p>
+
+      <p>
+        To install Servy quickly, run one of the following commands as administrator from the command line or from
+        PowerShell:
+      </p>
+
+      <pre>
+<code><code class="code-comment"># WinGet</code>
+winget install servy
+
+<code class="code-comment"># Chocolatey</code>
+choco install servy</code>
+</pre>
+-->
+
+
     </section>
 
     <section>
@@ -155,6 +194,30 @@
             rel="noopener noreferrer">Troubleshooting</a></li>
         <li><a href="https://github.com/aelassas/servy#roadmap" target="_blank">Roadmap</a></li>
         <li><a href="https://github.com/aelassas/servy/wiki/FAQ" target="_blank" rel="noopener noreferrer">FAQ</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Features</h2>
+      <ul>
+        <li>Clean, simple UI</li>
+        <li>Quickly monitor and manage all installed services with Servy Manager</li>
+        <li>CLI for full scripting and automated deployments</li>
+        <li>Run any executable as a Windows service</li>
+        <li>Set service name, description, startup type, priority, working directory, environment variables,
+          dependencies, and parameters</li>
+        <li>Environment variable expansion supported in both environment variables and process parameters</li>
+        <li>Run services as Local System, local user, or domain account</li>
+        <li>Redirect stdout/stderr to log files with automatic size-based rotation</li>
+        <li>Run pre-launch script execution before starting the service, with retries, timeout, logging and failure
+          handling</li>
+        <li>Prevent orphaned/zombie processes with improved lifecycle management and ensuring resource cleanup</li>
+        <li>Health checks and automatic service recovery</li>
+        <li>Monitor and manage services in real-time</li>
+        <li>Browse and search logs by level, date, and keyword for faster troubleshooting from Servy Manager</li>
+        <li>Export/Import service configurations</li>
+        <li>Service Event Notification alerts on service failures via Windows notifications and email</li>
+        <li>Compatible with Windows 7-11 x64 and Windows Server editions</li>
       </ul>
     </section>
 
