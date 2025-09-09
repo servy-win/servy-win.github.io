@@ -25,6 +25,19 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   })
 
+  // Initialize code blocks
+  document.querySelectorAll('.code-block').forEach(block => {
+    const button = block.querySelector('.copy-btn')
+    const codeElement = block.querySelector('code')
+
+    button.addEventListener('click', () => {
+      navigator.clipboard.writeText(codeElement.innerText).then(() => {
+        button.textContent = 'Copied!'
+        setTimeout(() => button.textContent = 'Copy', 2000)
+      })
+    })
+  })
+
   // Set the current year in the footer
   const yearElement = document.getElementById('year')
   if (yearElement) {
