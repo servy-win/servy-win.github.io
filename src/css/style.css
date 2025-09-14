@@ -45,6 +45,8 @@
   --footer-bg: #f5f5f5;
   --border: #f2f2f2;
   --border-radius: 8px;
+  --input-bg: #fff;
+  --placeholder-text-color: #727272;
 
   /* Background & text */
   --bg-color: #f9f9f9;
@@ -76,7 +78,7 @@
   --code-border: #292c3c;
   --code-comment: #aaa;
 
- --code-btn-bg: #0077C8;
+  --code-btn-bg: #0077C8;
   --code-btn-bg-hover: #106FBF;
 
   /* Comparison table */
@@ -89,6 +91,8 @@
   --form-border: #23272F;
   --footer-bg: #23272F;
   --border: #23272F;
+  --input-bg: #333A45;
+  --placeholder-text-color: #7D8495;
 
   --bg-color: #1B1D24;
   --text-color: #C8C9CB;
@@ -338,6 +342,13 @@ textarea {
   border: 1px solid var(--form-border);
   border-radius: var(--border-radius);
   font-family: inherit;
+  background-color: var(--input-bg);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--placeholder-text-color);
+  opacity: 1;
 }
 
 textarea {
