@@ -343,6 +343,7 @@ textarea {
   border-radius: var(--border-radius);
   font-family: inherit;
   background-color: var(--input-bg);
+  color: var(--text-color);
 }
 
 input::placeholder,
