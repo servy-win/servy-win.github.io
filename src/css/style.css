@@ -230,6 +230,14 @@ section li {
   margin-right: auto;
 }
 
+p.blockquote {
+  border-left: 4px solid var(--primary);
+  padding: 0.5rem 1rem;
+  color: var(--text-color);
+  background-color: var(--light);
+  margin: 1rem 0;
+}
+
 .cover-image img {
   max-width: 100%;
   height: auto;
