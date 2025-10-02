@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-  <link rel="preload" as="image" href="/servy-tiny.png?v=1" fetchpriority="high">
+  <link rel="preload" as="image" href="/servy.webp" fetchpriority="high">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
     content="Servy lets you turn any app into a Windows service with full control over working directory, startup type, and parameters. A fully managed alternative to NSSM.">
@@ -61,8 +61,8 @@
 
   <main class="container">
     <section class="cover-image">
-      <img src="/servy-tiny.png?v=1" alt="Servy Application Screenshot" fetchpriority="high" decoding="async"
-        width="1353" height="714">
+      <img src="/servy.webp" alt="Servy Application Screenshot" width="1353" height="714" decoding="async"
+        fetchpriority="high">
     </section>
 
     <section>
@@ -75,7 +75,7 @@
       <p>
         Servy offers a GUI, a CLI, and a PowerShell module, allowing you to create, configure, and manage Windows
         services either interactively or through scripts and CI/CD pipelines. Additionally, it provides a Manager
-        interface for quickly monitoring and managing all installed services in real-time.
+        interface for quickly monitoring and managing all installed services in real time.
       </p>
       <p>
         If you've ever struggled with the limitations of the built-in <code>sc</code> tool or found NSSM lacking in
@@ -87,10 +87,6 @@
         that depend
         on relative paths, configuration files, or local assets. Servy lets you run any app as a service and define the
         startup directory explicitly, ensuring it behaves exactly as if launched from a shortcut or command prompt.
-      </p>
-      <p>
-        Servy lets you run an optional script or executable before the main service starts. This is useful for preparing
-        configurations, fetching secrets, or performing other setup tasks.
       </p>
       <p>
         Servy continuously monitors your app, restarting it automatically if it crashes, hangs, or stops. It is perfect
@@ -106,7 +102,7 @@
       <p>
         You have two options to install Servy. Download and
         <a href="https://github.com/aelassas/servy/wiki/Installation-Guide#manual-download-and-install" target="_blank"
-          rel="noopener noreferrer">install manually</a>
+          rel="noopener noreferrer">Install manually</a>
         or use a package manager such as WinGet, Chocolatey, or Scoop.
       </p>
 
@@ -173,7 +169,8 @@ scoop install servy</code></pre>
             CLI</a>
         </li>
         <li><a href="https://github.com/aelassas/servy/wiki/FAQ" target="_blank" rel="noopener noreferrer">FAQ</a></li>
-        <li><a href="https://github.com/aelassas/servy/wiki" target="_blank" rel="noopener noreferrer">Full Documentation</a></li>
+        <li><a href="https://github.com/aelassas/servy/wiki" target="_blank" rel="noopener noreferrer">Full
+            Documentation</a></li>
       </ul>
     </section>
 
@@ -245,7 +242,8 @@ scoop install servy</code></pre>
         This project is supported by:
       </p>
       <a href="https://www.jetbrains.com/community/opensource/" target="_blank" rel="noopener noreferrer">
-        <img alt="JetBrains" src="https://aelassas.github.io/content/jetbrains.svg" width="52" height="52" class="jetbrains-logo">
+        <img alt="JetBrains" src="https://aelassas.github.io/content/jetbrains.svg" width="52" height="52"
+          class="jetbrains-logo">
       </a>
     </section>
 
