@@ -108,6 +108,19 @@ header {
   text-align: center;
 }
 
+.stats {
+  position: absolute;
+  top: 12px;
+  right: 60px;
+  font-size: 0.9rem;
+  color: var(--header-light);
+  text-decoration: none;
+}
+
+.stats:hover {
+  opacity: 0.8;
+}
+
 /* Dark mode toggle button base styles */
 .dark-mode-toggle {
   background: var(--header-dark);
