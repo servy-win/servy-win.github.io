@@ -384,6 +384,10 @@ footer a {
 }
 
 @media (max-width: 600px) {
+  header{
+  padding: 5rem 1rem;
+  }
+
   header h1 {
     font-size: 2rem;
   }
