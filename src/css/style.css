@@ -114,14 +114,12 @@ header {
 }
 
 .header-nav {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-right: 1rem;
+  padding: 0.5rem 1rem;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   gap: 0.3rem;
-  width: 100%;
+  width: calc(100% - 2rem);
 }
 
 .header-nav a,
