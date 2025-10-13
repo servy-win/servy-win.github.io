@@ -9,6 +9,7 @@
 
   --header-dark: #2c3e50;
   --header-light: #ecf0f1;
+  --nav-hover: #23272F;
 
   /* Button colors */
   --btn-bg: var(--primary);
@@ -59,6 +60,7 @@
 
   --header-dark: #23272F;
   --header-light: #ecf0f1;
+  --nav-hover: #333A45;
 
   --btn-bg: var(--dark);
   --btn-text: #fff;
@@ -104,8 +106,41 @@ a {
 header {
   background-color: var(--header-dark);
   color: var(--header-light);
-  padding: 2rem 1rem;
-  text-align: center;
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-nav {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-right: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 0.3rem;
+  width: 100%;
+}
+
+.header-nav a,
+.header-nav button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  min-width: 48px;
+  border-radius: 8px;
+}
+
+.header-nav a:hover,
+.header-nav button:hover {
+  background-color: var(--nav-hover);
+}
+
+.github-link svg {
+  transition: opacity 0.2s;
+  fill: var(--btn-text);
 }
 
 .header-link {
@@ -114,40 +149,17 @@ header {
   text-decoration: none;
 }
 
-.header-link:hover {
-  opacity: 0.8;
-}
-
-.docs {
-  position: absolute;
-  top: 12px;
-  right: 113px;
-}
-
-.stats {
-  position: absolute;
-  top: 12px;
-  right: 60px;
-}
-
 /* Dark mode toggle button base styles */
 .dark-mode-toggle {
-  background: var(--header-dark);
+  background: transparent;
   color: var(--header-light);
   cursor: pointer;
-  padding: 0.4rem 0.8rem;
+  padding: 0.4rem;
   font-size: 1rem;
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   border: none;
-  position: absolute;
-  top: 6px;
-  right: 6px;
-}
-
-.dark-mode-toggle:hover {
-  opacity: 0.8;
 }
 
 /* SVG icons sizing */
@@ -187,6 +199,7 @@ header {
 
 header h1 {
   font-size: 2.5rem;
+  margin-top: 4rem;
 }
 
 header p {
@@ -194,18 +207,10 @@ header p {
   font-size: 1.1rem;
 }
 
-.github-link svg {
-  transition: opacity 0.2s;
-  fill: var(--btn-text);
-}
-
-.github-link:hover svg {
-  opacity: 0.8;
-}
-
 .download-btn {
   display: inline-block;
   margin-top: 1.5rem;
+  margin-bottom: 1rem;
   padding: 0.8rem 1.5rem;
   background: var(--custom-btn-bg);
   color: var(--custom-btn-text);
@@ -384,12 +389,9 @@ footer a {
 }
 
 @media (max-width: 600px) {
-  header{
-  padding: 5rem 1rem;
-  }
-
   header h1 {
     font-size: 2rem;
+    margin-top: 5rem;
   }
 
   .download-btn {
