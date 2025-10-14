@@ -238,11 +238,6 @@ header p {
   color: var(--btn-text);
 }
 
-.star-lnk::before {
-  content: "⭐";
-  font-size: 0.78rem;
-}
-
 .container {
   max-width: 1000px;
   margin: 2rem auto;
