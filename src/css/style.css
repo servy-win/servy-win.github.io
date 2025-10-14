@@ -405,7 +405,7 @@ footer a {
 @media (max-width: 600px) {
   header h1 {
     font-size: 2rem;
-    margin-top: 5rem;
+    margin-top: 4rem;
   }
 
   .download-btn {
