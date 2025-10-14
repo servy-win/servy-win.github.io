@@ -224,6 +224,25 @@ header p {
   background: var(--custom-btn-hover);
 }
 
+.star-lnk {
+  color: var(--header-light);
+  text-decoration: none;
+  font-size: 0.78rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-left: 0.78rem;
+}
+
+.star-lnk:hover {
+  color: var(--btn-text);
+}
+
+.star-lnk::before {
+  content: "⭐";
+  font-size: 0.78rem;
+}
+
 .container {
   max-width: 1000px;
   margin: 2rem auto;
