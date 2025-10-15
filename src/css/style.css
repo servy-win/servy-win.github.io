@@ -231,18 +231,9 @@ section.star {
   justify-content: center;
 }
 
-.star-lnk {
-  color: var(--text-color);
-  text-decoration: none;
+section.star p {
   font-size: 0.78rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
   line-height: 1.25rem;
-}
-
-.star-lnk:hover {
-  opacity: 0.8;
 }
 
 .container {
@@ -273,6 +264,10 @@ p.blockquote {
   color: var(--text-color);
   background-color: var(--light);
   margin: 1rem 0;
+}
+
+.cover-image{
+  margin-bottom: 0.5rem;
 }
 
 .cover-image img {
