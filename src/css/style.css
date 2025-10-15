@@ -238,6 +238,7 @@ section.star {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
+  line-height: 1.25rem;
 }
 
 .star-lnk:hover {
