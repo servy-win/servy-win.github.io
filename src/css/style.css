@@ -106,7 +106,7 @@ a {
 header {
   background-color: var(--header-dark);
   color: var(--header-light);
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -198,7 +198,8 @@ header {
 
 header h1 {
   font-size: 2.5rem;
-  margin-top: 1rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
 header p {
@@ -224,7 +225,7 @@ header p {
   background: var(--custom-btn-hover);
 }
 
-section.star{
+section.star {
   display: flex;
   flex-direction: row;
   justify-content: center;
