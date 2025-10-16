@@ -266,7 +266,7 @@ p.blockquote {
   margin: 1rem 0;
 }
 
-.cover-image{
+.cover-image {
   margin-bottom: 0.5rem;
 }
 
@@ -402,6 +402,10 @@ footer a {
   color: var(--footer-link);
   text-decoration: none;
   font-weight: 500;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 600px) {
