@@ -47,13 +47,41 @@ window.addEventListener('DOMContentLoaded', () => {
   // Back to top button
   const backToTopBtn = document.getElementById('back-to-top')
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 400) {
-      backToTopBtn.classList.add('show')
-    } else {
-      backToTopBtn.classList.remove('show')
+  let scrollTimer = null
+  let lastScrollY = 0
+
+  function updateBackToTopButton() {
+    // If the user has scrolled down past the threshold (400px)
+    if (lastScrollY > 400) {
+      // Check if the 'show' class is NOT present before adding it
+      if (!backToTopBtn.classList.contains('show')) {
+        backToTopBtn.classList.add('show')
+      }
     }
-  })
+    // If the user is near the top of the page
+    else {
+      // Check if the 'show' class IS present before removing it
+      if (backToTopBtn.classList.contains('show')) {
+        backToTopBtn.classList.remove('show')
+      }
+    }
+
+    // Reset the timer when the update is complete
+    scrollTimer = null
+  }
+
+  function handleScroll() {
+    // Store the current scroll position outside of rAF
+    lastScrollY = window.scrollY
+
+    // Only request a new frame if one isn't pending
+    if (!scrollTimer) {
+      scrollTimer = window.requestAnimationFrame(updateBackToTopButton)
+    }
+  }
+
+  // Attach the rAF handler
+  window.addEventListener('scroll', handleScroll)
 
   backToTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
