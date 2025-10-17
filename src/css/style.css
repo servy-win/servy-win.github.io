@@ -11,6 +11,8 @@
   --header-light: #ecf0f1;
   --nav-hover: #23272F;
 
+  --focus-border: #4C9FFF;
+
   /* Button colors */
   --btn-bg: var(--primary);
   --btn-text: #fff;
@@ -62,6 +64,8 @@
   --header-light: #ecf0f1;
   --nav-hover: #333A45;
 
+  --focus-border: #4C9FFF;
+
   --btn-bg: var(--dark);
   --btn-text: #fff;
   --custom-btn-text: #fff;
@@ -91,9 +95,12 @@
   --footer-link: var(--secondary);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  font-display: swap;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   margin: 0;
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -101,6 +108,11 @@ body {
 
 a {
   color: var(--secondary);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-border);
+  outline-offset: 2px;
 }
 
 header {
@@ -253,7 +265,7 @@ section h2 {
 section p,
 section li {
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.6;
   margin-left: auto;
   margin-right: auto;
 }
@@ -353,6 +365,17 @@ form {
   border-radius: var(--border-radius);
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 input,
 textarea {
   padding: 0.75rem;
@@ -379,7 +402,7 @@ button[type="submit"] {
   padding: 0.75rem;
   font-size: 1rem;
   background-color: var(--custom-btn-bg);
-  color: var(--btn-text);
+  color: var(--custom-btn-text);
   border: none;
   border-radius: var(--border-radius);
   cursor: pointer;
@@ -392,10 +415,18 @@ button[type="submit"]:hover {
 
 footer {
   text-align: center;
-  padding: 1.5rem;
+  padding: 2rem;
   background: var(--footer-bg);
   font-size: 0.9rem;
   color: var(--footer-text);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.6rem;
 }
 
 footer a {
@@ -406,6 +437,29 @@ footer a {
 
 footer a:hover {
   text-decoration: underline;
+}
+
+#back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--custom-btn-bg);
+  color: var(--custom-btn-text);
+  font-size: 1.3rem;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+  backdrop-filter: blur(6px);
+}
+
+#back-to-top.show {
+  opacity: 1;
+  visibility: visible;
 }
 
 @media (max-width: 600px) {
@@ -423,5 +477,9 @@ footer a:hover {
     /* keeps 16:9 ratio */
     padding-bottom: 56.25%;
     height: 0;
+  }
+
+  footer {
+    padding-bottom: 5rem;
   }
 }
