@@ -54,11 +54,8 @@ window.addEventListener('DOMContentLoaded', () => {
   function updateBackToTopButton() {
     const show = lastScrollY > SCROLL_THRESHOLD
 
-    // 1. Visual Toggle: Adds/removes 'show' class based on scroll position
+    // Visual Toggle: Adds/removes 'show' class based on scroll position
     backToTopBtn.classList.toggle('show', show)
-
-    // 2. Accessibility: Hides the button from screen readers when it's not visible
-    backToTopBtn.setAttribute('aria-hidden', !show)
 
     // Reset the rAFId when the update is complete, allowing a new rAF request
     rAFId = null
