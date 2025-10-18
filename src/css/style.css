@@ -432,7 +432,7 @@ footer {
 footer a {
   color: var(--footer-link);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 footer a:hover {
