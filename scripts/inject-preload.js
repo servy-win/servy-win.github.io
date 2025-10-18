@@ -27,7 +27,7 @@ if (cssFile) {
 
   // If a preload already exists, don't duplicate
   if (!html.includes(preloadLink)) {
-    html = html.replace('<head>', `<head>\n  ${preloadLink}`)
+    html = html.replace('<head>', `<head>${preloadLink}`)
     fs.writeFileSync(indexPath, html)
     console.log(`Injected preload for ${cssFile}`)
   } else {
