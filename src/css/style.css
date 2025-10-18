@@ -116,7 +116,7 @@ a {
 }
 
 header {
-  background-color: var(--header-dark-lighter);
+  background-color: var(--header-dark);
   color: var(--header-light);
   padding-bottom: 1rem;
   display: flex;
