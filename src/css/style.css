@@ -286,6 +286,7 @@ p.blockquote {
   max-width: 100%;
   height: auto;
   object-fit: contain;
+  display: block;
 }
 
 .code-block {
