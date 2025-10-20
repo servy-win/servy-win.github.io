@@ -36,8 +36,6 @@
   --code-btn-font-size: 0.85rem;
   --code-btn-radius: 0.25rem;
 
-  --svg-bg: #fff;
-
   --form-bg: #fafafa;
   --form-border: #e0e0e0;
   --border: #f2f2f2;
@@ -343,11 +341,6 @@ pre .code-comment {
   width: 100%;
   height: 100%;
   border: 0;
-}
-
-/* Acknowledgments section */
-.jetbrains-logo {
-  background-color: var(--svg-bg);
 }
 
 /* Contact Form */
