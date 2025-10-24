@@ -38,11 +38,14 @@
 <body>
   <header>
     <nav class="header-nav">
-      <a href="https://github.com/aelassas/servy/wiki" target="_blank" rel="noopener noreferrer"
-        class="docs header-link" aria-label="View Servy documentation" title="View Servy documentation">Docs</a>
+      <a href="https://github.com/aelassas/servy/wiki" target="_blank" rel="noopener noreferrer" class="header-link"
+        aria-label="View Servy documentation" title="View Servy documentation">Docs</a>
 
-      <a href="/stats/" class="stats header-link" aria-label="View Servy download statistics"
+      <a href="/stats/" class="header-link" aria-label="View Servy download statistics"
         title="View Servy download statistics">Stats</a>
+
+      <a href="#support" class="header-link" aria-label="Support Servy development"
+        title="Support Servy development">Donate</a>
 
       <button id="dark-mode-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode"
         class="dark-mode-toggle">
@@ -229,7 +232,8 @@ scoop install servy</code></pre>
         <li>Run services as Local System, local user, domain account, or Group Managed Service Account
         </li>
         <li>Redirect stdout/stderr to log files with automatic size-based rotation</li>
-        <li>Supports <code>Ctrl+C</code> for command-line apps, close-window for GUI apps, and force kill if unresponsive</li>
+        <li>Supports <code>Ctrl+C</code> for command-line apps, close-window for GUI apps, and force kill if
+          unresponsive</li>
         <li>Run pre-launch hook before starting the service, with retries, timeout, logging and failure
           handling</li>
         <li>Run post-launch hook after the application starts successfully</li>
@@ -245,13 +249,12 @@ scoop install servy</code></pre>
     <section>
       <h2>Demo Video</h2>
       <div class="video-container">
-        <lite-youtube videoid="biHq17j4RbI"
-          title="Servy — Turn Any App into a Native Windows Service" params="rel=0"
+        <lite-youtube videoid="biHq17j4RbI" title="Servy — Turn Any App into a Native Windows Service" params="rel=0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></lite-youtube>
       </div>
     </section>
 
-    <section>
+    <section id="support">
       <h2>Support &amp; Contributing</h2>
       <p>
         If this project helped you, saved you time, or inspired you in any way, please consider supporting its future

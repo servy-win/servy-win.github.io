@@ -138,7 +138,7 @@ header {
   align-items: center;
   justify-content: center;
   height: 42px;
-  min-width: 48px;
+  min-width: 42px;
   border-radius: 8px;
 }
 
@@ -156,6 +156,7 @@ header {
   font-size: 0.9rem;
   color: var(--header-light);
   text-decoration: none;
+  padding: 0 0.5rem;
 }
 
 /* Dark mode toggle button base styles */
