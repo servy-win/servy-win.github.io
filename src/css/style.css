@@ -160,10 +160,6 @@ header {
   padding: 0 0.5rem;
 }
 
-.header-link.selected {
-  background-color: var(--nav-hover);
-}
-
 /* Dark mode toggle button base styles */
 .dark-mode-toggle {
   background: transparent;
