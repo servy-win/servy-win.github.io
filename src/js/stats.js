@@ -1,33 +1,21 @@
+import * as utils from './utils.js'
+import { initGA } from './ga.js'
 import '../css/style.css'
 import '../css/stats.css'
-import { initGA } from './ga.js'
-import { backToTop } from './main.js'
 
 // Re-use theme toggle logic
 document.addEventListener('DOMContentLoaded', () => {
   // GA Init
   initGA('G-VQ7924LC4H')
 
-  // Theme Toggle
-  const toggleBtn = document.getElementById('dark-mode-toggle')
-  const root = document.documentElement
+  // Initialize Dark Mode Toggle
+  utils.initToggleDarkMode()
 
-  toggleBtn.addEventListener('click', () => {
-    const isDark = root.getAttribute('data-theme') === 'dark'
-    if (isDark) {
-      root.removeAttribute('data-theme')
-    } else {
-      root.setAttribute('data-theme', 'dark')
-    }
-    localStorage.setItem('theme', isDark ? 'light' : 'dark')
-  })
+  // Initialize Back to Top Button
+  utils.initBackToTop()
 
-  // Back to top button
-  backToTop()
-
-  // Footer Year
-  const yearElement = document.getElementById('year')
-  if (yearElement) yearElement.textContent = new Date().getFullYear()
+  // Initialize Footer Year
+  utils.initCopyrightYear()
 
   // Fetch Stats
   fetchStats()

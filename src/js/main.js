@@ -1,66 +1,21 @@
+import * as utils from './utils.js'
 import { initGA } from './ga.js'
 import 'lite-youtube-embed/src/lite-yt-embed.css'
 import 'lite-youtube-embed'
 import '../css/style.css'
 
-export const backToTop = () => {
-  const backToTopBtn = document.getElementById('back-to-top')
-  if (backToTopBtn) {
-    let rAFId = null
-    const SCROLL_THRESHOLD = 400
-
-    function updateBackToTopButton() {
-      // Read the scroll position *inside* rAF
-      const currentScrollY = window.scrollY
-      const show = currentScrollY > SCROLL_THRESHOLD
-
-      // Visual Toggle: Adds/removes 'show' class based on scroll position
-      backToTopBtn.classList.toggle('show', show)
-
-      // Reset the rAFId when the update is complete, allowing a new rAF request
-      rAFId = null
-    }
-
-    function handleScroll() {
-      // Only request a new frame if one isn't pending
-      if (!rAFId) {
-        rAFId = window.requestAnimationFrame(updateBackToTopButton)
-      }
-    }
-
-    // Check visibility immediately on load to handle deep links/refreshes
-    updateBackToTopButton()
-
-    // Attach the rAF handler
-    window.addEventListener('scroll', handleScroll)
-
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    })
-  }
-}
-
 window.addEventListener('DOMContentLoaded', () => {
-  const toggleBtn = document.getElementById('dark-mode-toggle')
-  const root = document.documentElement // html element
-
   // Initialize Google Analytics
   initGA('G-VQ7924LC4H')
 
-  // Initialize from localStorage
-  if (localStorage.getItem('theme') === 'dark') {
-    root.setAttribute('data-theme', 'dark')
-  }
+  // Initialize Dark Mode Toggle
+  utils.initToggleDarkMode()
 
-  toggleBtn.addEventListener('click', () => {
-    if (root.getAttribute('data-theme') === 'dark') {
-      root.removeAttribute('data-theme')
-      localStorage.setItem('theme', 'light')
-    } else {
-      root.setAttribute('data-theme', 'dark')
-      localStorage.setItem('theme', 'dark')
-    }
-  })
+  // Initialize Back to Top Button
+  utils.initBackToTop()
+
+  // Initialize Footer Year
+  utils.initCopyrightYear()
 
   // Initialize code blocks
   document.querySelectorAll('.code-block').forEach(block => {
@@ -75,12 +30,4 @@ window.addEventListener('DOMContentLoaded', () => {
     })
   })
 
-  // Set the current year in the footer
-  const yearElement = document.getElementById('year')
-  if (yearElement) {
-    yearElement.textContent = new Date().getFullYear()
-  }
-
-  // Back to top button
-  backToTop()
 })
