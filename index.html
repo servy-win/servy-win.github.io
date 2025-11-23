@@ -47,7 +47,7 @@
         title="View Servy download statistics">Stats</a>
 
       <a href="#support" class="header-link" aria-label="Support Servy development"
-        title="Support Servy development">Donate</a>
+        title="Support Servy development">Support</a>
 
       <button id="dark-mode-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode"
         class="dark-mode-toggle">
@@ -90,11 +90,15 @@
     <p>Turn Any App into a Native Windows Service - Full-Featured Alternative to NSSM, WinSW &amp; FireDaemon Pro
     </p>
 
-    <a href="https://github.com/aelassas/servy/releases/latest" class="download-btn" target="_blank"
-      rel="noopener noreferrer">
-      Download Servy
-    </a>
+    <div>
+      <a href="https://github.com/aelassas/servy/releases/latest" class="cta-btn" target="_blank"
+        rel="noopener noreferrer">
+        Download
+      </a>
 
+      <a href="https://github.com/aelassas/servy/wiki" target="_blank" rel="noopener noreferrer" class="cta-btn">Read
+        Docs</a>
+    </div>
   </header>
 
   <main class="container">
@@ -111,7 +115,7 @@
     </section>
 
     <section>
-      <h2>What is Servy?</h2>
+      <h2>What Is Servy?</h2>
       <p>
         Servy lets you run any app as a native Windows service with full control over the working directory, startup
         type, process priority, logging, health checks, environment variables, dependencies, pre-launch and post-launch
@@ -139,13 +143,68 @@
     </section>
 
     <section>
+      <h2>Who Is It For?</h2>
+      <ul>
+        <li><strong>Developers</strong> deploying background workers</li>
+        <li><strong>Sys Admins</strong> needing persistent GUI/CLI apps</li>
+        <li><strong>DevOps</strong> running scripts reliably on boot</li>
+        <li><strong>Self-Hosters</strong> running apps as background daemons</li>
+        <li><strong>Teams</strong> replacing NSSM/WinSW with something modern</li>
+        <li><strong>Anyone</strong> who needs apps to start on system boot even before logon</li>
+      </ul>
+      <p>
+        Curious about the philosophy behind Servy? Read the <a
+          href="https://github.com/aelassas/servy/blob/main/NOTES.md" target="_blank" rel="noopener noreferrer">project
+          notes</a>.
+      </p>
+    </section>
+
+    <!-- <section>
       <h2>Why?</h2>
       <p>
         See the <a href="https://github.com/aelassas/servy/blob/main/NOTES.md" target="_blank"
           rel="noopener noreferrer">project notes</a>.
       </p>
+    </section> -->
+
+    <section>
+      <h2>Features</h2>
+      <!-- <p>When it comes to features, Servy brings together the best parts of tools like NSSM, WinSW, and FireDaemon Pro,
+        all in one easy-to-use package. It combines the simplicity of open-source tools with the flexibility and
+        power you'd expect from professional service managers. Below is a detailed list of all the features Servy
+        supports.</p> -->
+      <ul>
+        <li>Clean, simple UI</li>
+        <li>Monitor and manage all installed services with Servy Manager</li>
+        <li>Real-time CPU and RAM usage tracking for installed services</li>
+        <li>CLI and PowerShell module for full scripting and automated deployments</li>
+        <li>Run any executable as a Windows service</li>
+        <li>Set service name, description, startup type, priority, working directory, environment variables,
+          dependencies, and parameters</li>
+        <li>Environment variable expansion supported in both environment variables and process parameters</li>
+        <li>Run services as Local System, local or domain accounts, Active Directory accounts, or gMSAs</li>
+        <li>Redirect stdout/stderr to log files with automatic size-based rotation</li>
+        <li>Run pre-launch hook before starting the service, with retries, timeout, logging and failure
+          handling</li>
+        <li>Run post-launch hook after the application starts successfully</li>
+        <li>Supports <code>Ctrl+C</code> for command-line apps, close-window for GUI apps, and force kill if
+          unresponsive</li>
+        <li>Prevent orphaned/zombie processes with improved lifecycle management and ensuring resource cleanup</li>
+        <li>Health checks and automatic service recovery</li>
+        <li>Browse and search logs by level, date, and keyword for faster troubleshooting from Servy Manager</li>
+        <li>Export/Import service configurations</li>
+        <li>Service Event Notification alerts on service failures via Windows notifications and email</li>
+        <li>Compatible with Windows 7-11 x64 and Windows Server editions</li>
+      </ul>
     </section>
 
+    <section>
+      <h2>Demo Video</h2>
+      <div class="video-container">
+        <lite-youtube videoid="biHq17j4RbI" title="Servy - Turn Any App into a Native Windows Service" params="rel=0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></lite-youtube>
+      </div>
+    </section>
 
     <section>
       <h2>Getting Started</h2>
@@ -227,44 +286,6 @@ scoop install servy</code></pre>
       </ul>
     </section>
 
-    <section>
-      <h2>Features</h2>
-      <p>When it comes to features, Servy brings together the best parts of tools like NSSM, WinSW, and FireDaemon Pro,
-        all in one easy-to-use package. It combines the simplicity of open-source tools with the flexibility and
-        power you'd expect from professional service managers. Below is a detailed list of all the features Servy
-        supports.</p>
-      <ul>
-        <li>Clean, simple UI</li>
-        <li>Monitor and manage all installed services with Servy Manager</li>
-        <li>Real-time CPU and RAM usage tracking for installed services</li>
-        <li>CLI and PowerShell module for full scripting and automated deployments</li>
-        <li>Run any executable as a Windows service</li>
-        <li>Set service name, description, startup type, priority, working directory, environment variables,
-          dependencies, and parameters</li>
-        <li>Environment variable expansion supported in both environment variables and process parameters</li>
-        <li>Run services as Local System, local or domain accounts, Active Directory accounts, or gMSAs</li>
-        <li>Redirect stdout/stderr to log files with automatic size-based rotation</li>
-        <li>Run pre-launch hook before starting the service, with retries, timeout, logging and failure
-          handling</li>
-        <li>Run post-launch hook after the application starts successfully</li>
-        <li>Supports <code>Ctrl+C</code> for command-line apps, close-window for GUI apps, and force kill if
-          unresponsive</li>
-        <li>Prevent orphaned/zombie processes with improved lifecycle management and ensuring resource cleanup</li>
-        <li>Health checks and automatic service recovery</li>
-        <li>Browse and search logs by level, date, and keyword for faster troubleshooting from Servy Manager</li>
-        <li>Export/Import service configurations</li>
-        <li>Service Event Notification alerts on service failures via Windows notifications and email</li>
-        <li>Compatible with Windows 7-11 x64 and Windows Server editions</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Demo Video</h2>
-      <div class="video-container">
-        <lite-youtube videoid="biHq17j4RbI" title="Servy - Turn Any App into a Native Windows Service" params="rel=0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></lite-youtube>
-      </div>
-    </section>
 
     <section id="support">
       <h2>Support &amp; Contributing</h2>

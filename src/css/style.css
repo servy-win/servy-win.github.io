@@ -225,10 +225,16 @@ header p {
   font-size: 1.1rem;
 }
 
-.download-btn {
+div.cta {
+  display: flex;
+  flex-direction: row;
+}
+
+.cta-btn {
   display: inline-block;
   margin-top: 1.5rem;
   margin-bottom: 1rem;
+  margin-right: 0.25rem;
   padding: 0.8rem 1.5rem;
   background: var(--custom-btn-bg);
   color: var(--custom-btn-text);
@@ -236,9 +242,10 @@ header p {
   text-decoration: none;
   font-size: 1rem;
   transition: background 0.3s ease;
+  min-width: 145px;
 }
 
-.download-btn:hover {
+.cta-btn:hover {
   background: var(--custom-btn-hover);
 }
 
@@ -478,7 +485,7 @@ footer p {
     margin-top: 4rem;
   }
 
-  .download-btn {
+  .cta-btn {
     width: 80%;
   }
 
