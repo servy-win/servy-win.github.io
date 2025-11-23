@@ -228,13 +228,14 @@ header p {
 div.cta {
   display: flex;
   flex-direction: row;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .cta-btn {
   display: inline-block;
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
-  margin-right: 0.25rem;
+  margin-bottom: 0.75rem;
+  margin-right: 0.75rem;
   padding: 0.8rem 1.5rem;
   background: var(--custom-btn-bg);
   color: var(--custom-btn-text);
@@ -485,8 +486,15 @@ footer p {
     margin-top: 4rem;
   }
 
+  div.cta {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
   .cta-btn {
     width: 80%;
+    margin-right: 0;
   }
 
   .video-container {
