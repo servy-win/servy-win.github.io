@@ -1,6 +1,7 @@
 import '../css/style.css'
 import '../css/stats.css'
 import { initGA } from './ga.js'
+import { backToTop } from './main.js'
 
 // Re-use theme toggle logic
 document.addEventListener('DOMContentLoaded', () => {
@@ -21,6 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('theme', isDark ? 'light' : 'dark')
   })
 
+  // Back to top button
+  backToTop()
+
   // Footer Year
   const yearElement = document.getElementById('year')
   if (yearElement) yearElement.textContent = new Date().getFullYear()
@@ -34,7 +38,7 @@ async function fetchStats() {
   const container = document.getElementById('stats-container')
   const errorDiv = document.getElementById('error')
   const repo = 'aelassas/servy'
-  
+
   let allReleases = []
   let page = 1
   let keepFetching = true
@@ -43,11 +47,11 @@ async function fetchStats() {
     while (keepFetching) {
       // Fetch specific page
       const response = await fetch(`https://api.github.com/repos/${repo}/releases?per_page=100&page=${page}`)
-      
+
       if (!response.ok) throw new Error(`GitHub API Error: ${response.status}`)
-      
+
       const data = await response.json()
-      
+
       // If data is empty, we have reached the end
       if (data.length === 0) {
         keepFetching = false
@@ -65,7 +69,7 @@ async function fetchStats() {
     if (allReleases.length === 0) throw new Error('No releases found')
 
     renderStats(allReleases)
-    
+
     loading.style.display = 'none'
     container.style.display = 'block'
   } catch (err) {
