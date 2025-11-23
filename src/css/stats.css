@@ -1,10 +1,14 @@
-.stats-loading, .stats-error {
+.stats-loading,
+.stats-error {
   text-align: center;
   padding: 3rem;
   font-size: 1.2rem;
   color: var(--text-color);
 }
-.stats-error { color: #e74c3c; }
+
+.stats-error {
+  color: #e74c3c;
+}
 
 /* Total Downloads Card */
 .total-downloads-card {
@@ -15,8 +19,20 @@
   text-align: center;
   margin-bottom: 2rem;
 }
-.total-downloads-card h2 { margin-top: 0; font-size: 1.2rem; color: var(--text-color); opacity: 0.8; }
-.big-number { font-size: 3.5rem; font-weight: 700; color: var(--text-color); line-height: 1; }
+
+.total-downloads-card h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.big-number {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  line-height: 1;
+}
 
 /* Release Cards */
 .release-card {
@@ -27,6 +43,7 @@
   margin-bottom: 1.5rem;
   transition: transform 0.2s, box-shadow 0.2s;
 }
+
 .release-card.latest {
   border: 2px solid var(--primary);
   position: relative;
@@ -42,13 +59,40 @@
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--border);
 }
-.release-title { display: flex; align-items: center; gap: 1rem; }
-.release-title h3 { margin: 0; font-size: 1.5rem; }
-.release-date { font-size: 0.9rem; color: var(--footer-text); }
 
-.badge { padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
-.badge.latest { background: var(--primary); color: #fff; }
-.badge.pre { background: #f39c12; color: #fff; }
+.release-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.release-title h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.release-date {
+  font-size: 0.9rem;
+  color: var(--footer-text);
+}
+
+.badge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge.latest {
+  background: var(--primary);
+  color: #fff;
+}
+
+.badge.pre {
+  background: #f39c12;
+  color: #fff;
+}
 
 /* Stats Grid */
 .release-stats {
@@ -57,16 +101,50 @@
   margin-bottom: 1.5rem;
   font-size: 0.95rem;
 }
-.stat { display: flex; align-items: center; gap: 0.5rem; }
-.stat .label { font-weight: 600; color: var(--text-color); }
-.stat .value { font-family: monospace; font-size: 1.1rem; }
 
-.avatar { width: 20px; height: 20px; border-radius: 50%; vertical-align: middle; }
-.author-link { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--secondary); }
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stat .label {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.stat .value {
+  font-family: monospace;
+  font-size: 1.1rem;
+}
+
+.avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.author-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--secondary);
+}
 
 /* Assets List */
-.assets-section h4 { margin: 0 0 0.8rem 0; font-size: 1rem; }
-.assets-list { list-style: none; padding: 0; margin: 0; }
+.assets-section h4 {
+  margin: 0 0 0.8rem 0;
+  font-size: 1rem;
+}
+
+.assets-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .asset-item {
   display: flex;
   justify-content: space-between;
@@ -74,28 +152,61 @@
   padding: 0.6rem 0;
   border-bottom: 1px solid var(--border);
 }
-.asset-item:last-child { border-bottom: none; }
 
-.asset-link { display: flex; align-items: center; gap: 0.5rem; font-weight: 500; text-decoration: none; }
-.asset-meta { font-size: 0.85rem; color: var(--footer-text); display: flex; gap: 1rem; }
-.asset-downloads { font-family: monospace; }
+.asset-item:last-child {
+  border-bottom: none;
+}
+
+.asset-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.asset-meta {
+  font-size: 0.85rem;
+  color: var(--footer-text);
+  display: flex;
+  gap: 1rem;
+}
+
+.asset-downloads {
+  font-family: monospace;
+}
 
 @media (max-width: 600px) {
-  .release-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-  .asset-item { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
-  .asset-meta { width: 100%; justify-content: space-between; }
+  .release-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .asset-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .asset-meta {
+    width: 100%;
+    justify-content: space-between;
+  }
 }
 
 /* Release Title Link */
 .release-link {
-  color: inherit; /* Keep the title text color */
+  color: inherit;
+  /* Keep the title text color */
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .release-link:hover {
   text-decoration: underline;
-  color: var(--secondary); /* Optional: Use your brand link color on hover */
+  color: var(--secondary);
+  /* Optional: Use your brand link color on hover */
 }
 
 /* Asset Link Hover Effect */
