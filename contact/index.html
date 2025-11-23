@@ -4,15 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Servy - Download Statistics</title>
+  <title>Servy - Contact</title>
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-
-  <meta name="description" content="Live download statistics and release history for Servy.">
+  <meta name="description" content="Servy contact page for inquiries, suggestions, and support.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Servy - Download Statistics">
-  <meta property="og:description" content="View live download counts and release history for Servy.">
+  <meta property="og:title" content="Servy - Contact">
+  <meta property="og:description" content="Get in touch with the Servy team for inquiries, suggestions, and support.">
   <meta property="og:image" content="https://servy-win.github.io/servy-tiny.png">
-  <meta property="og:url" content="https://servy-win.github.io/stats/">
+  <meta property="og:url" content="https://servy-win.github.io/contact/">
 </head>
 
 <body>
@@ -23,7 +22,7 @@
       <a href="https://github.com/aelassas/servy/wiki" target="_blank" rel="noopener noreferrer" class="header-link"
         aria-label="View Servy documentation" title="View Servy documentation">Docs</a>
 
-      <a href="/stats/" class="header-link selected">Stats</a>
+      <a href="/stats/" class="header-link">Stats</a>
 
       <!-- <a href="/#support" class="header-link" aria-label="Support Servy development"
         title="Support Servy development">Support</a> -->
@@ -62,20 +61,27 @@
         </svg>
       </a>
     </nav>
-    <h1>Download Statistics</h1>
+    <h1>Contact</h1>
   </header>
 
   <main class="container">
-    <div id="loading" class="stats-loading">Loading release data...</div>
-    <div id="error" class="stats-error" style="display: none;"></div>
-    <div id="stats-container" style="display: none;">
-      <section class="total-downloads-card">
-        <h2>Total Downloads</h2>
-        <div class="big-number" id="total-downloads">0</div>
-      </section>
-
-      <div id="releases-list"></div>
-    </div>
+    <section>
+      <p>
+        If you have suggestions, feature requests, issues, or bug reports,
+        <a href="https://github.com/aelassas/servy/issues" target="_blank" rel="noopener noreferrer">open an issue</a>
+        on GitHub. For general inquiries, you can reach us using the form below. We will respond as soon as
+        possible.
+      </p>
+      <form action="https://formspree.io/f/xyzdljoq" method="POST">
+        <label for="name" class="sr-only">Name</label>
+        <input type="text" id="name" name="name" placeholder="Name" autocomplete="name" required>
+        <label for="email" class="sr-only">Email</label>
+        <input type="email" id="email" name="email" placeholder="Email" autocomplete="email" required>
+        <label for="message" class="sr-only">Message</label>
+        <textarea id="message" name="message" placeholder="Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </section>
   </main>
 
   <footer>
@@ -108,7 +114,7 @@
     </svg>
   </button>
 
-  <script type="module" src="/src/js/stats.js"></script>
+  <script type="module" src="/src/js/contact.js"></script>
 </body>
 
 </html>

@@ -25,6 +25,7 @@ async function fetchStats() {
   const loading = document.getElementById('loading')
   const container = document.getElementById('stats-container')
   const errorDiv = document.getElementById('error')
+  const footer = document.querySelector('footer')
   const repo = 'aelassas/servy'
 
   let allReleases = []
@@ -60,6 +61,7 @@ async function fetchStats() {
 
     loading.style.display = 'none'
     container.style.display = 'block'
+    footer.style.display = 'block'
   } catch (err) {
     console.error(err)
     loading.style.display = 'none'
