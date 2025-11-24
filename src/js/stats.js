@@ -124,7 +124,7 @@ function renderStats(releases) {
       
       <div class="release-stats">
         <div class="stat">
-          <span class="label">Release Downloads:</span>
+          <span class="label">Downloads:</span>
           <span class="value">${formatter.format(releaseDownloads)}</span>
         </div>
         <div class="stat">

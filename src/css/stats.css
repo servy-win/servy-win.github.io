@@ -10,6 +10,10 @@
   color: #e74c3c;
 }
 
+#stats-container {
+  margin-bottom: 8rem;
+}
+
 /* Total Downloads Card */
 .total-downloads-card {
   background: var(--form-bg);
@@ -45,7 +49,7 @@
 }
 
 .release-card.latest {
-  border: 2px solid var(--primary);
+  /* border: 2px solid var(--primary); */
   position: relative;
 }
 
@@ -85,8 +89,8 @@
 }
 
 .badge.latest {
-  background: var(--primary);
-  color: #fff;
+  background: var(--dark);
+  color: var(--light);
 }
 
 .badge.pre {
@@ -219,6 +223,6 @@
   text-decoration: underline;
 }
 
-footer{
+footer {
   display: none;
 }

@@ -229,7 +229,6 @@ div.cta {
   display: flex;
   flex-direction: row;
   margin-top: 1.5rem;
-  margin-bottom: 1rem;
 }
 
 .cta-btn {
@@ -263,6 +262,7 @@ section.star p {
 
 .container {
   max-width: 1000px;
+  min-height: 100vh;
   margin: 2rem auto;
   padding: 0 1rem;
 }
