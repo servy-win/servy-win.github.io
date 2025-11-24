@@ -1,3 +1,9 @@
+:root {
+  --stats-error-color: #e74c3c;
+  --badge-pre-bg: #f39c12;
+  --badge-pre-color: #fff;
+}
+
 .stats-loading,
 .stats-error {
   text-align: center;
@@ -7,7 +13,7 @@
 }
 
 .stats-error {
-  color: #e74c3c;
+  color: var(--stats-error-color);
 }
 
 #stats-container {
@@ -94,8 +100,8 @@
 }
 
 .badge.pre {
-  background: #f39c12;
-  color: #fff;
+  background: var(--badge-pre-bg);
+  color: var(--badge-pre-color);
 }
 
 /* Stats Grid */

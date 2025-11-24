@@ -1,6 +1,7 @@
 import * as utils from './utils.js'
 import { initGA } from './ga.js'
 import '../css/style.css'
+import '../css/contact.css'
 
 // Re-use theme toggle logic
 document.addEventListener('DOMContentLoaded', () => {
