@@ -98,8 +98,13 @@ function renderStats(releases) {
 
     // Assets HTML
     const assetsHtml = release.assets.map(asset => {
-      // const sizeMB = (asset.size / (1024 * 1024)).toFixed(2)
-      const sizeMB = (asset.size / (1024 * 1024)).toFixed(asset.size > 10 * 1024 * 1024 ? 0 : 1) // 0 decimal for >10MB, else 1 decimal
+      let sizeMB = (asset.size / (1024 * 1024))
+      if (sizeMB < 10) {
+        sizeMB = sizeMB.toFixed(2)
+      } else {
+        sizeMB = Math.round(sizeMB)
+      }
+
       return `
         <li class="asset-item">
           <a href="${asset.browser_download_url}" class="asset-link" rel="nofollow noopener noreferrer">
