@@ -57,6 +57,8 @@ async function fetchStats() {
 
     if (allReleases.length === 0) throw new Error('No releases found')
 
+    allReleases.sort((a, b) => Date.parse(b.published_at) - Date.parse(a.published_at))
+
     renderStats(allReleases)
 
     loading.style.display = 'none'
@@ -65,7 +67,13 @@ async function fetchStats() {
   } catch (err) {
     console.error(err)
     loading.style.display = 'none'
-    errorDiv.textContent = 'Failed to load statistics. Please try again later.'
+
+    if (err.message.includes('403')) {
+      errorDiv.textContent = 'Rate limit exceeded (GitHub API). Please try again in a few minutes.'
+    } else {
+      errorDiv.textContent = 'Failed to load statistics. Please try again later.'
+    }
+
     errorDiv.style.display = 'block'
   }
 }
@@ -90,10 +98,11 @@ function renderStats(releases) {
 
     // Assets HTML
     const assetsHtml = release.assets.map(asset => {
-      const sizeMB = (asset.size / (1024 * 1024)).toFixed(2)
+      // const sizeMB = (asset.size / (1024 * 1024)).toFixed(2)
+      const sizeMB = (asset.size / (1024 * 1024)).toFixed(asset.size > 10 * 1024 * 1024 ? 0 : 1) // 0 decimal for >10MB, else 1 decimal
       return `
         <li class="asset-item">
-          <a href="${asset.browser_download_url}" class="asset-link" rel="nofollow">
+          <a href="${asset.browser_download_url}" class="asset-link" rel="nofollow noopener noreferrer">
             <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             ${asset.name}
           </a>
