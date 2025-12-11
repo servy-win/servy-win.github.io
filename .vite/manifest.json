@@ -1,0 +1,49 @@
+{
+  "_style-C5e2vUr7.css": {
+    "file": "assets/style-C5e2vUr7.css",
+    "src": "_style-C5e2vUr7.css"
+  },
+  "_style-Cs82U1s7.js": {
+    "file": "assets/style-Cs82U1s7.js",
+    "name": "style",
+    "css": [
+      "assets/style-C5e2vUr7.css"
+    ]
+  },
+  "contact/index.html": {
+    "file": "assets/contact-B5O5bZ1k.js",
+    "name": "contact",
+    "src": "contact/index.html",
+    "isEntry": true,
+    "imports": [
+      "_style-Cs82U1s7.js"
+    ],
+    "css": [
+      "assets/contact-Cx4TACsW.css"
+    ]
+  },
+  "index.html": {
+    "file": "assets/main-DVWDPh1Y.js",
+    "name": "main",
+    "src": "index.html",
+    "isEntry": true,
+    "imports": [
+      "_style-Cs82U1s7.js"
+    ],
+    "css": [
+      "assets/main-CiVzV6ix.css"
+    ]
+  },
+  "stats/index.html": {
+    "file": "assets/stats-EQjMbBOZ.js",
+    "name": "stats",
+    "src": "stats/index.html",
+    "isEntry": true,
+    "imports": [
+      "_style-Cs82U1s7.js"
+    ],
+    "css": [
+      "assets/stats-BJ9opzOn.css"
+    ]
+  }
+}
