@@ -78,6 +78,19 @@ async function fetchStats() {
   }
 }
 
+function formatSize(bytes) {
+  const units = ['KB', 'MB', 'GB']
+  let size = bytes / 1024
+  let unitIndex = 0
+
+  while (size >= 1024 && unitIndex < units.length - 1) {
+    size /= 1024
+    unitIndex++
+  }
+
+  return `${size.toFixed(2)} ${units[unitIndex]}`
+}
+
 function renderStats(releases) {
   let totalDownloads = 0
   const list = document.getElementById('releases-list')
@@ -98,12 +111,7 @@ function renderStats(releases) {
 
     // Assets HTML
     const assetsHtml = release.assets.map(asset => {
-      let sizeMB = (asset.size / (1024 * 1024)).toFixed(2)
-      // if (sizeMB < 10) {
-      //   sizeMB = sizeMB.toFixed(2)
-      // } else {
-      //   sizeMB = Math.round(sizeMB)
-      // }
+      const size = formatSize(asset.size)
 
       return `
         <li class="asset-item">
@@ -112,7 +120,7 @@ function renderStats(releases) {
             ${asset.name}
           </a>
           <span class="asset-meta">
-            <span class="asset-size">${sizeMB} MB</span>
+            <span class="asset-size">${size}</span>
             <span class="asset-downloads">
               ${formatter.format(asset.download_count)} downloads
             </span>
