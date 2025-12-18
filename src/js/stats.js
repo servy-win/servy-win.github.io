@@ -98,12 +98,12 @@ function renderStats(releases) {
 
     // Assets HTML
     const assetsHtml = release.assets.map(asset => {
-      let sizeMB = (asset.size / (1024 * 1024))
-      if (sizeMB < 10) {
-        sizeMB = sizeMB.toFixed(2)
-      } else {
-        sizeMB = Math.round(sizeMB)
-      }
+      let sizeMB = (asset.size / (1024 * 1024)).toFixed(2)
+      // if (sizeMB < 10) {
+      //   sizeMB = sizeMB.toFixed(2)
+      // } else {
+      //   sizeMB = Math.round(sizeMB)
+      // }
 
       return `
         <li class="asset-item">
