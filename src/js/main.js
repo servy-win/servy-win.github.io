@@ -8,6 +8,9 @@ window.addEventListener('DOMContentLoaded', () => {
   // Initialize Google Analytics
   initGA('G-VQ7924LC4H')
 
+  // Initialize Google Ads Conversion Tracking
+  initGA('AW-16758312117')
+
   // Initialize Dark Mode Toggle
   utils.initToggleDarkMode()
 
