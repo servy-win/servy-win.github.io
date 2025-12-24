@@ -81,7 +81,7 @@ async function fetchStats() {
 function formatSize(bytes) {
   if (bytes < 1024) return `${bytes} B`
 
-  const units = ['KB', 'MB', 'GB']
+  const units = ['KB', 'MB', 'GB', 'TB']
   let size = bytes / 1024
   let unitIndex = 0
 
@@ -90,15 +90,17 @@ function formatSize(bytes) {
     unitIndex++
   }
 
-  // Round to nearest whole number if >= 10 MB, else two decimals
-  const formatted =
-    size >= 10 && units[unitIndex] === 'MB'
-      ? Math.round(size)
-      : size.toFixed(2)
+  let display
+  if (size >= 10) {
+    // Large sizes: one decimal, rounded
+    display = Math.round(size * 10) / 10
+  } else {
+    // Small sizes: two decimals
+    display = size.toFixed(2)
+  }
 
-  return `${formatted} ${units[unitIndex]}`
+  return `${display} ${units[unitIndex]}`
 }
-
 
 function renderStats(releases) {
   let totalDownloads = 0
