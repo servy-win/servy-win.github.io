@@ -421,7 +421,7 @@ button[type="submit"]:hover {
   background-color: var(--custom-btn-hover);
 }
 
-a.logo{
+a.logo {
   text-decoration: none;
   margin-right: 3px;
 }
