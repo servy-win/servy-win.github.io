@@ -601,7 +601,7 @@ footer p {
 @media (max-width: 600px) {
   header h1 {
     font-size: 2rem;
-    margin-top: 4rem;
+    margin-top: 3rem;
   }
 
   div.cta {
