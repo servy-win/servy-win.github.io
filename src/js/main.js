@@ -11,6 +11,9 @@ window.addEventListener('DOMContentLoaded', () => {
   // Initialize Google Ads Conversion Tracking
   initGA('AW-16758312117')
 
+  // Initialize Header Hamburger Menu
+  utils.initHeaderHamburger()
+
   // Initialize Dark Mode Toggle
   utils.initToggleDarkMode()
 

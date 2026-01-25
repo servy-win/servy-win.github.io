@@ -1,6 +1,27 @@
 
-export const initToggleDarkMode = ()=>{
-    const toggleBtn = document.getElementById('dark-mode-toggle')
+export const initHeaderHamburger = () => {
+  const hamburger = document.getElementById('hamburger-menu')
+  const navLinks = document.getElementById('nav-links')
+
+  hamburger.addEventListener('click', () => {
+    // Toggles the slide-in menu
+    navLinks.classList.toggle('active')
+
+    // Toggles the animation for the X button
+    hamburger.classList.toggle('active')
+  })
+
+  // Optional: Close menu when clicking a link
+  document.querySelectorAll('.header-link').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active')
+      hamburger.classList.remove('active')
+    })
+  })
+}
+
+export const initToggleDarkMode = () => {
+  const toggleBtn = document.getElementById('dark-mode-toggle')
   const root = document.documentElement // html element
   // Initialize from localStorage
   if (localStorage.getItem('theme') === 'dark') {
