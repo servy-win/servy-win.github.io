@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // GA Init
   initGA('G-VQ7924LC4H')
 
+  // Initialize Header Hamburger Menu
+  utils.initHeaderHamburger()
+
   // Initialize Dark Mode Toggle
   utils.initToggleDarkMode()
 
