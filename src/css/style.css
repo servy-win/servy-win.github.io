@@ -164,6 +164,19 @@ header {
   transform: translateY(-8px) rotate(-45deg);
 }
 
+.heart {
+  fill: currentColor; 
+  color: #ff4d4d; 
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+  margin-bottom: -1px;
+}
+
+.support-link:hover .heart {
+  color: #ff3333;
+}
+
 @media (max-width: 768px) {
   .hamburger-container {
     width: 40px;
@@ -204,7 +217,7 @@ header {
   }
 
   .nav-links .support-link {
-    margin-left: -20px;
+    margin-left: -24px;
   }
 
   .header-link {
