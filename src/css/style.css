@@ -217,7 +217,7 @@ header {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 230px;
+    width: 200px;
     height: 100vh;
     background: var(--header-dark);
     flex-direction: column;
