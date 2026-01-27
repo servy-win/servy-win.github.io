@@ -3,20 +3,43 @@ export const initHeaderHamburger = () => {
   const hamburger = document.getElementById('hamburger-menu')
   const navLinks = document.getElementById('nav-links')
 
-  hamburger.addEventListener('click', () => {
-    // Toggles the slide-in menu
-    navLinks.classList.toggle('active')
+  const closeMenu = () => {
+    navLinks.classList.remove('active')
+    hamburger.classList.remove('active')
+    // Remove the scroll lock if you added it previously
+    document.body.style.overflow = ''
+  }
 
-    // Toggles the animation for the X button
+  hamburger.addEventListener('click', (e) => {
+    // Prevent the document listener from immediately closing the menu we just opened
+    e.stopPropagation()
+
+    navLinks.classList.toggle('active')
     hamburger.classList.toggle('active')
+
+    // Optional: Toggle scroll lock
+    const isOpen = navLinks.classList.contains('active')
+    document.body.style.overflow = isOpen ? 'hidden' : ''
   })
 
-  // Optional: Close menu when clicking a link
+  // 1. Close when clicking outside
+  document.addEventListener('click', (event) => {
+    const isClickInsideMenu = navLinks.contains(event.target)
+    const isClickOnHamburger = hamburger.contains(event.target)
+
+    if (!isClickInsideMenu && !isClickOnHamburger && navLinks.classList.contains('active')) {
+      closeMenu()
+    }
+  })
+
+  // 2. Close when clicking a link
   document.querySelectorAll('.header-link').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('active')
-      hamburger.classList.remove('active')
-    })
+    link.addEventListener('click', closeMenu)
+  })
+
+  // 3. Optional: Close on 'Escape' key for accessibility
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMenu()
   })
 }
 
