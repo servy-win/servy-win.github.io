@@ -1,0 +1,49 @@
+{
+  "_style-D58Er0_K.css": {
+    "file": "assets/style-D58Er0_K.css",
+    "src": "_style-D58Er0_K.css"
+  },
+  "_style-DHZhYzHd.js": {
+    "file": "assets/style-DHZhYzHd.js",
+    "name": "style",
+    "css": [
+      "assets/style-D58Er0_K.css"
+    ]
+  },
+  "contact/index.html": {
+    "file": "assets/contact-DE9gjgnz.js",
+    "name": "contact",
+    "src": "contact/index.html",
+    "isEntry": true,
+    "imports": [
+      "_style-DHZhYzHd.js"
+    ],
+    "css": [
+      "assets/contact-Cx4TACsW.css"
+    ]
+  },
+  "index.html": {
+    "file": "assets/main-rrqe1fY8.js",
+    "name": "main",
+    "src": "index.html",
+    "isEntry": true,
+    "imports": [
+      "_style-DHZhYzHd.js"
+    ],
+    "css": [
+      "assets/main-CiVzV6ix.css"
+    ]
+  },
+  "stats/index.html": {
+    "file": "assets/stats-DPwmMSzY.js",
+    "name": "stats",
+    "src": "stats/index.html",
+    "isEntry": true,
+    "imports": [
+      "_style-DHZhYzHd.js"
+    ],
+    "css": [
+      "assets/stats-BJ9opzOn.css"
+    ]
+  }
+}
