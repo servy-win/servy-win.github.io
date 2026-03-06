@@ -1,0 +1,26 @@
+{
+  "ci": {
+    "collect": {
+      "staticDistDir": "./dist",
+      "url": ["/index.html", "/stats/index.html", "/contact/index.html"],
+      "numberOfRuns": 1,
+      "settings": {
+        "chromeFlags": "--no-sandbox --disable-setuid-sandbox --disable-dev-shm-usage",
+        "throttlingMethod": "devtools"
+      }
+    },
+    "assert": {
+      "preset": "lighthouse:recommended",
+      "assertions": {
+        "network-dependency-tree-insight": ["warn", { "minScore": 0 }],
+        "errors-in-console": "warn",
+        "image-delivery-insight": "warn",
+        "uses-responsive-images": "warn",
+        "label-content-name-mismatch": "warn"
+      }
+    },
+    "upload": {
+      "target": "temporary-public-storage"
+    }
+  }
+}
