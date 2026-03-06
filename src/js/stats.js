@@ -166,7 +166,7 @@ function renderStats(releases) {
         <div class="stat">
           <span class="label">Author:</span>
           <a href="${release.author.html_url}" target="_blank" rel="noopener" class="author-link">
-            <img src="${release.author.avatar_url}" alt="${release.author.login}" class="avatar">
+            <img src="${release.author.avatar_url}" alt="" class="avatar">
             ${release.author.login}
           </a>
         </div>
