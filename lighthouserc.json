@@ -16,7 +16,8 @@
         "errors-in-console": "warn",
         "image-delivery-insight": "warn",
         "uses-responsive-images": "warn",
-        "label-content-name-mismatch": "warn"
+        "label-content-name-mismatch": "warn",
+        "forced-reflow-insight": "warn"
       }
     },
     "upload": {
