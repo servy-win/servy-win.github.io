@@ -395,6 +395,17 @@ div.cta {
   background: var(--custom-btn-hover);
 }
 
+.cta-btn-secondary {
+  background: var(--header-dark);
+  color: var(--custom-btn-text);
+  border: var(--custom-btn-text) 1px solid;
+}
+
+.cta-btn-secondary:hover{
+  background: var(--header-dark);
+  opacity: .9;
+}
+
 section.star {
   display: flex;
   flex-direction: row;
