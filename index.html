@@ -8,19 +8,25 @@
   <link rel="preload" as="image" href="/servy-tiny.png" fetchpriority="high">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Akram El Assas">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#2d3436">
 
   <!-- Primary SEO -->
   <title>Servy - Turn Any App into a Native Windows Service</title>
   <meta name="description"
-    content="Servy lets you run any app as a native Windows service with full control over working directory, startup type, process priority, logging, health checks, environment variables, dependencies, pre-launch and post-launch hooks, and parameters. A modern open-source alternative to NSSM and WinSW.">
+    content="Servy lets you run any app as a native Windows service with full control over working directory, startup type, process priority, logging, health checks, environment variables, dependencies, pre-launch and post-launch hooks, and parameters. Full-Featured Alternative to NSSM, WinSW & FireDaemon Pro.">
   <meta name="keywords"
-    content="Servy, Servy Windows Service, Windows service manager, run app as Windows service, Windows service GUI, Windows service creator, NSSM, NSSM alternative, NSSM Windows service, WinSW, create Windows service, Windows service tool, Windows service configuration, service monitoring, service auto restart, stdout stderr logging, service logging, run exe as service, run application as service, Windows admin tools, Windows service setup, Windows service installation, Windows process monitoring">
+    content="Servy, Windows Service Wrapper, Windows Service Manager, NSSM alternative, WinSW alternative, FireDaemon alternative, run app as Windows service, Windows service GUI, open source Windows service, run Node.js as service, run Python as service, run Java as service, run Go as service, Windows process monitoring, service health checks, real-time CPU RAM monitoring, Windows admin tools, FOSS, CI/CD Windows service, PowerShell service management, service lifecycle hooks, stdout stderr logging, background process manager Windows, Windows service automation, service crash recovery, automatic restart service, handle ctrl-c in service">
+
+  <!-- MS Application Metadata -->
+  <meta name="application-name" content="Servy">
+  <meta name="msapplication-tooltip" content="Run any app as a native Windows service">
 
   <!-- Open Graph / Facebook / LinkedIn -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Servy - Turn Any App into a Native Windows Service">
   <meta property="og:description"
-    content="Servy lets you run any app as a native Windows service with full control over working directory, startup type, process priority, logging, health checks, environment variables, dependencies, pre-launch and post-launch hooks, and parameters. A modern open-source alternative to NSSM and WinSW.">
+    content="Servy lets you run any app as a native Windows service with full control over working directory, startup type, process priority, logging, health checks, environment variables, dependencies, pre-launch and post-launch hooks, and parameters. Full-Featured Alternative to NSSM, WinSW & FireDaemon Pro.">
   <meta property="og:image" content="https://servy-win.github.io/servy-tiny.png">
   <meta property="og:url" content="https://servy-win.github.io/">
   <meta property="og:site_name" content="Servy">
@@ -29,10 +35,52 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Servy - Turn Any App into a Native Windows Service">
+  <meta name="twitter:title" content="Servy: Modern Windows Service Wrapper">
   <meta name="twitter:description"
-    content="Servy lets you run any app as a native Windows service with full control over working directory, startup type, process priority, logging, health checks, environment variables, dependencies, pre-launch and post-launch hooks, and parameters. A modern open-source alternative to NSSM and WinSW.">
+    content="Servy lets you run any app as a native Windows service with full control over working directory, startup type, process priority, logging, health checks, environment variables, dependencies, pre-launch and post-launch hooks, and parameters. Full-Featured Alternative to NSSM, WinSW & FireDaemon Pro.">
   <meta name="twitter:image" content="https://servy-win.github.io/servy-tiny.png">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Servy",
+    "operatingSystem": "Windows",
+    "applicationCategory": "UtilitiesApplication",
+    "applicationSubCategory": "Windows Service Wrapper, Process Manager",
+    "description": "Run any application or script as a native Windows service with real-time monitoring. Full-Featured Alternative to NSSM, WinSW & FireDaemon Pro.",
+    "author": {
+      "@type": "Person",
+      "name": "Akram El Assas"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Servy",
+      "url": "https://github.com/servy-win"
+    },
+    "url": "https://servy-win.github.io/",
+    "codeRepository": "https://github.com/servy-win/servy",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "featureList": [
+      "Real-time CPU and RAM monitoring",
+      "Process lifecycle management",
+      "Health checks and auto-restart",
+      "Pre-launch and Post-launch hooks",
+      "Pre-stop and Post-stop hooks",
+      "Custom stdout and stderr logging",
+      "PowerShell and CLI compatibility",
+      "Native Win32 API signal handling",
+      "Minimalist management UI"
+    ],
+    "license": "https://opensource.org/licenses/MIT"
+  }
+  </script>
 </head>
 
 <body>
@@ -165,61 +213,8 @@
       </p>
     </section>
 
-    <!-- <section>
-      <h2>Who Is It For?</h2>
-      <ul>
-        <li>Developers running background workers, APIs, or job schedulers</li>
-        <li>System Administrators who need persistent GUI or CLI apps</li>
-        <li>DevOps Engineers automating scripts or deployments that must survive reboots</li>
-        <li>Self-Hosters keeping local services and tools running as daemons</li>
-        <li>Teams migrating from NSSM or WinSW to something modern and full-featured</li>
-        <li>Anyone who needs applications to start automatically on boot even before logon</li>
-      </ul>
-
-      <p class="why-link">
-        Want to know the philosophy behind Servy? Check out the
-        <a href="https://github.com/aelassas/servy/blob/main/NOTES.md" target="_blank" rel="noopener noreferrer">project
-          notes</a>.
-      </p>
-    </section> -->
-
-    <!-- <section>
-      <h2>Why?</h2>
-      <p>
-        See the <a href="https://github.com/aelassas/servy/blob/main/NOTES.md" target="_blank"
-          rel="noopener noreferrer">project notes</a>.
-      </p>
-    </section> -->
-
     <section>
       <h2>Features</h2>
-      <!-- <p>When it comes to features, Servy brings together the best parts of tools like NSSM, WinSW, and FireDaemon Pro,
-        all in one easy-to-use package. It combines the simplicity of open-source tools with the flexibility and
-        power you'd expect from professional service managers. Below is a detailed list of all the features Servy
-        supports.</p> -->
-      <!-- <ul>
-        <li>Clean, simple UI</li>
-        <li>Monitor and manage all installed services with Servy Manager</li>
-        <li>Real-time CPU and RAM usage tracking for installed services</li>
-        <li>CLI and PowerShell module for full scripting and automated deployments</li>
-        <li>Run any executable as a Windows service</li>
-        <li>Set service name, description, startup type, priority, working directory, environment variables,
-          dependencies, and parameters</li>
-        <li>Environment variable expansion supported in both environment variables and process parameters</li>
-        <li>Run services as Local System, local or domain accounts, Active Directory accounts, or gMSAs</li>
-        <li>Redirect stdout/stderr to log files with automatic size-based rotation</li>
-        <li>Run pre-launch hook before starting the service, with retries, timeout, logging and failure
-          handling</li>
-        <li>Run post-launch hook after the application starts successfully</li>
-        <li>Supports <code>Ctrl+C</code> for command-line apps, close-window for GUI apps, and force kill if
-          unresponsive</li>
-        <li>Prevent orphaned/zombie processes with improved lifecycle management and ensuring resource cleanup</li>
-        <li>Health checks and automatic service recovery</li>
-        <li>Browse and search logs by level, date, and keyword for faster troubleshooting from Servy Manager</li>
-        <li>Export/Import service configurations</li>
-        <li>Service Event Notification alerts on service failures via Windows notifications and email</li>
-        <li>Compatible with Windows 7-11 x64 and Windows Server editions</li>
-      </ul> -->
       <ul>
         <li>Run any app as a Windows service with the desktop app, CLI, or PowerShell module</li>
         <li>Reliable auto restart that recovers from crashes, hangs, and failures</li>
@@ -230,7 +225,7 @@
         <li>Real-time CPU and RAM monitoring with live performance graphs for installed services</li>
         <li>Real-time service <code>stdout</code> and <code>stderr</code> output preview in Servy Console</li>
         <li>Service dependency tree visualization with status indicators</li>
-        <li>Logging for stdout and stderr with automatic size-based and date-based rotations</li>
+        <li>Logging for <code>stdout</code> and <code>stderr</code> with automatic size-based and date-based rotations</li>
         <li>Safe termination with <code>Ctrl+C</code> support, graceful close, or force kill</li>
         <li>Supports <code>Ctrl+C</code> propagation to descendant processes of the wrapped process</li>
         <li>Prevent orphaned/zombie processes with improved lifecycle management and ensuring resource cleanup</li>
