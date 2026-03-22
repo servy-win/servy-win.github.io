@@ -130,7 +130,6 @@ header {
 header>* {
   position: relative;
   z-index: 2;
-  /* Add a subtle text shadow to ensure text pops against the moving blobs */
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
