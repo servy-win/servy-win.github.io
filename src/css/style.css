@@ -26,7 +26,7 @@
   --code-color: #23272f;
   --code-border: #ccc;
   --code-comment: #818181;
-  --code-radius: 0.5rem;
+  --code-radius: 0.25rem;
   --code-font: 'Fira Code', monospace;
 
   --code-btn-bg: #0077C8;
@@ -39,7 +39,7 @@
   --form-bg: #fafafa;
   --form-border: #e0e0e0;
   --border: #f2f2f2;
-  --border-radius: 8px;
+  --border-radius: 0.25rem;
   --input-bg: #fff;
   --placeholder-text-color: #727272;
 
@@ -277,7 +277,7 @@ header>* {
   justify-content: center;
   height: 42px;
   min-width: 42px;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
 }
 
 .nav-links a:hover,
@@ -383,7 +383,7 @@ div.cta {
   padding: 0.8rem 1.5rem;
   background: var(--custom-btn-bg);
   color: var(--custom-btn-text);
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   text-decoration: none;
   font-size: 1rem;
   min-width: 140px;
@@ -401,7 +401,7 @@ div.cta {
   border: var(--custom-btn-text) 1px solid;
 }
 
-.cta-btn-secondary:hover{
+.cta-btn-secondary:hover {
   background: var(--header-dark);
   opacity: .9;
 }
