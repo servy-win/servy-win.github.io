@@ -14,11 +14,20 @@ if (!fs.existsSync(manifestPath)) {
 const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'))
 
 // Pages to process
-const pages = [
-  'index.html',
-  'contact/index.html',
-  'stats/index.html'
-]
+function getHtmlFiles(dir, base = '') {
+  return fs.readdirSync(dir).flatMap((file) => {
+    const fullPath = path.join(dir, file)
+    const relativePath = path.join(base, file)
+
+    if (fs.statSync(fullPath).isDirectory()) {
+      return getHtmlFiles(fullPath, relativePath)
+    }
+
+    return file.endsWith('.html') ? [relativePath] : []
+  })
+}
+
+const pages = getHtmlFiles(distDir)
 
 // Inject preload into each page
 pages.forEach((page) => {
