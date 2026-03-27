@@ -7,10 +7,10 @@
   --dark: #2c3e50;
   --light: #ecf0f1;
 
-  --header-dark: #0077C8;
+  --header-dark: #006A85;
   --header-dark-lighter: #304a61;
   --header-light: #ecf0f1;
-  --nav-hover: #0D5B9D;
+  --nav-hover: #00576D;
 
   --focus-border: #4C9FFF;
 
@@ -30,8 +30,8 @@
   --code-radius: 0;
   --code-font: 'Fira Code', monospace;
 
-  --code-btn-bg: #0077C8;
-  --code-btn-bg-hover: #106FBF;
+  --code-btn-bg: #006A85;
+  --code-btn-bg-hover: #00576D;
   --code-btn-color: #fff;
   --code-btn-padding: 0.3rem 0.6rem;
   --code-btn-font-size: 0.85rem;
@@ -584,6 +584,7 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: var(--custom-btn-hover);
+  opacity: 0.9;
 }
 
 a.logo {
