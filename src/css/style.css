@@ -455,6 +455,10 @@ section h4 {
   color: var(--primary);
 }
 
+section h3 {
+  font-size: 16px;
+}
+
 section p,
 section li {
   font-size: 1rem;
