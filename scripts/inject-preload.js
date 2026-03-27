@@ -4,33 +4,59 @@ import process from 'process'
 
 const distDir = './dist'
 const manifestPath = path.join(distDir, '.vite/manifest.json')
+
+// Ensure manifest exists
 if (!fs.existsSync(manifestPath)) {
   console.error('Manifest not found:', manifestPath)
   process.exit(1)
 }
+
 const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'))
 
-// Look up entry CSS from manifest
-const entry = manifest['index.html']
-const cssFile = entry?.css?.[0]
+// Pages to process
+const pages = [
+  'index.html',
+  'contact/index.html',
+  'stats/index.html'
+]
 
-if (cssFile) {
-  const indexPath = path.join(distDir, 'index.html')
-  let html = fs.readFileSync(indexPath, 'utf-8')
+// Inject preload into each page
+pages.forEach((page) => {
+  const filePath = path.join(distDir, page)
 
-  // Make sure href exactly matches what's used in the built index (no double slash)
-  const href = cssFile.startsWith('/') ? cssFile : `/${cssFile}`
-
-  // Inject preload with crossorigin (helps avoid "credentials mode" warnings if needed)
-  // Use rel=preload as=style and include crossorigin
-  const preloadLink = `<link rel="preload" as="style" href="${href}" crossorigin>`
-
-  // If a preload already exists, don't duplicate
-  if (!html.includes(preloadLink)) {
-    html = html.replace('<head>', `<head>${preloadLink}`)
-    fs.writeFileSync(indexPath, html)
-    console.log(`Injected preload for ${cssFile}`)
-  } else {
-    console.log('Preload already injected')
+  if (!fs.existsSync(filePath)) {
+    console.warn(`File not found: ${filePath}`)
+    return
   }
-}
+
+  // Try to get page-specific entry, fallback to index
+  const entry = manifest[page] || manifest['index.html']
+
+  const cssFiles = entry?.css || []
+
+  if (cssFiles.length === 0) {
+    console.warn(`No CSS found for ${page}`)
+    return
+  }
+
+  let html = fs.readFileSync(filePath, 'utf-8')
+
+  let injected = false
+
+  cssFiles.forEach((cssFile) => {
+    const href = cssFile.startsWith('/') ? cssFile : `/${cssFile}`
+    const preloadLink = `<link rel="preload" as="style" href="${href}" crossorigin>`
+
+    if (!html.includes(preloadLink)) {
+      html = html.replace('<head>', `<head>\n  ${preloadLink}`)
+      injected = true
+    }
+  })
+
+  if (injected) {
+    fs.writeFileSync(filePath, html)
+    console.log(`Injected CSS preload(s) into ${page}`)
+  } else {
+    console.log(`Preload already exists in ${page}`)
+  }
+})
