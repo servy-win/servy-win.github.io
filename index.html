@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-  <link rel="preload" as="image" href="/servy-tiny.png" fetchpriority="high">
+  <!-- <link rel="preload" as="image" href="/servy-tiny.png" fetchpriority="high"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Akram El Assas">
   <meta name="robots" content="index, follow">
@@ -158,8 +158,7 @@
 
     <h1>Servy</h1>
 
-    <p>Turn Any App into a Native Windows Service - Full-Featured Alternative to NSSM, WinSW &amp; FireDaemon Pro
-    </p>
+    <p>Turn Any App into a Native Windows Service. A modern, full-featured alternative to NSSM and WinSW.</p>
 
     <div class="cta">
       <a href="https://github.com/aelassas/servy/releases/latest" class="cta-btn" target="_blank"
@@ -178,18 +177,17 @@
 
     <section class="star">
       <p>
-        ⭐ Don't forget to <a href="https://github.com/aelassas/servy/" target="_blank" rel="noopener noreferrer">give
-          us
-          a star on GitHub</a>. It costs nothing but means a lot and helps the project grow!
+        ⭐ Love Servy? <a href="https://github.com/aelassas/servy/" target="_blank" rel="noopener noreferrer">Star us
+          on GitHub</a>. It costs nothing but means a lot and helps the project grow!
       </p>
     </section>
   </header>
 
   <main class="container">
-    <section class="cover-image">
+    <!-- <section class="cover-image">
       <img src="/servy-tiny.png" alt="Servy application screenshot" width="1382" height="720" decoding="async"
         fetchpriority="high" loading="eager">
-    </section>
+    </section> -->
 
     <!-- <section class="star">
       <p>
@@ -198,7 +196,7 @@
       </p>
     </section> -->
 
-    <section>
+    <!-- <section>
       <h2>What is Servy?</h2>
       <p>
         Servy lets you run any app as a native Windows service with full control over the working directory, startup
@@ -224,29 +222,23 @@
         automate task runners, schedulers, or scripts in production with built-in health checks, logging, and restart
         policies.
       </p>
-    </section>
+    </section> -->
 
-    <section>
-      <h2>Features</h2>
+    <section class="features-grid">
+      <h2>Why use Servy?</h2>
       <ul>
-        <li>Run any app as a Windows service with the desktop app, CLI, or PowerShell module</li>
-        <li>Reliable auto restart that recovers from crashes, hangs, and failures</li>
-        <li>Full process control including working directory, priority, parameters, and environment variables</li>
-        <li>Support for Local System, local users, domain users, Active Directory accounts, and gMSAs</li>
-        <li>Pre-launch and post-launch hooks for scripts or commands with logging and timeout handling</li>
-        <li>Pre-stop and post-stop hooks before the application stops and after the application stops</li>
-        <li>Real-time CPU and RAM monitoring with live performance graphs for installed services</li>
-        <li>Real-time service <code>stdout</code> and <code>stderr</code> output preview in Servy Console</li>
-        <li>Service dependency tree visualization with status indicators</li>
-        <li>Logging for <code>stdout</code> and <code>stderr</code> with automatic size-based and date-based rotations
+        <li><strong>Universal Access</strong> Run any app as a service via Desktop UI, CLI, or PowerShell.</li>
+        <li><strong>Auto-Recovery</strong> Intelligent restarts that recover from crashes, hangs, and failures.</li>
+        <li><strong>Full Process Control</strong> Granular management of directories, priorities, and environment
+          variables.</li>
+        <li><strong>Enterprise Auth</strong> Support for Local System, Active Directory, and gMSA accounts.</li>
+        <li><strong>Lifecycle Hooks</strong> Pre and post-launch/stop scripts with built-in logging and timeouts.</li>
+        <li><strong>Live Monitoring</strong> Real-time CPU and RAM graphs plus stdout/stderr output previews.</li>
+        <li><strong>Graceful Shutdown</strong> Safe termination using <code>Ctrl+C</code> propagation to prevent zombie
+          processes.
         </li>
-        <li>Safe termination with <code>Ctrl+C</code> support, graceful close, or force kill</li>
-        <li>Supports <code>Ctrl+C</code> propagation to descendant processes of the wrapped process</li>
-        <li>Prevent orphaned/zombie processes with improved lifecycle management and ensuring resource cleanup</li>
-        <li>Health checks for detecting failures and restarting automatically</li>
-        <li>Environment variable expansion supported in parameters, process paths, and startup directories</li>
-        <li>Service Event Notification alerts on service failures via Windows notifications and email</li>
-        <li>Export and import service configurations for easy backups and automation</li>
+        <li><strong>Health Checks</strong> Automated failure detection and instant alerts via Windows or email.</li>
+        <li><strong>Visual Dependencies</strong> Interactive dependency trees and easy configuration exports.</li>
       </ul>
     </section>
 
@@ -265,19 +257,19 @@
           rel="noopener noreferrer">GitHub</a> or install via a package manager:
       </p>
 
-      <p><strong>WinGet</strong></p>
+      <h4>WinGet</h4>
       <div class="code-block">
         <button type="button" class="copy-btn">Copy</button>
         <pre><code>winget install servy</code></pre>
       </div>
 
-      <p><strong>Chocolatey</strong></p>
+      <h4>Chocolatey</h4>
       <div class="code-block">
         <button type="button" class="copy-btn">Copy</button>
         <pre><code>choco install -y servy</code></pre>
       </div>
 
-      <p><strong>Scoop</strong></p>
+      <h4>Scoop</h4>
       <div class="code-block">
         <button type="button" class="copy-btn">Copy</button>
         <pre><code>scoop bucket add extras
@@ -292,6 +284,34 @@ scoop install servy</code></pre>
         GitHub, WinGet, Chocolatey, or Scoop.
       </p> -->
 
+    </section>
+
+    <section>
+      <h2>Quick Example (CLI)</h2>
+      <p>Here's a minimal example using the CLI to turn a Node.js app into a Windows service:</p>
+      <div class="code-block">
+        <button type="button" class="copy-btn">Copy</button>
+        <pre><code>servy-cli install `
+--name="MyService" `
+--path="C:\Program Files\nodejs\node.exe" `
+--startupDir="C:\MyServer" `
+--params="C:\MyServer\server.js"</code></pre>
+      </div>
+      <p>This creates a service named <code>MyService</code> that runs your Node.js server in the background and starts
+        automatically
+        with Windows.</p>
+
+      <p>Then start the service:</p>
+      <div class="code-block">
+        <button type="button" class="copy-btn">Copy</button>
+        <pre><code>servy-cli start --name="MyService"</code></pre>
+      </div>
+
+      <p>
+        Explore more <a href="https://github.com/aelassas/servy/wiki/Examples-&-Recipes" target="_blank"
+          rel="noopener noreferrer">examples and recipes</a>
+        for Python, Java, Go, and other popular frameworks.
+      </p>
     </section>
 
     <section>

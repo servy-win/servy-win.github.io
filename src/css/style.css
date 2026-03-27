@@ -448,8 +448,11 @@ section {
   margin-bottom: 2rem;
 }
 
-section h2 {
-  color: var(--dark);
+section h1,
+section h2,
+section h3,
+section h4 {
+  color: var(--primary);
 }
 
 section p,
@@ -458,6 +461,44 @@ section li {
   line-height: 1.6rem;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Update your features section to a modern grid */
+.features-grid ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.features-grid li {
+  background: var(--form-bg);
+  border: 1px solid var(--form-border);
+  border-radius: var(--border-radius);
+  padding: 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transition: transform 0.2s ease;
+}
+
+.features-grid li:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+}
+
+.features-grid li strong {
+  display: block;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 600px) {
+  .features-grid ul {
+    grid-template-columns: 1fr;
+    /* Stack on mobile */
+  }
 }
 
 p.blockquote {
