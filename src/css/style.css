@@ -40,6 +40,7 @@
 
   --form-bg: #fafafa;
   --form-border: #e0e0e0;
+  --form-focus-border: var(--header-dark);
   --border: #f2f2f2;
   /* --border-radius: 0.25rem; */
   --border-radius: 0;
@@ -85,6 +86,7 @@
 
   --form-bg: #23272F;
   --form-border: #23272F;
+  --form-focus-border: var(--primary);
   --border: #23272F;
   --input-bg: #333A45;
   --placeholder-text-color: #7D8495;
@@ -564,6 +566,12 @@ input::placeholder,
 textarea::placeholder {
   color: var(--placeholder-text-color);
   opacity: 1;
+}
+
+input:focus, 
+textarea:focus {
+    outline: none; 
+    border: 2px solid var(--form-focus-border); 
 }
 
 textarea {
