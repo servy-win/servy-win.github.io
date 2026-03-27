@@ -10,7 +10,7 @@
   --header-dark: #007D9C;
   --header-dark-lighter: #304a61;
   --header-light: #ecf0f1;
-  --nav-hover: #00576D;
+  --nav-hover: #006A85;
 
   --focus-border: #4C9FFF;
 
@@ -31,7 +31,7 @@
   --code-font: 'Fira Code', monospace;
 
   --code-btn-bg: #007D9C;
-  --code-btn-bg-hover: #00576D;
+  --code-btn-bg-hover: #006A85;
   --code-btn-color: #fff;
   --code-btn-padding: 0.3rem 0.6rem;
   --code-btn-font-size: 0.85rem;
