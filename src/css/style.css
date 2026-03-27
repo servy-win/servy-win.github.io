@@ -571,7 +571,7 @@ textarea::placeholder {
 input:focus, 
 textarea:focus {
     outline: none; 
-    border: 2px solid var(--form-focus-border); 
+    /* border: 2px solid var(--form-focus-border);  */
 }
 
 textarea {
