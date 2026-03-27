@@ -6,6 +6,10 @@
   --border-radius: 0;
 }
 
+header h1 {
+  margin-top: 1rem;
+}
+
 .stats-loading,
 .stats-error {
   text-align: center;
