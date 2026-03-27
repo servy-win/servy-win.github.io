@@ -17,9 +17,9 @@
   /* Button colors */
   --btn-bg: var(--primary);
   --btn-text: #fff;
-  --custom-btn-text: #fff;
-  --custom-btn-bg: var(--header-dark);
-  --custom-btn-hover: var(--header-dark);
+  --custom-btn-text: #000;
+  --custom-btn-bg: #FDDD00;
+  --custom-btn-hover: #FDDD00;
 
   /* pre code */
   --code-bg: #f5f5f5;
@@ -71,9 +71,9 @@
 
   --btn-bg: var(--dark);
   --btn-text: #fff;
-  --custom-btn-text: #fff;
-  --custom-btn-bg: var(--header-dark);
-  --custom-btn-hover: var(--header-dark);
+  --custom-btn-text: #000;
+  --custom-btn-bg: #FDDD00;
+  --custom-btn-hover: #FDDD00;
 
   /* pre code */
   --code-bg: #23272F;
@@ -127,6 +127,15 @@ header {
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+
+header section.star {
+  margin-bottom: 0;
+}
+
+header section.star a {
+  color: var(--btn-text);
+  text-decoration: underline;
 }
 
 /* header>* {
@@ -390,7 +399,7 @@ div.cta {
   padding: 0.8rem 1.5rem;
   background: var(--custom-btn-bg);
   color: var(--custom-btn-text);
-  border: var(--custom-btn-text) 1px solid;
+  border: var(--custom-btn-bg) 1px solid;
   border-radius: var(--border-radius);
   text-decoration: none;
   text-transform: capitalize;
@@ -407,8 +416,8 @@ div.cta {
 
 .cta-btn-secondary {
   background: var(--header-dark);
-  color: var(--custom-btn-text);
-  border: var(--custom-btn-text) 1px solid;
+  color: var(--btn-text);
+  border: var(--btn-text) 1px solid;
 }
 
 .cta-btn-secondary:hover {
@@ -568,10 +577,10 @@ textarea::placeholder {
   opacity: 1;
 }
 
-input:focus, 
+input:focus,
 textarea:focus {
-    outline: none; 
-    /* border: 2px solid var(--form-focus-border);  */
+  outline: none;
+  /* border: 2px solid var(--form-focus-border);  */
 }
 
 textarea {
@@ -638,8 +647,8 @@ footer p {
   height: 42px;
   border: none;
   border-radius: 50%;
-  background-color: var(--custom-btn-bg);
-  color: var(--custom-btn-text);
+  background-color: var(--header-dark);
+  color: var(--btn-text);
   font-size: 1.3rem;
   cursor: pointer;
   opacity: 0;
@@ -656,7 +665,7 @@ footer p {
 #back-to-top svg {
   width: 28px;
   height: 28px;
-  fill: var(--custom-btn-text);
+  fill: var(--btn-text);
 }
 
 @media (max-width: 600px) {
