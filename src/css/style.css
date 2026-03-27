@@ -106,9 +106,9 @@ html {
 
 body {
   font-family: var(--font-family);
-  margin: 0;
   background-color: var(--bg-color);
   color: var(--text-color);
+  margin: 0;
 }
 
 a {
