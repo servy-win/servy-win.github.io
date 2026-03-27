@@ -11,18 +11,20 @@
     "lint:fix": "eslint . --fix",
     "validate:html": "html-validate .",
     "lhci": "npm run build && lhci autorun",
-    "prepare": "husky"
+    "prepare": "husky",
+    "ncu": "npm-check-updates -u -x eslint,@eslint/js"
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
     "@lhci/cli": "^0.15.1",
     "eslint": "^9.32.0",
-    "html-validate": "^9.7.1",
+    "html-validate": "^10.11.2",
     "husky": "^9.1.7",
-    "vite": "^7.0.4",
+    "npm-check-updates": "^19.6.6",
+    "vite": "^8.0.3",
     "vite-plugin-html": "^3.2.2"
   },
   "dependencies": {
-    "lite-youtube-embed": "^0.3.3"
+    "lite-youtube-embed": "^0.3.4"
   }
 }
