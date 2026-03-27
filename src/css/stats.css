@@ -2,7 +2,8 @@
   --stats-error-color: #e74c3c;
   --badge-pre-bg: #f39c12;
   --badge-pre-color: #fff;
-  --border-radius: 0.25rem;
+  /* --border-radius: 0.25rem; */
+  --border-radius: 0;
 }
 
 .stats-loading,
