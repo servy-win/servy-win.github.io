@@ -58,7 +58,8 @@
 
 /* Dark theme variables */
 [data-theme="dark"] {
-  --primary: #5dade2;
+  /* --primary: #5dade2; */
+  --primary: #56BFD7;
   --secondary: #56BFD7;
   --dark: #ecf0f1;
   --light: #2c3e50;
@@ -70,7 +71,7 @@
 
   --focus-border: #4C9FFF;
 
-  --btn-bg: var(--dark);
+  --btn-bg: #0077C8;
   --btn-text: #fff;
   --custom-btn-text: #000;
   --custom-btn-bg: #FDDD00;
