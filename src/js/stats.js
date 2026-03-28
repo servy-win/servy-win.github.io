@@ -47,15 +47,17 @@ async function fetchStats() {
     }
 
     const now = Date.now()
-    if (cachedData && cachedTimestamp && (now - cachedTimestamp < CACHE_DURATION)) {
-      try {
-        renderStats(JSON.parse(cachedData))
-        finalizeUI()
-        return
-      } catch {
-        console.warn('Invalid cache, ignoring...')
-      }
-    }
+
+    // Ignore cache for now
+    // if (cachedData && cachedTimestamp && (now - cachedTimestamp < CACHE_DURATION)) {
+    //   try {
+    //     renderStats(JSON.parse(cachedData))
+    //     finalizeUI()
+    //     return
+    //   } catch {
+    //     console.warn('Invalid cache, ignoring...')
+    //   }
+    // }
 
     // 2. Fetch with Timeout and Pagination Limits
     let allReleases = []
