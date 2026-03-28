@@ -3,20 +3,36 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Servy - Download Statistics</title>
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://api.github.com">
   <link rel="preconnect" href="https://avatars.githubusercontent.com">
   <link rel="dns-prefetch" href="https://api.github.com">
   <link rel="dns-prefetch" href="https://avatars.githubusercontent.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Akram El Assas">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#007D9C">
 
+  <title>Servy - Download Statistics</title>
   <meta name="description" content="Live download statistics and release history for Servy.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Servy - Download Statistics">
   <meta property="og:description" content="View live download counts and release history for Servy.">
   <meta property="og:image" content="https://servy-win.github.io/servy-tiny.png">
+  <meta property="og:image:width" content="1366">
+  <meta property="og:image:height" content="715">
   <meta property="og:url" content="https://servy-win.github.io/stats/">
+  <meta property="og:site_name" content="Servy">
+  <meta property="og:locale" content="en_US">
+  <link rel="canonical" href="https://servy-win.github.io/">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Servy: Modern Windows Service Wrapper">
+  <meta name="twitter:description"
+    content="Servy lets you run any app as a native Windows service with full control over working directory, startup type, process priority, logging, health checks, environment variables, dependencies, pre-launch and post-launch hooks, and parameters. Full-Featured Alternative to NSSM, WinSW & FireDaemon Pro.">
+  <meta name="twitter:image" content="https://servy-win.github.io/servy-tiny.png">
+  <meta name="twitter:image:alt" content="Servy: Modern Windows Service Wrapper">
 </head>
 
 <body>
@@ -84,7 +100,8 @@
       </div>
 
       <div class="hamburger-container">
-        <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation" type="button">
+        <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation" aria-expanded="false"
+          type="button">
           <span></span>
           <span></span>
           <span></span>
@@ -140,7 +157,7 @@
     </svg>
   </button>
 
-  <script type="module" defer src="/src/js/stats.js"></script>
+  <script type="module" src="/src/js/stats.js"></script>
 </body>
 
 </html>

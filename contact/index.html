@@ -4,14 +4,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Servy - Contact</title>
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Akram El Assas">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#007D9C">
+
+  <title>Servy - Contact</title>
   <meta name="description" content="Servy contact page for inquiries, suggestions, and support.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Servy - Contact">
   <meta property="og:description" content="Get in touch with the Servy team for inquiries, suggestions, and support.">
   <meta property="og:image" content="https://servy-win.github.io/servy-tiny.png">
+  <meta property="og:image:width" content="1366">
+  <meta property="og:image:height" content="715">
   <meta property="og:url" content="https://servy-win.github.io/contact/">
+  <meta property="og:site_name" content="Servy">
+  <meta property="og:locale" content="en_US">
+  <link rel="canonical" href="https://servy-win.github.io/">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Servy: Modern Windows Service Wrapper">
+  <meta name="twitter:description"
+    content="Servy lets you run any app as a native Windows service with full control over working directory, startup type, process priority, logging, health checks, environment variables, dependencies, pre-launch and post-launch hooks, and parameters. Full-Featured Alternative to NSSM, WinSW & FireDaemon Pro.">
+  <meta name="twitter:image" content="https://servy-win.github.io/servy-tiny.png">
+  <meta name="twitter:image:alt" content="Servy: Modern Windows Service Wrapper">
 </head>
 
 <body>
@@ -79,7 +97,8 @@
       </div>
 
       <div class="hamburger-container">
-        <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation" type="button">
+        <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation" aria-expanded="false"
+          type="button">
           <span></span>
           <span></span>
           <span></span>
@@ -108,7 +127,7 @@
           <input type="email" id="email" name="email" placeholder="Email" autocomplete="email" required>
           <label for="message" class="sr-only">Message</label>
           <textarea id="message" name="message" placeholder="Message" required></textarea>
-          <input type="text" name="_gotcha" style="display:none">
+          <input type="text" name="_gotcha" tabindex="-1" style="display:none">
           <button type="submit">Send</button>
         </form>
       </div>

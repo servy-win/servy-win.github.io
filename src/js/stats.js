@@ -71,7 +71,7 @@ async function fetchStats() {
     console.error(err)
     loading.style.display = 'none'
 
-    if (err.message.includes('403')) {
+    if (err.message.includes('403') || err.message.includes('429')) {
       errorDiv.textContent = 'Rate limit exceeded (GitHub API). Please try again in a few minutes.'
     } else {
       errorDiv.textContent = 'Failed to load statistics. Please try again later.'
@@ -115,69 +115,138 @@ function renderStats(releases) {
   list.innerHTML = ''
 
   releases.forEach((release, index) => {
-    // Calculate downloads for this specific release
     const releaseDownloads = release.assets.reduce((sum, asset) => sum + asset.download_count, 0)
     totalDownloads += releaseDownloads
 
-    // Create Release Card
+    // --- Card ---
     const card = document.createElement('div')
     card.className = `release-card ${index === 0 ? 'latest' : ''}`
 
-    // Assets HTML
-    const assetsHtml = release.assets.map(asset => {
-      const size = formatSize(asset.size)
+    // --- Release Header ---
+    const releaseHeader = document.createElement('div')
+    releaseHeader.className = 'release-header'
 
-      return `
-        <li class="asset-item">
-          <a href="${asset.browser_download_url}" class="asset-link" rel="nofollow noopener noreferrer">
-            <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-            ${asset.name}
-          </a>
-          <span class="asset-meta">
-            <span class="asset-size">${size}</span>
-            <span class="asset-downloads">
-              ${formatter.format(asset.download_count)} downloads
-            </span>
-          </span>
-        </li>`
-    }).join('')
+    const releaseTitle = document.createElement('div')
+    releaseTitle.className = 'release-title'
 
-    const publishedDate = new Date(release.published_at).toLocaleDateString('en-US', dateOpts)
+    const h3 = document.createElement('h3')
+    const releaseLink = document.createElement('a')
+    releaseLink.href = release.html_url
+    releaseLink.className = 'release-link'
+    releaseLink.target = '_blank'
+    releaseLink.rel = 'noopener'
+    releaseLink.textContent = release.tag_name
+    h3.appendChild(releaseLink)
+    releaseTitle.appendChild(h3)
 
-    card.innerHTML = `
-      <div class="release-header">
-        <div class="release-title">
-          <h3>
-            <a href="${release.html_url}" class="release-link" target="_blank" rel="noopener">
-              ${release.tag_name}
-            </a>
-          </h3>
-          ${index === 0 ? '<span class="badge latest">Latest</span>' : ''}
-          ${release.prerelease ? '<span class="badge pre">Pre-release</span>' : ''}
-        </div>
-        <div class="release-date">${publishedDate}</div>
-      </div>
-      
-      <div class="release-stats">
-        <div class="stat">
-          <span class="label">Downloads:</span>
-          <span class="value">${formatter.format(releaseDownloads)}</span>
-        </div>
-        <div class="stat">
-          <span class="label">Author:</span>
-          <a href="${release.author.html_url}" target="_blank" rel="noopener" class="author-link">
-            <img src="${release.author.avatar_url}" alt="" class="avatar">
-            ${release.author.login}
-          </a>
-        </div>
-      </div>
+    if (index === 0) {
+      const latestBadge = document.createElement('span')
+      latestBadge.className = 'badge latest'
+      latestBadge.textContent = 'Latest'
+      releaseTitle.appendChild(latestBadge)
+    }
 
-      <div class="assets-section">
-        <h4>Assets</h4>
-        <ul class="assets-list">${assetsHtml || '<li class="no-assets">No assets available</li>'}</ul>
-      </div>
-    `
+    if (release.prerelease) {
+      const preBadge = document.createElement('span')
+      preBadge.className = 'badge pre'
+      preBadge.textContent = 'Pre-release'
+      releaseTitle.appendChild(preBadge)
+    }
 
+    const releaseDate = document.createElement('div')
+    releaseDate.className = 'release-date'
+    releaseDate.textContent = new Date(release.published_at).toLocaleDateString('en-US', dateOpts)
+
+    releaseHeader.appendChild(releaseTitle)
+    releaseHeader.appendChild(releaseDate)
+
+    // --- Release Stats ---
+    const releaseStats = document.createElement('div')
+    releaseStats.className = 'release-stats'
+
+    const downloadsStat = document.createElement('div')
+    downloadsStat.className = 'stat'
+    const downloadsLabel = document.createElement('span')
+    downloadsLabel.className = 'label'
+    downloadsLabel.textContent = 'Downloads:'
+    const downloadsValue = document.createElement('span')
+    downloadsValue.className = 'value'
+    downloadsValue.textContent = formatter.format(releaseDownloads)
+    downloadsStat.appendChild(downloadsLabel)
+    downloadsStat.appendChild(downloadsValue)
+
+    const authorStat = document.createElement('div')
+    authorStat.className = 'stat'
+    const authorLabel = document.createElement('span')
+    authorLabel.className = 'label'
+    authorLabel.textContent = 'Author:'
+    const authorLink = document.createElement('a')
+    authorLink.href = release.author.html_url
+    authorLink.target = '_blank'
+    authorLink.rel = 'noopener'
+    authorLink.className = 'author-link'
+    const avatar = document.createElement('img')
+    avatar.src = release.author.avatar_url
+    avatar.alt = ''
+    avatar.className = 'avatar'
+    authorLink.appendChild(avatar)
+    authorLink.appendChild(document.createTextNode(release.author.login))
+    authorStat.appendChild(authorLabel)
+    authorStat.appendChild(authorLink)
+
+    releaseStats.appendChild(downloadsStat)
+    releaseStats.appendChild(authorStat)
+
+    // --- Assets Section ---
+    const assetsSection = document.createElement('div')
+    assetsSection.className = 'assets-section'
+    const assetsHeading = document.createElement('h4')
+    assetsHeading.textContent = 'Assets'
+    const assetsList = document.createElement('ul')
+    assetsList.className = 'assets-list'
+
+    if (release.assets.length === 0) {
+      const noAssets = document.createElement('li')
+      noAssets.className = 'no-assets'
+      noAssets.textContent = 'No assets available'
+      assetsList.appendChild(noAssets)
+    } else {
+      release.assets.forEach(asset => {
+        const li = document.createElement('li')
+        li.className = 'asset-item'
+
+        const assetLink = document.createElement('a')
+        assetLink.href = asset.browser_download_url
+        assetLink.className = 'asset-link'
+        assetLink.rel = 'nofollow noopener noreferrer'
+        // SVG is static markup with no API data — innerHTML is safe here
+        assetLink.innerHTML = '<svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>'
+        assetLink.appendChild(document.createTextNode(asset.name))
+
+        const assetMeta = document.createElement('span')
+        assetMeta.className = 'asset-meta'
+        const assetSize = document.createElement('span')
+        assetSize.className = 'asset-size'
+        assetSize.textContent = formatSize(asset.size)
+        const assetDownloads = document.createElement('span')
+        assetDownloads.className = 'asset-downloads'
+        assetDownloads.textContent = `${formatter.format(asset.download_count)} downloads`
+        assetMeta.appendChild(assetSize)
+        assetMeta.appendChild(assetDownloads)
+
+        li.appendChild(assetLink)
+        li.appendChild(assetMeta)
+        assetsList.appendChild(li)
+      })
+    }
+
+    assetsSection.appendChild(assetsHeading)
+    assetsSection.appendChild(assetsList)
+
+    // --- Assemble Card ---
+    card.appendChild(releaseHeader)
+    card.appendChild(releaseStats)
+    card.appendChild(assetsSection)
     list.appendChild(card)
   })
 

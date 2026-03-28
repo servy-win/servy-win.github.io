@@ -32,7 +32,7 @@
   --code-comment: #818181;
   /* --code-radius: 0.25rem; */
   --code-radius: 0;
-  --code-font: monospace;
+  --code-font: 'JetBrains Mono', monospace;
 
   --code-btn-bg: #007D9C;
   --code-btn-bg-hover: #006A85;
@@ -592,9 +592,9 @@ p.blockquote {
   border-bottom: none;
   border-top-left-radius: var(--code-radius);
   border-top-right-radius: var(--code-radius);
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1rem;
   font-family: var(--code-font);
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 700;
   text-transform: capitalize;
   letter-spacing: 0.05em;
@@ -633,6 +633,11 @@ pre {
 
 pre .code-comment {
   color: var(--code-comment);
+}
+
+code {
+  font-family: var(--code-font);
+  font-size: 0.85rem;
 }
 
 .video-container {
