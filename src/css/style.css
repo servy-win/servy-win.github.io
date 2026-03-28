@@ -424,10 +424,10 @@ div.cta {
   cursor: pointer;
 }
 
-.cta-btn:hover {
+/* .cta-btn:hover {
   background: var(--custom-btn-hover);
   opacity: .9;
-}
+} */
 
 .cta-btn-secondary {
   background: var(--header-dark);
@@ -435,10 +435,10 @@ div.cta {
   border: var(--btn-text) 1px solid;
 }
 
-.cta-btn-secondary:hover {
+/* .cta-btn-secondary:hover {
   background: var(--header-dark);
   opacity: .9;
-}
+} */
 
 section.star {
   display: flex;
