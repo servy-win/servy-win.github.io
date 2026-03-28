@@ -1,0 +1,49 @@
+{
+  "_style-BEZUIXAn.css": {
+    "file": "assets/style-BEZUIXAn.css",
+    "src": "_style-BEZUIXAn.css"
+  },
+  "_style-rasNReYb.js": {
+    "file": "assets/style-rasNReYb.js",
+    "name": "style",
+    "css": [
+      "assets/style-BEZUIXAn.css"
+    ]
+  },
+  "contact/index.html": {
+    "file": "assets/contact-r0VBN1-i.js",
+    "name": "contact",
+    "src": "contact/index.html",
+    "isEntry": true,
+    "imports": [
+      "_style-rasNReYb.js"
+    ],
+    "css": [
+      "assets/contact-D4pz09_9.css"
+    ]
+  },
+  "index.html": {
+    "file": "assets/main-DdbxBK_E.js",
+    "name": "main",
+    "src": "index.html",
+    "isEntry": true,
+    "imports": [
+      "_style-rasNReYb.js"
+    ],
+    "css": [
+      "assets/main-CSvobdiw.css"
+    ]
+  },
+  "stats/index.html": {
+    "file": "assets/stats-DT1PibCb.js",
+    "name": "stats",
+    "src": "stats/index.html",
+    "isEntry": true,
+    "imports": [
+      "_style-rasNReYb.js"
+    ],
+    "css": [
+      "assets/stats-DKmZR8Z7.css"
+    ]
+  }
+}
