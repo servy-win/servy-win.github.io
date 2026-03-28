@@ -30,53 +30,106 @@ async function fetchStats() {
   const errorDiv = document.getElementById('error')
   const footer = document.querySelector('footer')
   const repo = 'aelassas/servy'
-
-  let allReleases = []
-  let page = 1
-  let keepFetching = true
+  const cacheKey = `github_stats_${repo}`
+  const cacheTimeKey = `${cacheKey}_timestamp`
+  const CACHE_DURATION = 30 * 60 * 1000 // ms
+  const FETCH_TIMEOUT = 10000 // 10 seconds timeout
 
   try {
-    while (keepFetching) {
-      // Fetch specific page
-      const response = await fetch(`https://api.github.com/repos/${repo}/releases?per_page=100&page=${page}`)
+    // 1. Safe Cache Retrieval
+    let cachedData = null
+    let cachedTimestamp = 0
+    try {
+      cachedData = localStorage.getItem(cacheKey)
+      cachedTimestamp = Number(localStorage.getItem(cacheTimeKey)) || 0
+    } catch {
+      console.warn('LocalStorage access denied or unavailable.')
+    }
 
-      if (!response.ok) throw new Error(`GitHub API Error: ${response.status}`)
-
-      const data = await response.json()
-
-      // If data is empty, we have reached the end
-      if (data.length === 0) {
-        keepFetching = false
-      } else {
-        allReleases = allReleases.concat(data)
-        // If we got fewer than 100 items, this is the last page
-        if (data.length < 100) {
-          keepFetching = false
-        } else {
-          page++
-        }
+    const now = Date.now()
+    if (cachedData && cachedTimestamp && (now - cachedTimestamp < CACHE_DURATION)) {
+      try {
+        renderStats(JSON.parse(cachedData))
+        finalizeUI()
+        return
+      } catch {
+        console.warn('Invalid cache, ignoring...')
       }
     }
 
-    if (allReleases.length === 0) throw new Error('No releases found')
+    // 2. Fetch with Timeout and Pagination Limits
+    let allReleases = []
+    let page = 1
+    let keepFetching = true
 
-    allReleases.sort((a, b) => Date.parse(b.published_at) - Date.parse(a.published_at))
+    while (keepFetching) {
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT)
+
+      try {
+        const response = await fetch(
+          `https://api.github.com/repos/${repo}/releases?per_page=100&page=${page}`,
+          { signal: controller.signal }
+        )
+        clearTimeout(timeoutId)
+
+        if (!response.ok) {
+          if (response.status === 403 || response.status === 429) throw new Error('RATE_LIMIT')
+          throw new Error(`API_ERROR_${response.status}`)
+        }
+
+        const data = await response.json()
+        if (data.length === 0) {
+          keepFetching = false
+        } else {
+          allReleases = allReleases.concat(data)
+          keepFetching = data.length === 100
+          page++
+        }
+      } catch (fetchErr) {
+        clearTimeout(timeoutId)
+        if (fetchErr.name === 'AbortError') throw new Error('TIMEOUT')
+        throw fetchErr
+      }
+    }
+
+    if (allReleases.length === 0) throw new Error('NO_DATA')
+
+    // GitHub returns latest first by default; sorting is redundant.
+
+    // 3. Safe Cache Update
+    try {
+      localStorage.setItem(cacheKey, JSON.stringify(allReleases))
+      localStorage.setItem(cacheTimeKey, now.toString())
+    } catch {
+      console.warn('Failed to update LocalStorage (possibly full).')
+    }
 
     renderStats(allReleases)
+    finalizeUI()
 
+  } catch (err) {
+    handleError(err)
+  }
+
+  function finalizeUI() {
     loading.style.display = 'none'
     container.style.display = 'block'
     footer.style.display = 'block'
-  } catch (err) {
-    console.error(err)
+  }
+
+  function handleError(err) {
+    console.error('Stats Fetch Error:', err.message)
     loading.style.display = 'none'
 
-    if (err.message.includes('403') || err.message.includes('429')) {
-      errorDiv.textContent = 'Rate limit exceeded (GitHub API). Please try again in a few minutes.'
-    } else {
-      errorDiv.textContent = 'Failed to load statistics. Please try again later.'
+    const messages = {
+      'RATE_LIMIT': 'Rate limit exceeded (GitHub API). Please try again in a few minutes.',
+      'TIMEOUT': 'Request timed out. Please check your connection and try again.',
+      'NO_DATA': 'No releases were found for this repository.',
+      'TypeError': 'Network error. Please check if you are online.'
     }
 
+    errorDiv.textContent = messages[err.message] || messages[err.name] || 'Failed to load statistics. Please try again later.'
     errorDiv.style.display = 'block'
   }
 }
