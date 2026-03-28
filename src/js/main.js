@@ -5,11 +5,8 @@ import 'lite-youtube-embed'
 import '../css/style.css'
 
 window.addEventListener('DOMContentLoaded', () => {
-  // Initialize Google Analytics
-  initGA('G-VQ7924LC4H')
-
-  // Initialize Google Ads Conversion Tracking
-  initGA('AW-16758312117')
+  // Initialize Google Analytics and Google Ads Conversion Tracking
+  initGA('G-VQ7924LC4H', 'AW-16758312117')
 
   // Initialize Header Hamburger Menu
   utils.initHeaderHamburger()
@@ -29,10 +26,12 @@ window.addEventListener('DOMContentLoaded', () => {
     const codeElement = block.querySelector('code')
 
     button.addEventListener('click', () => {
-      navigator.clipboard.writeText(codeElement.innerText).then(() => {
-        button.textContent = 'Copied!'
-        setTimeout(() => button.textContent = 'Copy', 2000)
-      })
+      navigator.clipboard.writeText(codeElement.innerText)
+        .then(() => {
+          button.textContent = 'Copied!'
+          setTimeout(() => button.textContent = 'Copy', 2000)
+        })
+        .catch(() => { button.textContent = 'Failed' })
     })
   })
 

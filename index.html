@@ -9,14 +9,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Akram El Assas">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#2d3436">
+  <meta name="theme-color" content="#007D9C">
 
   <!-- Primary SEO -->
   <title>Servy - Turn Any App into a Native Windows Service</title>
   <meta name="description"
     content="Servy lets you run any app as a native Windows service with full control over working directory, startup type, process priority, logging, health checks, environment variables, dependencies, pre-launch and post-launch hooks, and parameters. Full-Featured Alternative to NSSM, WinSW & FireDaemon Pro.">
-  <meta name="keywords"
-    content="Servy, Windows Service Wrapper, Windows Service Manager, NSSM alternative, WinSW alternative, FireDaemon alternative, run app as Windows service, Windows service GUI, open source Windows service, run Node.js as service, run Python as service, run Java as service, run Go as service, Windows process monitoring, service health checks, real-time CPU RAM monitoring, Windows admin tools, FOSS, CI/CD Windows service, PowerShell service management, service lifecycle hooks, stdout stderr logging, background process manager Windows, Windows service automation, service crash recovery, automatic restart service, handle ctrl-c in service">
 
   <!-- MS Application Metadata -->
   <meta name="application-name" content="Servy">
@@ -28,6 +26,8 @@
   <meta property="og:description"
     content="Servy lets you run any app as a native Windows service with full control over working directory, startup type, process priority, logging, health checks, environment variables, dependencies, pre-launch and post-launch hooks, and parameters. Full-Featured Alternative to NSSM, WinSW & FireDaemon Pro.">
   <meta property="og:image" content="https://servy-win.github.io/servy-tiny.png">
+  <meta property="og:image:width" content="1366">
+  <meta property="og:image:height" content="715">
   <meta property="og:url" content="https://servy-win.github.io/">
   <meta property="og:site_name" content="Servy">
   <meta property="og:locale" content="en_US">
@@ -39,6 +39,7 @@
   <meta name="twitter:description"
     content="Servy lets you run any app as a native Windows service with full control over working directory, startup type, process priority, logging, health checks, environment variables, dependencies, pre-launch and post-launch hooks, and parameters. Full-Featured Alternative to NSSM, WinSW & FireDaemon Pro.">
   <meta name="twitter:image" content="https://servy-win.github.io/servy-tiny.png">
+  <meta name="twitter:image:alt" content="Servy: Modern Windows Service Wrapper">
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -48,7 +49,6 @@
     "name": "Servy",
     "operatingSystem": "Windows",
     "applicationCategory": "UtilitiesApplication",
-    "applicationSubCategory": "Windows Service Wrapper, Windows Service Manager",
     "description": "Run any application or script as a native Windows service with real-time monitoring. Full-Featured Alternative to NSSM, WinSW & FireDaemon Pro.",
     "author": {
       "@type": "Person",
@@ -148,14 +148,15 @@
       </div>
 
       <div class="hamburger-container">
-        <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation" type="button">
+        <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation" aria-expanded="false"
+          type="button">
           <span></span>
           <span></span>
           <span></span>
         </button>
       </div>
 
-      <div class="nav-overlay"></div>
+      <div class="nav-overlay" aria-hidden="true"></div>
     </nav>
 
     <!-- <h1>Servy</h1> -->
@@ -179,12 +180,12 @@
         Docs</a> -->
     </div>
 
-    <section class="star">
+    <div class="star">
       <p>
         ⭐ Love Servy? <a href="https://github.com/aelassas/servy/" target="_blank" rel="noopener noreferrer">Star us
           on GitHub</a>. It costs nothing but means a lot and helps the project grow!
       </p>
-    </section>
+    </div>
   </header>
 
   <main class="container">
@@ -218,6 +219,7 @@
         services interactively or through scripts and CI/CD pipelines. It also includes a Manager app for easily
         monitoring and managing all installed services in real time.
       </p>
+
       <p>
         Servy continuously monitors your app, restarting it automatically if it crashes, hangs, or stops. It is perfect
         for keeping non-service apps running in the background and ensuring they start automatically at system boot,
@@ -257,7 +259,7 @@
       <p>Here's a minimal example using the CLI to turn a Node.js app into a Windows service:</p>
       <div class="code-block">
         <div class="code-header">PowerShell</div>
-        <button type="button" class="copy-btn">Copy</button>
+        <button type="button" class="copy-btn" aria-label="Copy Example command">Copy</button>
         <pre><code>servy-cli install `
   --name="MyService" `
   --path="C:\Program Files\nodejs\node.exe" `
@@ -339,31 +341,30 @@
 
       <h3>WinGet</h3>
       <div class="code-block">
-        <button type="button" class="copy-btn">Copy</button>
+        <button type="button" class="copy-btn" aria-label="Copy WinGet command">Copy</button>
         <pre><code>winget install servy</code></pre>
       </div>
 
       <h3>Chocolatey</h3>
       <div class="code-block">
-        <button type="button" class="copy-btn">Copy</button>
+        <button type="button" class="copy-btn" aria-label="Copy Chocolatey command">Copy</button>
         <pre><code>choco install -y servy</code></pre>
       </div>
 
       <h3>Scoop</h3>
       <div class="code-block">
-        <button type="button" class="copy-btn">Copy</button>
+        <button type="button" class="copy-btn" aria-label="Copy Scoop command">Copy</button>
         <pre><code>scoop bucket add extras
 scoop update innounp
 scoop install servy</code></pre>
       </div>
 
-      <!-- <p class="blockquote">
-        Servy has been reviewed by Microsoft Security Intelligence and is confirmed safe. It performs only standard
-        installation tasks and does not contain malware, adware, or unwanted software. Servy passes VirusTotal scans and
-        is published in the Windows Package Manager (WinGet), Chocolatey, and Scoop. You can safely install it from
-        GitHub, WinGet, Chocolatey, or Scoop.
-      </p> -->
-
+      <p class="blockquote">
+        Servy has been reviewed by Microsoft Security Intelligence and is confirmed safe. It is digitally signed and
+        performs only standard installation tasks and does not contain malware, adware, or unwanted software. Servy
+        passes VirusTotal scans and is published in the Windows Package Manager (WinGet), Chocolatey, and Scoop. You can
+        safely install it from GitHub, WinGet, Chocolatey, or Scoop.
+      </p>
     </section>
 
     <section>
@@ -446,10 +447,12 @@ scoop install servy</code></pre>
       </p>
       <a href="https://signpath.org/?utm_source=foundation&utm_medium=github&utm_campaign=servy" target="_blank"
         rel="noopener noreferrer" class="logo">
-        <img alt="SignPath Foundation" src="https://aelassas.github.io/content/signpath.png?v=2" width="54" height="51">
+        <img alt="SignPath Foundation" src="https://aelassas.github.io/content/signpath.png?v=2" width="54" height="51"
+          loading="lazy">
       </a>
       <a href="https://www.jetbrains.com/community/opensource/" target="_blank" rel="noopener noreferrer" class="logo">
-        <img alt="JetBrains Open" src="https://aelassas.github.io/content/jetbrains.svg" width="54" height="51">
+        <img alt="JetBrains Open" src="https://aelassas.github.io/content/jetbrains.svg" width="54" height="51"
+          loading="lazy">
       </a>
     </section>
 

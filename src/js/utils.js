@@ -6,6 +6,7 @@ export const initHeaderHamburger = () => {
   const closeMenu = () => {
     navLinks.classList.remove('active')
     hamburger.classList.remove('active')
+    hamburger.setAttribute('aria-expanded', 'false')
     // Remove the scroll lock if you added it previously
     document.body.style.overflow = ''
   }
@@ -19,6 +20,7 @@ export const initHeaderHamburger = () => {
 
     // Optional: Toggle scroll lock
     const isOpen = navLinks.classList.contains('active')
+    hamburger.setAttribute('aria-expanded', String(isOpen))
     document.body.style.overflow = isOpen ? 'hidden' : ''
   })
 
@@ -46,19 +48,27 @@ export const initHeaderHamburger = () => {
 export const initToggleDarkMode = () => {
   const toggleBtn = document.getElementById('dark-mode-toggle')
   const root = document.documentElement // html element
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
   // Initialize from localStorage
-  if (localStorage.getItem('theme') === 'dark') {
+  if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && prefersDark)) {
     root.setAttribute('data-theme', 'dark')
+    localStorage.setItem('theme', 'dark')
   }
 
+  toggleBtn.setAttribute('aria-pressed', root.getAttribute('data-theme') === 'dark' ? 'true' : 'false')
+
   toggleBtn.addEventListener('click', () => {
-    if (root.getAttribute('data-theme') === 'dark') {
+    const isDark = root.getAttribute('data-theme') === 'dark'
+
+    if (isDark) {
       root.removeAttribute('data-theme')
       localStorage.setItem('theme', 'light')
     } else {
       root.setAttribute('data-theme', 'dark')
       localStorage.setItem('theme', 'dark')
     }
+
+    toggleBtn.setAttribute('aria-pressed', root.getAttribute('data-theme') === 'dark' ? 'true' : 'false')
   })
 }
 

@@ -12,7 +12,7 @@
   --text-color: #333;
 
   --header-dark: #007D9C;
-  --header-dark-lighter: #304a61;
+  /* --header-dark-lighter: #304a61; */
   --header-light: #ecf0f1;
   --nav-hover: #006A85;
 
@@ -32,7 +32,7 @@
   --code-comment: #818181;
   /* --code-radius: 0.25rem; */
   --code-radius: 0;
-  --code-font: 'Fira Code', monospace;
+  --code-font: monospace;
 
   --code-btn-bg: #007D9C;
   --code-btn-bg-hover: #006A85;
@@ -68,7 +68,7 @@
   --text-color: #C8C9CB;
 
   --header-dark: #1B1D24;
-  --header-dark-lighter: #23272F;
+  /* --header-dark-lighter: #23272F; */
   --header-light: #ecf0f1;
   --nav-hover: #333A45;
 
@@ -113,6 +113,14 @@ body {
   margin: 0;
 }
 
+/* body,
+header,
+footer,
+.features-grid li,
+.use-case-item {
+  transition: background-color 0.2s ease, color 0.2s ease;
+} */
+
 a {
   color: var(--secondary);
 }
@@ -132,11 +140,11 @@ header {
   text-align: center;
 }
 
-header section.star {
+header .star {
   margin-bottom: 0;
 }
 
-header section.star a {
+header .star a {
   color: var(--btn-text);
   text-decoration: underline;
 }
@@ -386,7 +394,7 @@ header section.star a {
 }
 
 header h1 {
-  font-size: 2.35rem;
+  font-size: 2.45rem;
   font-weight: 500;
   margin: 6rem 1rem 1rem 1rem;
 }
@@ -425,10 +433,10 @@ div.cta {
   cursor: pointer;
 }
 
-/* .cta-btn:hover {
+.cta-btn:hover {
   background: var(--custom-btn-hover);
-  opacity: .9;
-} */
+  /* opacity: .9; */
+}
 
 .cta-btn-secondary {
   background: var(--header-dark);
@@ -436,18 +444,18 @@ div.cta {
   border: var(--btn-text) 1px solid;
 }
 
-/* .cta-btn-secondary:hover {
+.cta-btn-secondary:hover {
   background: var(--header-dark);
-  opacity: .9;
-} */
+  /* opacity: .9; */
+}
 
-section.star {
+.star {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-section.star p {
+.star p {
   font-size: 0.78rem;
   line-height: 1.25rem;
 }

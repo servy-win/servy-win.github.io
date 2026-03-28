@@ -5,8 +5,8 @@ import '../css/contact.css'
 
 // Re-use theme toggle logic
 document.addEventListener('DOMContentLoaded', () => {
-  // GA Init
-  initGA('G-VQ7924LC4H')
+  // Initialize Google Analytics and Google Ads Conversion Tracking
+  initGA('G-VQ7924LC4H', 'AW-16758312117')
 
   // Initialize Header Hamburger Menu
   utils.initHeaderHamburger()
