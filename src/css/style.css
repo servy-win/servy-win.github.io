@@ -235,10 +235,6 @@ header section.star a {
     justify-content: flex-end;
   }
 
-  .header-servy {
-    margin-right: auto;
-  }
-
   .nav-links {
     position: fixed;
     top: 0;
@@ -337,6 +333,7 @@ header section.star a {
   color: var(--header-light);
   text-decoration: none;
   padding: 0 0.5rem;
+  margin-right: auto;
 }
 
 /* Dark mode toggle button base styles */
@@ -390,7 +387,7 @@ header section.star a {
 header h1 {
   font-size: 2.35rem;
   font-weight: 500;
-  margin:  5rem 1rem 1rem 1rem;
+  margin: 6rem 1rem 1rem 1rem;
 }
 
 header h1 a {
@@ -522,6 +519,38 @@ section li {
   }
 }
 
+.use-cases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.use-case-item {
+  padding: 1.5rem;
+  background: var(--form-bg);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--form-border);
+  transition: transform 0.2s ease;
+}
+
+.use-case-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+}
+
+.use-case-item h3 {
+  margin-top: 0;
+  color: var(--primary);
+  font-size: 1.25rem;
+}
+
+.use-case-item p {
+  margin-bottom: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
 p.blockquote {
   border-left: 4px solid var(--primary);
   padding: 0.5rem 1rem;
@@ -547,9 +576,26 @@ p.blockquote {
   width: 100%;
 }
 
+.code-header {
+  background-color: var(--code-header-bg, var(--code-bg));
+  color: var(--code-header-color, var(--code-color));
+  border: 1px solid var(--code-border);
+  border-bottom: none;
+  border-top-left-radius: var(--code-radius);
+  border-top-right-radius: var(--code-radius);
+  padding: 0.5rem 1rem;
+  font-family: var(--code-font);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+}
+
 .copy-btn {
   position: absolute;
-  top: 14px;
+  top: 4px;
   right: 0.5rem;
   background: var(--code-btn-bg);
   color: var(--code-btn-color);
@@ -734,7 +780,7 @@ footer p {
 @media (max-width: 600px) {
   header h1 {
     font-size: 2rem;
-    margin-top: 6rem;
+    margin-top: 7rem;
   }
 
   div.cta {

@@ -166,12 +166,12 @@
 
     <div class="cta">
       <a href="https://github.com/aelassas/servy/releases/latest" class="cta-btn" target="_blank"
-        rel="noopener noreferrer">
+        rel="noopener noreferrer" aria-label="Download">
         Download
       </a>
 
       <a href="https://github.com/aelassas/servy/wiki/Overview" class="cta-btn cta-btn-secondary" target="_blank"
-        rel="noopener noreferrer">
+        rel="noopener noreferrer" aria-label="Get Started">
         Get Started
       </a>
 
@@ -247,6 +247,82 @@
     </section>
 
     <section>
+      <h2>Quick Example</h2>
+      <p>You can manage services using the <a href="https://github.com/aelassas/servy/wiki/Servy-Desktop-App"
+          target="_blank" rel="noopener noreferrer">desktop app (GUI)</a>, the <a
+          href="https://github.com/aelassas/servy/wiki/Servy-CLI" target="_blank" rel="noopener noreferrer">CLI</a>, or
+        <a href="https://github.com/aelassas/servy/wiki/Servy-PowerShell-Module" target="_blank"
+          rel="noopener noreferrer">PowerShell</a>.
+      </p>
+      <p>Here's a minimal example using the CLI to turn a Node.js app into a Windows service:</p>
+      <div class="code-block">
+        <div class="code-header">PowerShell</div>
+        <button type="button" class="copy-btn">Copy</button>
+        <pre><code>servy-cli install `
+  --name="MyService" `
+  --path="C:\Program Files\nodejs\node.exe" `
+  --startupDir="C:\MyServer" `
+  --params="C:\MyServer\server.js"</code></pre>
+      </div>
+      <p>This creates a service named <code>MyService</code> that runs your Node.js server in the background and starts
+        automatically
+        with Windows.</p>
+
+      <!-- <p>Then start the service:</p>
+      <div class="code-block">
+        <button type="button" class="copy-btn">Copy</button>
+        <pre><code>servy-cli start --name="MyService"</code></pre>
+      </div> -->
+
+      <p>
+        Explore more <a href="https://github.com/aelassas/servy/wiki/Examples-&-Recipes" target="_blank"
+          rel="noopener noreferrer">examples and recipes</a>
+        for Python, Java, Go, and other popular frameworks.
+      </p>
+    </section>
+
+    <section class="use-cases">
+      <h2>Use Cases</h2>
+      <div class="use-cases-grid">
+        <div class="use-case-item">
+          <h3>Web Servers &amp; APIs</h3>
+          <p>Run Node.js, Python, Go, or Java
+            backend servers as resilient Windows services that start automatically on boot.</p>
+        </div>
+
+        <div class="use-case-item">
+          <h3>Background Workers</h3>
+          <p>Keep data processing scripts, message queue consumers (RabbitMQ/Kafka), and long-running workers active in
+            the background without a logged-in session.</p>
+        </div>
+
+        <div class="use-case-item">
+          <h3>CI/CD &amp; DevOps</h3>
+          <p>Ensure your self-hosted build agents (GitHub Actions, GitLab Runners, or Jenkins) stay
+            alive and restart automatically if they crash or the system reboots.</p>
+        </div>
+
+        <div class="use-case-item">
+          <h3>Automation &amp; Scripts</h3>
+          <p>Execute PowerShell or Python scripts on a schedule or as persistent
+            daemons to handle local file cleanup, backups, or system monitoring.</p>
+        </div>
+
+        <div class="use-case-item">
+          <h3>Database Proxies</h3>
+          <p>Manage local database tunnels or proxies (like Cloud SQL Auth Proxy or Ngrok) as services to provide stable
+            connectivity for your development environment.</p>
+        </div>
+
+        <div class="use-case-item">
+          <h3>Legacy App Modernization</h3>
+          <p>Wrap older CLI tools or console applications that weren't built as services, giving them modern lifecycle
+            management and health monitoring.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
       <h2>Demo Video</h2>
       <div class="video-container">
         <lite-youtube videoid="biHq17j4RbI" title="Servy - Turn Any App into a Native Windows Service" params="rel=0"
@@ -288,35 +364,6 @@ scoop install servy</code></pre>
         GitHub, WinGet, Chocolatey, or Scoop.
       </p> -->
 
-    </section>
-
-    <section>
-      <h2>Quick Example</h2>
-      <p>You can manage services using the desktop app (GUI), the CLI (<code>servy-cli</code>), or PowerShell.</p>
-      <p>Here's a minimal example using the CLI to turn a Node.js app into a Windows service:</p>
-      <div class="code-block">
-        <button type="button" class="copy-btn">Copy</button>
-        <pre><code>servy-cli install `
---name="MyService" `
---path="C:\Program Files\nodejs\node.exe" `
---startupDir="C:\MyServer" `
---params="C:\MyServer\server.js"</code></pre>
-      </div>
-      <p>This creates a service named <code>MyService</code> that runs your Node.js server in the background and starts
-        automatically
-        with Windows.</p>
-
-      <p>Then start the service:</p>
-      <div class="code-block">
-        <button type="button" class="copy-btn">Copy</button>
-        <pre><code>servy-cli start --name="MyService"</code></pre>
-      </div>
-
-      <p>
-        Explore more <a href="https://github.com/aelassas/servy/wiki/Examples-&-Recipes" target="_blank"
-          rel="noopener noreferrer">examples and recipes</a>
-        for Python, Java, Go, and other popular frameworks.
-      </p>
     </section>
 
     <section>
@@ -390,8 +437,8 @@ scoop install servy</code></pre>
         Thanks to <a href="https://www.jetbrains.com/" target="_blank" rel="noopener noreferrer">JetBrains</a>
         for providing an <a href="https://www.jetbrains.com/community/opensource/" target="_blank"
           rel="noopener noreferrer">open-source license</a> for their tools. Their software made it much
-        easier to profile, debug, and optimize Servy, helping improve its performance and stability. Having access to
-        these professional tools really made a difference during development and saved a lot of time.
+        easier to profile, debug, and optimize Servy, helping improve its performance and stability.
+        <!-- Having access to these professional tools really made a difference during development and saved a lot of time. -->
       </p>
       <p>
         Special thanks to everyone who tested Servy, reported issues, and suggested improvements on GitHub and Reddit.
