@@ -435,7 +435,7 @@ div.cta {
 
 .cta-btn:hover {
   background: var(--custom-btn-hover);
-  /* opacity: .9; */
+  opacity: .97;
 }
 
 .cta-btn-secondary {
@@ -446,7 +446,7 @@ div.cta {
 
 .cta-btn-secondary:hover {
   background: var(--header-dark);
-  /* opacity: .9; */
+  opacity: .95;
 }
 
 .star {
