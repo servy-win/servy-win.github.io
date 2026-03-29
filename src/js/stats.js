@@ -29,51 +29,93 @@ async function fetchStats() {
   const container = document.getElementById('stats-container')
   const errorDiv = document.getElementById('error')
   const footer = document.querySelector('footer')
+
   const repo = 'aelassas/servy'
   const cacheKey = `github_stats_${repo}`
   const cacheTimeKey = `${cacheKey}_timestamp`
-  const CACHE_DURATION = 30 * 60 * 1000 // ms
-  const FETCH_TIMEOUT = 10000 // 10 seconds timeout
+  const etagKey = `${cacheKey}_etag`
+
+  const CACHE_DURATION = 65 * 60 * 1000 // 65 minutes to be safe against GitHub's 60-minute rate limit window
+  const FETCH_TIMEOUT = 10 * 1000 // 10 seconds
 
   try {
-    // 1. Safe Cache Retrieval
     let cachedData = null
     let cachedTimestamp = 0
+    let cachedEtag = null
+
     try {
       cachedData = localStorage.getItem(cacheKey)
       cachedTimestamp = Number(localStorage.getItem(cacheTimeKey)) || 0
+      cachedEtag = localStorage.getItem(etagKey)
     } catch {
-      console.warn('LocalStorage access denied or unavailable.')
+      console.warn('LocalStorage access denied.')
     }
 
     const now = Date.now()
 
-    // Ignore cache for now
-    // if (cachedData && cachedTimestamp && (now - cachedTimestamp < CACHE_DURATION)) {
-    //   try {
-    //     renderStats(JSON.parse(cachedData))
-    //     finalizeUI()
-    //     return
-    //   } catch {
-    //     console.warn('Invalid cache, ignoring...')
-    //   }
-    // }
+    // 1. Instant Soft Cache Load
+    if (cachedData && cachedTimestamp && (now - cachedTimestamp < CACHE_DURATION)) {
+      try {
+        const data = JSON.parse(cachedData)
+        renderStats(data)
+        updateTimestampUI(cachedTimestamp) // Show when it was originally fetched
+        finalizeUI()
+        console.log('Loaded GitHub stats from cache.')
+        return
+      } catch {
+        console.warn('Invalid cache, ignoring...')
+      }
+    }
 
-    // 2. Fetch with Timeout and Pagination Limits
     let allReleases = []
     let page = 1
     let keepFetching = true
+    let newEtag = null
 
     while (keepFetching) {
       const controller = new AbortController()
       const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT)
 
+      const headers = { 'Accept': 'application/vnd.github.v3+json' }
+      if (page === 1 && cachedEtag) {
+        headers['If-None-Match'] = cachedEtag
+      }
+
       try {
         const response = await fetch(
           `https://api.github.com/repos/${repo}/releases?per_page=100&page=${page}`,
-          { signal: controller.signal }
+          { signal: controller.signal, headers }
         )
         clearTimeout(timeoutId)
+
+        // 2. Handle 304 (Unchanged)
+        if (page === 1 && response.status === 304 && cachedData) {
+          try {
+            const data = JSON.parse(cachedData)
+            try {
+              localStorage.setItem(cacheTimeKey, now.toString())
+            } catch {
+              console.warn('Failed to update cache timestamp in LocalStorage.')
+            }
+            renderStats(data)
+            updateTimestampUI(now)
+            finalizeUI()
+            console.log('GitHub data unchanged (304). Extending cache timer.')
+            return
+          } catch {
+            console.warn('Corrupt cache on 304, clearing cache and retrying.')
+            cachedData = null
+            cachedEtag = null // prevent sending If-None-Match again on retry
+            try {
+              localStorage.removeItem(cacheKey)
+              localStorage.removeItem(cacheTimeKey)
+              localStorage.removeItem(etagKey)
+            } catch {
+              console.warn('Failed to clear invalid cache from LocalStorage.')
+            }
+            continue // skip remainder of outer try, retry the while loop
+          }
+        }
 
         if (!response.ok) {
           if (response.status === 403 || response.status === 429) throw new Error('RATE_LIMIT')
@@ -81,6 +123,8 @@ async function fetchStats() {
         }
 
         const data = await response.json()
+        if (page === 1) newEtag = response.headers.get('ETag')
+
         if (data.length === 0) {
           keepFetching = false
         } else {
@@ -90,47 +134,56 @@ async function fetchStats() {
         }
       } catch (fetchErr) {
         clearTimeout(timeoutId)
-        if (fetchErr.name === 'AbortError') throw new Error('TIMEOUT')
+        if (fetchErr.name === 'AbortError') throw new Error('TIMEOUT', { cause: fetchErr })
         throw fetchErr
       }
     }
 
     if (allReleases.length === 0) throw new Error('NO_DATA')
 
-    // GitHub returns latest first by default; sorting is redundant.
-
-    // 3. Safe Cache Update
+    // 3. Persist and Render
     try {
       localStorage.setItem(cacheKey, JSON.stringify(allReleases))
       localStorage.setItem(cacheTimeKey, now.toString())
+      if (newEtag) localStorage.setItem(etagKey, newEtag)
     } catch {
-      console.warn('Failed to update LocalStorage (possibly full).')
+      console.warn('Failed to update LocalStorage.')
     }
 
     renderStats(allReleases)
+    updateTimestampUI(now)
     finalizeUI()
 
   } catch (err) {
     handleError(err)
   }
 
+  function updateTimestampUI(ts) {
+    const el = document.getElementById('last-updated')
+    if (!el) return
+    // Use 'en-US' explicitly for consistent formatting
+    const dateStr = new Date(ts).toLocaleString('en-US', {
+      dateStyle: 'medium',
+      timeStyle: 'short'
+    })
+    el.textContent = `Last updated: ${dateStr}`
+  }
+
   function finalizeUI() {
     loading.style.display = 'none'
     container.style.display = 'block'
-    footer.style.display = 'block'
+    if (footer) footer.style.display = 'block'
   }
 
   function handleError(err) {
     console.error('Stats Fetch Error:', err.message)
     loading.style.display = 'none'
-
     const messages = {
       'RATE_LIMIT': 'Rate limit exceeded (GitHub API). Please try again in a few minutes.',
       'TIMEOUT': 'Request timed out. Please check your connection and try again.',
       'NO_DATA': 'No releases were found for this repository.',
       'TypeError': 'Network error. Please check if you are online.'
     }
-
     errorDiv.textContent = messages[err.message] || messages[err.name] || 'Failed to load statistics. Please try again later.'
     errorDiv.style.display = 'block'
   }

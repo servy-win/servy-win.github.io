@@ -50,6 +50,17 @@ header h1 {
   line-height: 1;
 }
 
+/* Stats Timestamp Styles */
+#last-updated {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  color: var(--text-color);
+  font-size: 0.875rem;
+  text-align: center;
+  font-family: inherit;
+  opacity: 0.8;
+}
+
 /* Release Cards */
 .release-card {
   background: var(--form-bg);

@@ -12,12 +12,13 @@
     "validate:html": "html-validate .",
     "lhci": "npm run build && lhci autorun",
     "prepare": "husky",
-    "ncu": "npm-check-updates -u -x eslint,@eslint/js"
+    "ncu": "npm-check-updates -u"
   },
   "devDependencies": {
-    "@eslint/js": "^9.32.0",
+    "@eslint/js": "^10.0.1",
     "@lhci/cli": "^0.15.1",
-    "eslint": "^9.32.0",
+    "eslint": "^10.1.0",
+    "globals": "^17.4.0",
     "html-validate": "^10.11.2",
     "husky": "^9.1.7",
     "npm-check-updates": "^19.6.6",
