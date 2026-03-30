@@ -1,29 +1,34 @@
+/**
+ * @file stats.js
+ * @description Manages fetching and rendering GitHub release statistics for the Servy repository.
+ * Features include ETag-based conditional fetching, multi-page results handling, 
+ * robust error management, and LocalStorage caching.
+ */
+
 import * as utils from './utils.js'
-import { initGA } from './ga.js'
 import '../css/style.css'
 import '../css/stats.css'
 
-// Re-use theme toggle logic
+/**
+ * Entry point for the Statistics page.
+ */
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize Google Analytics and Google Ads Conversion Tracking
-  initGA('G-VQ7924LC4H', 'AW-16758312117')
+  /**
+   * Initialize shared layout features (GA, Nav, Theme, etc.)
+   */
+  utils.initCommonLayout()
 
-  // Initialize Header Hamburger Menu
-  utils.initHeaderHamburger()
-
-  // Initialize Dark Mode Toggle
-  utils.initToggleDarkMode()
-
-  // Initialize Back to Top Button
-  utils.initBackToTop()
-
-  // Initialize Footer Year
-  utils.initCopyrightYear()
-
-  // Fetch Stats
+  /**
+   * Execute the statistics fetch and render pipeline.
+   */
   fetchStats()
 })
 
+/**
+ * Fetches release data from the GitHub API with caching and rate-limit awareness.
+ * @async
+ * @returns {Promise<void>}
+ */
 async function fetchStats() {
   const loading = document.getElementById('loading')
   const container = document.getElementById('stats-container')
@@ -35,7 +40,7 @@ async function fetchStats() {
   const cacheTimeKey = `${cacheKey}_timestamp`
   const etagKey = `${cacheKey}_etag`
 
-  const CACHE_DURATION = 65 * 60 * 1000 // 65 minutes to be safe against GitHub's 60-minute rate limit window
+  const CACHE_DURATION = 65 * 60 * 1000 // 65 minutes (GitHub rate limit window is 60m)
   const FETCH_TIMEOUT = 10 * 1000 // 10 seconds
 
   try {
@@ -43,27 +48,28 @@ async function fetchStats() {
     let cachedTimestamp = 0
     let cachedEtag = null
 
+    // Attempt to retrieve metadata from LocalStorage
     try {
       cachedData = localStorage.getItem(cacheKey)
       cachedTimestamp = Number(localStorage.getItem(cacheTimeKey)) || 0
       cachedEtag = localStorage.getItem(etagKey)
     } catch {
-      console.warn('LocalStorage access denied.')
+      console.warn('LocalStorage access denied or unavailable.')
     }
 
     const now = Date.now()
 
-    // 1. Instant Soft Cache Load
+    // 1. Instant Cache Load: If data is fresh, render immediately and exit.
     if (cachedData && cachedTimestamp && (now - cachedTimestamp < CACHE_DURATION)) {
       try {
         const data = JSON.parse(cachedData)
         renderStats(data)
-        updateTimestampUI(cachedTimestamp) // Show when it was originally fetched
+        updateTimestampUI(cachedTimestamp)
         finalizeUI()
-        console.log('Loaded GitHub stats from cache.')
+        console.log('Loaded GitHub stats from local cache.')
         return
       } catch {
-        console.warn('Invalid cache, ignoring...')
+        console.warn('Invalid cache detected, proceeding to fetch...')
       }
     }
 
@@ -72,11 +78,13 @@ async function fetchStats() {
     let keepFetching = true
     let newEtag = null
 
+    // 2. Fetch Loop: Handles pagination for large release histories
     while (keepFetching) {
       const controller = new AbortController()
       const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT)
 
       const headers = { 'Accept': 'application/vnd.github.v3+json' }
+      // Use ETag for the first page to check for updates without consuming rate limit
       if (page === 1 && cachedEtag) {
         headers['If-None-Match'] = cachedEtag
       }
@@ -88,33 +96,15 @@ async function fetchStats() {
         )
         clearTimeout(timeoutId)
 
-        // 2. Handle 304 (Unchanged)
+        // Handle 304 Not Modified: Data hasn't changed since last fetch
         if (page === 1 && response.status === 304 && cachedData) {
-          try {
-            const data = JSON.parse(cachedData)
-            try {
-              localStorage.setItem(cacheTimeKey, now.toString())
-            } catch {
-              console.warn('Failed to update cache timestamp in LocalStorage.')
-            }
-            renderStats(data)
-            updateTimestampUI(now)
-            finalizeUI()
-            console.log('GitHub data unchanged (304). Extending cache timer.')
-            return
-          } catch {
-            console.warn('Corrupt cache on 304, clearing cache and retrying.')
-            cachedData = null
-            cachedEtag = null // prevent sending If-None-Match again on retry
-            try {
-              localStorage.removeItem(cacheKey)
-              localStorage.removeItem(cacheTimeKey)
-              localStorage.removeItem(etagKey)
-            } catch {
-              console.warn('Failed to clear invalid cache from LocalStorage.')
-            }
-            continue // skip remainder of outer try, retry the while loop
-          }
+          const data = JSON.parse(cachedData)
+          safeLocalStorageSet(cacheTimeKey, now.toString())
+          renderStats(data)
+          updateTimestampUI(now)
+          finalizeUI()
+          console.log('GitHub data unchanged (304). Cache refreshed.')
+          return
         }
 
         if (!response.ok) {
@@ -129,26 +119,24 @@ async function fetchStats() {
           keepFetching = false
         } else {
           allReleases = allReleases.concat(data)
-          keepFetching = data.length === 100
+          keepFetching = data.length === 100 // Continue if page was full
           page++
         }
       } catch (fetchErr) {
         clearTimeout(timeoutId)
-        if (fetchErr.name === 'AbortError') throw new Error('TIMEOUT', { cause: fetchErr })
+        if (fetchErr.name === 'AbortError') {
+          throw new Error('TIMEOUT', { cause: fetchErr })
+        }
         throw fetchErr
       }
     }
 
     if (allReleases.length === 0) throw new Error('NO_DATA')
 
-    // 3. Persist and Render
-    try {
-      localStorage.setItem(cacheKey, JSON.stringify(allReleases))
-      localStorage.setItem(cacheTimeKey, now.toString())
-      if (newEtag) localStorage.setItem(etagKey, newEtag)
-    } catch {
-      console.warn('Failed to update LocalStorage.')
-    }
+    // 3. Update Cache with New Data
+    safeLocalStorageSet(cacheKey, JSON.stringify(allReleases))
+    safeLocalStorageSet(cacheTimeKey, now.toString())
+    if (newEtag) safeLocalStorageSet(etagKey, newEtag)
 
     renderStats(allReleases)
     updateTimestampUI(now)
@@ -158,6 +146,10 @@ async function fetchStats() {
     handleError(err)
   }
 
+  /**
+   * Updates the "Last Updated" text in the UI.
+   * @param {number} ts - Unix timestamp.
+   */
   function updateTimestampUI(ts) {
     const el = document.getElementById('last-updated')
     if (!el) return
@@ -169,29 +161,53 @@ async function fetchStats() {
     el.textContent = `Last updated: ${dateStr}`
   }
 
+  /**
+   * Hides loading indicators and shows the content container.
+   */
   function finalizeUI() {
-    loading.style.display = 'none'
-    container.style.display = 'block'
+    if (loading) loading.style.display = 'none'
+    if (container) container.style.display = 'block'
     if (footer) footer.style.display = 'block'
   }
 
+  /**
+   * Centralized error handler for the fetch operation.
+   * @param {Error} err 
+   */
   function handleError(err) {
     console.error('Stats Fetch Error:', err.message)
-    loading.style.display = 'none'
+    if (loading) loading.style.display = 'none'
     const messages = {
       'RATE_LIMIT': 'Rate limit exceeded (GitHub API). Please try again in a few minutes.',
       'TIMEOUT': 'Request timed out. Please check your connection and try again.',
       'NO_DATA': 'No releases were found for this repository.',
       'TypeError': 'Network error. Please check if you are online.'
     }
-    errorDiv.textContent = messages[err.message] || messages[err.name] || 'Failed to load statistics. Please try again later.'
-    errorDiv.style.display = 'block'
+    if (errorDiv) {
+      errorDiv.textContent = messages[err.message] || messages[err.name] || 'Failed to load statistics.'
+      errorDiv.style.display = 'block'
+    }
+  }
+
+  /**
+   * Utility to safely set LocalStorage items without crashing on QuotaExceeded errors.
+   */
+  function safeLocalStorageSet(key, value) {
+    try {
+      localStorage.setItem(key, value)
+    } catch (e) {
+      console.warn('LocalStorage write failed:', e)
+    }
   }
 }
 
+/**
+ * Formats a byte count into a human-readable string (KB, MB, etc.).
+ * @param {number} bytes 
+ * @returns {string}
+ */
 function formatSize(bytes) {
   if (bytes < 1024) return `${bytes} B`
-
   const units = ['KB', 'MB', 'GB', 'TB']
   let size = bytes / 1024
   let unitIndex = 0
@@ -201,18 +217,15 @@ function formatSize(bytes) {
     unitIndex++
   }
 
-  let display
-  if (size >= 10) {
-    // Large sizes: one decimal, rounded
-    display = Math.round(size * 10) / 10
-  } else {
-    // Small sizes: two decimals
-    display = size.toFixed(2)
-  }
-
+  const display = size >= 10 ? Math.round(size * 10) / 10 : size.toFixed(2)
   return `${display} ${units[unitIndex]}`
 }
 
+/**
+ * Dynamically builds and injects the release cards into the DOM.
+ * @param {Array<Object>} releases - Array of GitHub release objects.
+ * @returns {void}
+ */
 function renderStats(releases) {
   let totalDownloads = 0
   const list = document.getElementById('releases-list')
@@ -358,6 +371,7 @@ function renderStats(releases) {
     list.appendChild(card)
   })
 
-  // Update Total
-  document.getElementById('total-downloads').textContent = formatter.format(totalDownloads)
+  // Update Global Counter
+  const totalEl = document.getElementById('total-downloads')
+  if (totalEl) totalEl.textContent = formatter.format(totalDownloads)
 }
