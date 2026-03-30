@@ -30,6 +30,13 @@
     content="Servy lets you run any app as a native Windows service with full control over working directory, startup type, process priority, logging, health checks, environment variables, dependencies, pre-launch and post-launch hooks, and parameters. Full-Featured Alternative to NSSM, WinSW & FireDaemon Pro.">
   <meta name="twitter:image" content="https://servy-win.github.io/servy-tiny.png">
   <meta name="twitter:image:alt" content="Servy: Modern Windows Service Wrapper">
+
+  <script>
+    (function () {
+      const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
 </head>
 
 <body>

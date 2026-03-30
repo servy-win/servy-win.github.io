@@ -103,9 +103,6 @@ export const initToggleDarkMode = () => {
   }
 
   // 1. Initial Load Logic
-  if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && mediaQuery.matches)) {
-    root.setAttribute('data-theme', 'dark')
-  }
   updateAriaPressed()
 
   // 2. Listen for OS-level theme changes
