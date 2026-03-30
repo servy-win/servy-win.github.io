@@ -7,6 +7,7 @@
   --secondary: #007D9C;
   --dark: #2c3e50;
   --light: #ecf0f1;
+  --blockquote-bg: #edf1f2;
 
   --bg-color: #f9f9f9;
   --text-color: #333;
@@ -63,6 +64,7 @@
   --secondary: #56BFD7;
   --dark: #ecf0f1;
   --light: #2c3e50;
+  --blockquote-bg: #1e2b37;
 
   --bg-color: #1B1D24;
   --text-color: #C8C9CB;
@@ -573,7 +575,7 @@ p.blockquote {
   border-left: 4px solid var(--primary);
   padding: 0.5rem 1rem;
   color: var(--text-color);
-  background-color: var(--light);
+  background-color: var(--blockquote-bg);
   margin: 1rem 0;
 }
 
