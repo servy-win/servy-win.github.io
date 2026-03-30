@@ -771,6 +771,12 @@ footer p {
   line-height: 1.5rem;
 }
 
+.footer-link-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 #back-to-top {
   position: fixed;
   bottom: 2rem;
