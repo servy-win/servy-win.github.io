@@ -393,7 +393,7 @@ a.logo {
 
   .header-link {
     font-size: 1rem;
-    padding: 10px 0;
+    padding: 5px 0;
   }
 
   .header-actions {
@@ -631,6 +631,12 @@ div.cta {
 
 /* CTA Media Queries */
 @media (min-width: 768px) {
+  div.cta {
+    margin-left: 1rem;
+  }
+}
+
+@media ((min-width: 600px) and (max-width: 768px)) {
   div.cta {
     margin-left: 1rem;
   }
