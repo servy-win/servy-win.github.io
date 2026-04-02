@@ -1,0 +1,49 @@
+{
+  "_style-CGzBvvpp.js": {
+    "file": "assets/style-CGzBvvpp.js",
+    "name": "style",
+    "css": [
+      "assets/style-D0TF2Tt_.css"
+    ]
+  },
+  "_style-D0TF2Tt_.css": {
+    "file": "assets/style-D0TF2Tt_.css",
+    "src": "_style-D0TF2Tt_.css"
+  },
+  "contact/index.html": {
+    "file": "assets/contact-8LugpdDy.js",
+    "name": "contact",
+    "src": "contact/index.html",
+    "isEntry": true,
+    "imports": [
+      "_style-CGzBvvpp.js"
+    ],
+    "css": [
+      "assets/contact-D4pz09_9.css"
+    ]
+  },
+  "index.html": {
+    "file": "assets/main-CEVcUfS1.js",
+    "name": "main",
+    "src": "index.html",
+    "isEntry": true,
+    "imports": [
+      "_style-CGzBvvpp.js"
+    ],
+    "css": [
+      "assets/main-CSvobdiw.css"
+    ]
+  },
+  "stats/index.html": {
+    "file": "assets/stats-CuQzPqAd.js",
+    "name": "stats",
+    "src": "stats/index.html",
+    "isEntry": true,
+    "imports": [
+      "_style-CGzBvvpp.js"
+    ],
+    "css": [
+      "assets/stats-3FHDCtOD.css"
+    ]
+  }
+}

@@ -1,0 +1,1 @@
+import{t}from"./style-CGzBvvpp.js";document.addEventListener("DOMContentLoaded",()=>{t()});
