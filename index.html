@@ -6,7 +6,7 @@
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
   <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
-  <!-- <link rel="preload" as="image" href="/servy-tiny.png" fetchpriority="high"> -->
+  <link rel="preload" href="/fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Akram El Assas">
   <meta name="robots" content="index, follow">
@@ -170,16 +170,10 @@
       <div class="nav-overlay" aria-hidden="true"></div>
     </nav>
 
-    <!-- <h1>Servy</h1> -->
-
     <section class="hero">
       <div class="hero-container">
         <div class="hero-text">
-          <h1>Turn Any App into a Native Service</h1>
-
-          <!-- <p>A modern alternative to NSSM, WinSW &amp; FireDaemon Pro with built-in logging, real-time monitoring, and automatic recovery.</p> -->
-
-          <!-- <p>A modern alternative to NSSM, WinSW &amp; FireDaemon Pro</p> -->
+          <h1>Turn Any App into a Native Windows Service</h1>
 
           <ul class="hero-list">
             <li>
@@ -239,9 +233,6 @@
               rel="noopener noreferrer" aria-label="Get Started">
               Get Started
             </a>
-
-            <!-- <a href="https://github.com/aelassas/servy/wiki" target="_blank" rel="noopener noreferrer" class="cta-btn">Read
-        Docs</a> -->
           </div>
 
           <div class="star">
@@ -290,46 +281,6 @@
   </header>
 
   <main class="container">
-    <!-- <section class="cover-image">
-      <img src="/servy-tiny.png" alt="Servy application screenshot" width="1382" height="720" decoding="async"
-        fetchpriority="high" loading="eager">
-    </section> -->
-
-    <!-- <section class="star">
-      <p>
-        ⭐ Don't forget to <a href="https://github.com/aelassas/servy/" target="_blank" rel="noopener noreferrer">give us
-          a star on GitHub</a>. It costs nothing but means a lot and helps the project grow!
-      </p>
-    </section> -->
-
-    <!-- <section>
-      <h2>What is Servy?</h2>
-      <p>
-        Servy lets you run any app as a native Windows service with full control over the working directory, startup
-        type, process priority, logging, health checks, environment variables, dependencies, pre-launch and post-launch
-        hooks, pre-stop and post-stop hooks, and parameters. It's designed to be a full-featured alternative to NSSM,
-        WinSW, and FireDaemon Pro.
-      </p>
-      <p>
-        Servy is digitally signed using a trusted code-signing certificate provided by the SignPath Foundation. This
-        ensures that all Servy executables and installers are verified and secure, giving you peace of mind when using
-        the tool.
-      </p>
-      <p>
-        Servy offers a desktop app, a CLI, and a PowerShell module that let you create, configure, and manage Windows
-        services interactively or through scripts and CI/CD pipelines. It also includes a Manager app for easily
-        monitoring and managing all installed services in real time.
-      </p>
-
-      <p>
-        Servy continuously monitors your app, restarting it automatically if it crashes, hangs, or stops. It is perfect
-        for keeping non-service apps running in the background and ensuring they start automatically at system boot,
-        even before logon, without rewriting them as services. Use it to run Node.js, Python, .NET, Java, Go, Rust, PHP,
-        or Ruby applications; keep web servers, background workers, sync tools, or daemons alive after reboots; and
-        automate task runners, schedulers, or scripts in production with built-in health checks, logging, and restart
-        policies.
-      </p>
-    </section> -->
 
     <section class="features-grid">
       <h2>Why use Servy?</h2>
@@ -370,13 +321,6 @@
       <p>This creates a service named <code>MyService</code> that runs your Node.js server in the background and starts
         automatically
         with Windows.</p>
-
-      <!-- <p>Then start the service:</p>
-      <div class="code-block">
-        <button type="button" class="copy-btn">Copy</button>
-        <pre><code>servy-cli start --name="MyService"</code></pre>
-      </div> -->
-
       <p>
         Explore more <a href="https://github.com/aelassas/servy/wiki/Examples-&-Recipes" target="_blank"
           rel="noopener noreferrer">examples and recipes</a>
@@ -540,7 +484,6 @@ scoop install servy</code></pre>
         for providing an <a href="https://www.jetbrains.com/community/opensource/" target="_blank"
           rel="noopener noreferrer">open-source license</a> for their tools. Their software made it much
         easier to profile, debug, and optimize Servy, helping improve its performance and stability.
-        <!-- Having access to these professional tools really made a difference during development and saved a lot of time. -->
       </p>
       <p>
         Special thanks to everyone who tested Servy, reported issues, and suggested improvements on GitHub and Reddit.
