@@ -491,6 +491,10 @@ section.hero h1 {
   align-items: stretch;
 }
 
+.hero-figure svg {
+  overflow: visible;
+}
+
 .servy-mascot {
   width: 100%;
   max-width: 380px;
