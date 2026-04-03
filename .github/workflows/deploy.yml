@@ -46,6 +46,12 @@ jobs:
         # This script handles Vite bundling and custom asset injections
         run: npm run build
 
+      - name: Check bundle size
+        run: npm run size
+
+      - name: Performance budget check
+        run: npm run budget-check        
+
       - name: Upload artifact
         # Packages the 'dist' folder into a compressed artifact for the deploy job
         uses: actions/upload-pages-artifact@v3

@@ -12,6 +12,9 @@
     "assert": {
       "preset": "lighthouse:recommended",
       "assertions": {
+        "categories:performance": ["error", { "minScore": 0.9 }],
+        "resource-summary:script:size": ["error", { "maxNumericValue": 150000 }],
+        "resource-summary:total:size": ["error", { "maxNumericValue": 500000 }],
         "network-dependency-tree-insight": ["warn", { "minScore": 0 }],
         "errors-in-console": "warn",
         "image-delivery-insight": "warn",

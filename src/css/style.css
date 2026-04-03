@@ -242,8 +242,8 @@ a.logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 42px;
-  min-width: 42px;
+  min-height: 44px;
+  min-width: 44px;
   border-radius: var(--border-radius);
 }
 

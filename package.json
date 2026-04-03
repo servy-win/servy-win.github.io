@@ -13,7 +13,9 @@
     "lhci": "npm run build && lhci autorun",
     "prepare": "husky",
     "ncu": "npm-check-updates -u",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "size": "ls -lh dist/assets",
+    "budget-check": "lhci autorun"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
