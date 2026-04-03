@@ -23,6 +23,7 @@
     "globals": "^17.4.0",
     "html-validate": "^10.11.2",
     "husky": "^9.1.7",
+    "inquirer": "^13.3.2",
     "jest": "^30.3.0",
     "jest-environment-jsdom": "^30.3.0",
     "npm-check-updates": "^19.6.6",
@@ -43,5 +44,8 @@
       "/node_modules/",
       "/__mocks__/"
     ]
+  },
+  "overrides": {
+    "tmp": "^0.2.3"
   }
 }
