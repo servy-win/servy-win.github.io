@@ -40,4 +40,4 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./cobertura-coverage.xml
-          directory: ./backend/coverage       
+          directory: ./coverage       
