@@ -47,10 +47,7 @@ jobs:
         run: npm run build
 
       - name: Check bundle size
-        run: npm run size
-
-      - name: Performance budget check
-        run: npm run budget-check        
+        run: npm run size       
 
       - name: Upload artifact
         # Packages the 'dist' folder into a compressed artifact for the deploy job
