@@ -10,6 +10,7 @@ export default defineConfig([
       'public/',
       'dist/',
       '.vite/',
+      'coverage/',
     ],
   },
   // 1. Add the security plugin's recommended configuration

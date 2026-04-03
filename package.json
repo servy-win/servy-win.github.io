@@ -14,6 +14,7 @@
     "prepare": "husky",
     "ncu": "npm-check-updates -u",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:coverage": "npm test -- --coverage --no-cache",
     "size": "ls -lh dist/assets",
     "budget-check": "lhci autorun"
   },
@@ -45,6 +46,16 @@
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/__mocks__/"
+    ],
+    "collectCoverageFrom": [
+      "src/js/**/*.js",
+      "!src/js/ga.js"
+    ],
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "text",
+      "cobertura",
+      "html"
     ]
   },
   "overrides": {

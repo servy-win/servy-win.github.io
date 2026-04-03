@@ -15,3 +15,6 @@ node_modules/
 
 # Public folder
 public/
+
+# Coverage reports
+coverage/

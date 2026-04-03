@@ -30,7 +30,14 @@ jobs:
         # This assumes you have a "lint": "eslint ." script in your package.json
 
       - name: Run Tests
-        run: npm test
+        run: npm test:coverage
         env:
           # Required for Jest to support ES Modules (ESM)
           NODE_OPTIONS: --experimental-vm-modules
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./cobertura-coverage.xml
+          directory: ./backend/coverage       
