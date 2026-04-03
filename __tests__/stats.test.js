@@ -14,7 +14,7 @@ jest.unstable_mockModule('../src/js/utils.js', () => ({
 // 2. Get the mock reference
 const utils = await import('../src/js/utils.js')
 
-describe('Contact Page Logic (stats.js)', () => {
+describe('Stats Page Logic (stats.js)', () => {
   test('calls initCommonLayout on DOMContentLoaded', async () => {
     // Clear mock state in case of multiple tests
     utils.initCommonLayout.mockClear()

@@ -52,12 +52,11 @@ const initCodeBlocks = () => {
     button.addEventListener('click', () => {
       navigator.clipboard.writeText(codeElement.textContent)
         .then(() => {
-          const originalText = button.textContent
           button.textContent = 'Copied!'
           
           // Revert button text after 2 seconds
           setTimeout(() => {
-            button.textContent = originalText
+            button.textContent = 'Copy'
           }, 2000)
         })
         .catch(() => { 
