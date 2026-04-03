@@ -1,0 +1,36 @@
+# GitHub Actions workflow to run ESLint and Jest tests on every push to main
+name: test
+
+on:
+  push:
+    branches: ["main"]
+  # Allows manual triggering from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: lts/*
+          # Caching npm dependencies speeds up subsequent runs
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Linting
+        run: npm run lint
+        # This assumes you have a "lint": "eslint ." script in your package.json
+
+      - name: Run Tests
+        run: npm test
+        env:
+          # Required for Jest to support ES Modules (ESM)
+          NODE_OPTIONS: --experimental-vm-modules

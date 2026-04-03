@@ -2,3 +2,4 @@
 
 npm run lint
 npm run validate:html
+npm run test

@@ -50,7 +50,7 @@ const initCodeBlocks = () => {
      * Provides visual feedback by temporarily changing the button text.
      */
     button.addEventListener('click', () => {
-      navigator.clipboard.writeText(codeElement.innerText)
+      navigator.clipboard.writeText(codeElement.textContent)
         .then(() => {
           const originalText = button.textContent
           button.textContent = 'Copied!'

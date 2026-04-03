@@ -12,7 +12,8 @@
     "validate:html": "html-validate .",
     "lhci": "npm run build && lhci autorun",
     "prepare": "husky",
-    "ncu": "npm-check-updates -u"
+    "ncu": "npm-check-updates -u",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -21,11 +22,25 @@
     "globals": "^17.4.0",
     "html-validate": "^10.11.2",
     "husky": "^9.1.7",
+    "jest": "^30.3.0",
+    "jest-environment-jsdom": "^30.3.0",
     "npm-check-updates": "^19.6.6",
     "vite": "^8.0.3",
     "vite-plugin-html": "^3.2.2"
   },
   "dependencies": {
     "lite-youtube-embed": "^0.3.4"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "transform": {},
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sass)$": "<rootDir>/__tests__/__mocks__/styleMock.js",
+      "lite-youtube-embed.*": "<rootDir>/__tests__/__mocks__/styleMock.js"
+    },
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/__mocks__/"
+    ]
   }
 }
