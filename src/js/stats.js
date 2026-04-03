@@ -218,6 +218,7 @@ function formatSize(bytes) {
   }
 
   const display = size >= 10 ? Math.round(size * 10) / 10 : size.toFixed(2)
+  // eslint-disable-next-line security/detect-object-injection
   return `${display} ${units[unitIndex]}`
 }
 
