@@ -1,5 +1,5 @@
 # GitHub Actions workflow to perform security auditing (SCA, SAST, and Secret Scanning)
-name: security-audit
+name: security
 
 on:
   push:
