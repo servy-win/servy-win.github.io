@@ -1,8 +1,11 @@
 [![deploy](https://github.com/servy-win/servy-win.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/servy-win/servy-win.github.io/actions/workflows/deploy.yml)
-[![security](https://github.com/servy-win/servy-win.github.io/actions/workflows/security.yml/badge.svg)](https://github.com/servy-win/servy-win.github.io/actions/workflows/security.yml)
 [![lighthouse](https://github.com/servy-win/servy-win.github.io/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/servy-win/servy-win.github.io/actions/workflows/lighthouse.yml)
 [![test](https://github.com/servy-win/servy-win.github.io/actions/workflows/test.yml/badge.svg)](https://github.com/servy-win/servy-win.github.io/actions/workflows/test.yml)
 [![codecov](https://img.shields.io/codecov/c/github/servy-win/servy-win.github.io/main?label=coverage&t=0)](https://codecov.io/gh/servy-win/servy-win.github.io)
+
+<!--
+[![security](https://github.com/servy-win/servy-win.github.io/actions/workflows/security.yml/badge.svg)](https://github.com/servy-win/servy-win.github.io/actions/workflows/security.yml)
+-->
 
 # Servy Website Source
 
