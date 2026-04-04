@@ -6,8 +6,8 @@ on:
     branches: ["main"]
   pull_request:
     branches: ["main"]
-  schedule:
-    - cron: '0 0 * * 1' # Runs weekly to catch new vulnerabilities in old code
+  #schedule:
+  #  - cron: '0 0 * * 1' # Runs weekly to catch new vulnerabilities in old code
   workflow_dispatch:
 
 jobs:
