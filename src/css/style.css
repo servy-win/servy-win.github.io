@@ -467,7 +467,8 @@ section.hero h1 {
 
 .hero-figure {
   flex: 1;
-  display: flex;
+  /* display: flex; */
+  display: none;
   justify-content: flex-end;
   align-items: stretch;
 }
