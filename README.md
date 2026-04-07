@@ -1,10 +1,13 @@
-[![test](https://github.com/servy-win/servy-win.github.io/actions/workflows/test.yml/badge.svg)](https://github.com/servy-win/servy-win.github.io/actions/workflows/test.yml)
-[![codecov](https://img.shields.io/codecov/c/github/servy-win/servy-win.github.io/main?label=coverage&t=0)](https://codecov.io/gh/servy-win/servy-win.github.io)
-[![security](https://github.com/servy-win/servy-win.github.io/actions/workflows/security.yml/badge.svg)](https://github.com/servy-win/servy-win.github.io/actions/workflows/security.yml)
-[![lighthouse](https://github.com/servy-win/servy-win.github.io/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/servy-win/servy-win.github.io/actions/workflows/lighthouse.yml)
-[![deploy](https://github.com/servy-win/servy-win.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/servy-win/servy-win.github.io/actions/workflows/deploy.yml)
+[![build](https://github.com/servy-win/servy-win.github.io/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/servy-win/servy-win.github.io/actions/workflows/build.yml)
+[![test](https://github.com/servy-win/servy-win.github.io/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/servy-win/servy-win.github.io/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/servy-win/servy-win.github.io/graph/badge.svg?token=JSYV3I7SQH)](https://codecov.io/gh/servy-win/servy-win.github.io)
+[![security](https://github.com/servy-win/servy-win.github.io/actions/workflows/security.yml/badge.svg?branch=main)](https://github.com/servy-win/servy-win.github.io/actions/workflows/security.yml)
+[![lighthouse](https://github.com/servy-win/servy-win.github.io/actions/workflows/lighthouse.yml/badge.svg?branch=main)](https://github.com/servy-win/servy-win.github.io/actions/workflows/lighthouse.yml)
+[![deploy](https://github.com/servy-win/servy-win.github.io/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/servy-win/servy-win.github.io/actions/workflows/deploy.yml)
 
 <!--
+[![codecov](https://img.shields.io/codecov/c/github/servy-win/servy-win.github.io/main?label=coverage&t=0)](https://codecov.io/gh/servy-win/servy-win.github.io)
+[![codecov](https://codecov.io/gh/servy-win/servy-win.github.io/graph/badge.svg?token=JSYV3I7SQH)](https://codecov.io/gh/servy-win/servy-win.github.io)
 [![security](https://github.com/servy-win/servy-win.github.io/actions/workflows/security.yml/badge.svg)](https://github.com/servy-win/servy-win.github.io/actions/workflows/security.yml)
 -->
 
