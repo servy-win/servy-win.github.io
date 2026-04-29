@@ -2,5 +2,5 @@
 
 npm run lint
 npm run validate:html
-npm audit
+npm audit --audit-level=high
 npm run test
