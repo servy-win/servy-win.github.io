@@ -465,6 +465,13 @@ section.hero h1 {
   padding-bottom: 4rem;
 }
 
+.hero-lead {
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+  text-align: left;
+  margin: 0 0 1.5rem 0.5rem;
+}
+
 .hero-figure {
   flex: 1;
   /* display: flex; */
@@ -547,6 +554,12 @@ header .hero-list svg {
     flex-direction: column;
     text-align: center;
     gap: 2rem;
+  }
+
+  /* OPTIONAL COMPATIBILITY CHECK: Ensure your alignment centers gracefully on smaller screen breaking breakpoints */
+  .hero-lead {
+    text-align: inherit; 
+    margin: 0 1rem 1.5rem 1rem;
   }
 
   .hero-list {
