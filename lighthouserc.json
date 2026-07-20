@@ -2,7 +2,7 @@
   "ci": {
     "collect": {
       "staticDistDir": "./dist",
-      "url": ["/index.html", "/stats/index.html", "/contact/index.html"],
+      "url": ["/index.html", "/downloads/index.html", "/contact/index.html"],
       "numberOfRuns": 1,
       "settings": {
         "chromeFlags": "--no-sandbox --disable-setuid-sandbox --disable-dev-shm-usage",

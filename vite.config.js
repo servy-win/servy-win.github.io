@@ -15,7 +15,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        stats: resolve(__dirname, 'stats/index.html'),
+        stats: resolve(__dirname, 'downloads/index.html'),
         contact: resolve(__dirname, 'contact/index.html'),
       },
       // No manualChunks — let Rollup handle code splitting automatically
