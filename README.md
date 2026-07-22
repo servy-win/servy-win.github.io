@@ -34,7 +34,7 @@ The project employs several advanced front-end techniques to ensure optimal perf
 ## Project Structure
 
 * **index.html:** The main landing page.
-* **downloads/:** Directory containing the GitHub downloads page.
+* **downloads/:** Directory containing the Downloads page.
 * **contact/:** Directory containing the contact form.
 * **src/js/:** Modular JavaScript logic including analytics, utility functions, and API handlers.
 * **src/css/:** Component-based CSS utilizing CSS variables for theme management.
