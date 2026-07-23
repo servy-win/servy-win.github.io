@@ -310,7 +310,7 @@ function renderStats(releases) {
     authorLink.className = 'author-link'
     const avatar = document.createElement('img')
     avatar.src = release.author.avatar_url
-    avatar.alt = release.author.login
+    avatar.alt = ''
     avatar.className = 'avatar'
     authorLink.appendChild(avatar)
     authorLink.appendChild(document.createTextNode(release.author.login))
