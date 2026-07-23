@@ -23,8 +23,7 @@ export default defineConfig({
     minify: 'terser',
     terserOptions: {
       compress: {
-        // Keep console logs, so no drop_console here
-        drop_console: false,
+        drop_console: true, // Remove console statements
       },
       format: {
         comments: false, // Remove comments from output

@@ -118,7 +118,7 @@ export const initToggleDarkMode = () => {
     const isDark = root.getAttribute('data-theme') === 'dark'
 
     if (isDark) {
-      root.removeAttribute('data-theme')
+      root.setAttribute('data-theme', 'light')
       localStorage.setItem('theme', 'light')
     } else {
       root.setAttribute('data-theme', 'dark')

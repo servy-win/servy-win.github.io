@@ -57,6 +57,7 @@ export function initGA(...ids) {
     window.removeEventListener('mousemove', startAnalytics)
     window.removeEventListener('touchstart', startAnalytics)
     window.removeEventListener('scroll', startAnalytics)
+    window.removeEventListener('keydown', startAnalytics)
 
     loadAnalytics()
   }
@@ -66,4 +67,5 @@ export function initGA(...ids) {
   window.addEventListener('mousemove', startAnalytics, { once: true, passive: true })
   window.addEventListener('touchstart', startAnalytics, { once: true, passive: true })
   window.addEventListener('scroll', startAnalytics, { once: true, passive: true })
+  window.addEventListener('keydown', startAnalytics, { once: true, passive: true })
 }

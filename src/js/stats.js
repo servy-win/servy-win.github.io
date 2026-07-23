@@ -113,7 +113,7 @@ async function fetchStats() {
         }
 
         const data = await response.json()
-        if (page === 1) newEtag = response.headers.get('ETag')
+        if (page === 1) newEtag = response.headers?.get?.('ETag')
 
         if (data.length === 0) {
           keepFetching = false

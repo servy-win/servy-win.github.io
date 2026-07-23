@@ -254,7 +254,7 @@ test('initBackToTop throttles multiple scroll events', async () => {
     expect(localStorage.getItem('theme')).toBe('dark')
 
     toggleBtn.click()
-    expect(root.getAttribute('data-theme')).toBeNull()
+    expect(root.getAttribute('data-theme')).toBe('light')
     expect(localStorage.getItem('theme')).toBe('light')
   })
 })

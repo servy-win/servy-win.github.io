@@ -20,7 +20,7 @@
 
   --focus-border: #4C9FFF;
 
-  --hero-lead-text: papayawhip;
+  --hero-lead-text: #fff8dc;
 
   /* Button colors */
   --btn-bg: var(--primary);
@@ -74,7 +74,7 @@
 
   --focus-border: #4C9FFF;
 
-  --hero-lead-text: papayawhip;
+  --hero-lead-text: #fff8dc;
 
   --btn-bg: #0077C8;
   --btn-text: #fff;
@@ -491,7 +491,6 @@ section.hero h1 {
 
 .hero-figure {
   flex: 1;
-  /* display: flex; */
   display: none;
   justify-content: flex-end;
   align-items: stretch;
@@ -585,7 +584,7 @@ header .hero-list svg {
     padding: 0 1rem !important;
   }
 
-  .servy-mascot {
+  .hero-figure {
     display: none;
   }
 }
@@ -857,7 +856,7 @@ code {
    ========================================================================== */
 
 #contact {
-  background-color: var(--background);
+  background-color: var(--bg-color);
 }
 
 form {

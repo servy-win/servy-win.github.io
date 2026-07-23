@@ -1,7 +1,19 @@
-import { jest, describe, beforeEach, test, expect } from '@jest/globals'
+import { jest, describe, beforeEach, afterEach, test, expect } from '@jest/globals'
 
 // A helper to wait for all currently pending promises to resolve
 const flushPromises = () => new Promise(resolve => setTimeout(resolve, 0))
+
+// Track DOMContentLoaded event listeners to clean them up after each test run
+const attachedDomListeners = []
+const originalAddEventListener = window.document.addEventListener.bind(window.document)
+const originalRemoveEventListener = window.document.removeEventListener.bind(window.document)
+
+window.document.addEventListener = function (type, listener, options) {
+  if (type === 'DOMContentLoaded') {
+    attachedDomListeners.push(listener)
+  }
+  return originalAddEventListener(type, listener, options)
+}
 
 // 1. Mock Fetch IMMEDIATELY (Before any imports)
 globalThis.fetch = jest.fn()
@@ -24,6 +36,13 @@ jest.unstable_mockModule('../src/js/utils.js', () => ({
 const utils = await import('../src/js/utils.js')
 
 describe('Stats Page Logic (stats.js)', () => {
+  afterEach(() => {
+    while (attachedDomListeners.length > 0) {
+      const listener = attachedDomListeners.pop()
+      originalRemoveEventListener('DOMContentLoaded', listener)
+    }
+  })
+
   test('calls initCommonLayout on DOMContentLoaded', async () => {
     // Clear mock state in case of multiple tests
     utils.initCommonLayout.mockClear()
@@ -60,6 +79,13 @@ describe('Statistics Page Logic (stats.js)', () => {
     localStorage.clear()
     // Use a clean mock for every test
     globalThis.fetch = jest.fn()
+  })
+
+  afterEach(() => {
+    while (attachedDomListeners.length > 0) {
+      const listener = attachedDomListeners.pop()
+      originalRemoveEventListener('DOMContentLoaded', listener)
+    }
   })
 
   test('fetches and renders stats correctly on fresh load', async () => {
@@ -245,6 +271,11 @@ test('handles localStorage access denial gracefully', async () => {
   // 6. Cleanup
   storageSpy.mockRestore()
   warnSpy.mockRestore()
+
+  while (attachedDomListeners.length > 0) {
+    const listener = attachedDomListeners.pop()
+    originalRemoveEventListener('DOMContentLoaded', listener)
+  }
 })
 
 test('handles generic API errors (e.g., 500) and constructs error string', async () => {
@@ -279,6 +310,11 @@ test('handles generic API errors (e.g., 500) and constructs error string', async
   expect(errorEl.textContent).toBe('Failed to load statistics.')
 
   errorSpy.mockRestore()
+
+  while (attachedDomListeners.length > 0) {
+    const listener = attachedDomListeners.pop()
+    originalRemoveEventListener('DOMContentLoaded', listener)
+  }
 })
 
 test('triggers controller.abort() when FETCH_TIMEOUT is reached', async () => {
@@ -320,6 +356,11 @@ test('triggers controller.abort() when FETCH_TIMEOUT is reached', async () => {
   expect(errorEl.textContent).toContain('Request timed out')
 
   errorSpy.mockRestore()
+
+  while (attachedDomListeners.length > 0) {
+    const listener = attachedDomListeners.pop()
+    originalRemoveEventListener('DOMContentLoaded', listener)
+  }
 })
 
 test('formatSize covers all branches (Bytes, KB, MB)', async () => {
@@ -370,6 +411,11 @@ test('formatSize covers all branches (Bytes, KB, MB)', async () => {
 
   // Changed from '5 MB' to '5.00 MB' to match the toFixed(2) branch
   expect(assetSizes).toContain('5.00 MB')
+
+  while (attachedDomListeners.length > 0) {
+    const listener = attachedDomListeners.pop()
+    originalRemoveEventListener('DOMContentLoaded', listener)
+  }
 })
 
 test('renders "Pre-release" badge when release.prerelease is true', async () => {
@@ -421,6 +467,11 @@ test('renders "Pre-release" badge when release.prerelease is true', async () => 
   // 5. Verify the stable release doesn't have it
   const secondReleaseTitle = document.querySelectorAll('.release-title')[1]
   expect(secondReleaseTitle.querySelector('.badge.pre')).toBeNull()
+
+  while (attachedDomListeners.length > 0) {
+    const listener = attachedDomListeners.pop()
+    originalRemoveEventListener('DOMContentLoaded', listener)
+  }
 })
 
 test('handles localStorage write failure (QuotaExceeded) gracefully', async () => {
@@ -471,6 +522,11 @@ test('handles localStorage write failure (QuotaExceeded) gracefully', async () =
   // 6. Cleanup
   setItemSpy.mockRestore()
   warnSpy.mockRestore()
+
+  while (attachedDomListeners.length > 0) {
+    const listener = attachedDomListeners.pop()
+    originalRemoveEventListener('DOMContentLoaded', listener)
+  }
 })
 
 test('sets keepFetching to false when API returns no data', async () => {
@@ -503,6 +559,11 @@ test('sets keepFetching to false when API returns no data', async () => {
   expect(errorEl.textContent).toContain('No releases were found')
 
   errorSpy.mockRestore()
+
+  while (attachedDomListeners.length > 0) {
+    const listener = attachedDomListeners.pop()
+    originalRemoveEventListener('DOMContentLoaded', listener)
+  }
 })
 
 test('updateTimestampUI returns early if last-updated element is missing', async () => {
@@ -542,6 +603,11 @@ test('updateTimestampUI returns early if last-updated element is missing', async
 
   // Verify the rest of the UI still rendered correctly
   expect(document.querySelector('.release-link').textContent).toBe('v7.2.2')
+
+  while (attachedDomListeners.length > 0) {
+    const listener = attachedDomListeners.pop()
+    originalRemoveEventListener('DOMContentLoaded', listener)
+  }
 })
 
 test('finalizeUI handles missing elements without throwing', async () => {
@@ -589,6 +655,11 @@ test('finalizeUI handles missing elements without throwing', async () => {
   const link = document.querySelector('.release-link')
   if (link) {
     expect(link.textContent).toBe('v7.2.3')
+  }
+
+  while (attachedDomListeners.length > 0) {
+    const listener = attachedDomListeners.pop()
+    originalRemoveEventListener('DOMContentLoaded', listener)
   }
 })
 
@@ -648,6 +719,11 @@ test('covers both branches of ETag assignment (page 1 vs page 2+)', async () => 
   // Verify it captured Page 1 and ignored Page 2
   expect(localStorage.getItem(etagKey)).toBe('page-1-etag')
   expect(mockFetch).toHaveBeenCalled()
+
+  while (attachedDomListeners.length > 0) {
+    const listener = attachedDomListeners.pop()
+    originalRemoveEventListener('DOMContentLoaded', listener)
+  }
 })
 
 test('covers the FALSE branch for total-downloads element (when missing)', async () => {
@@ -694,4 +770,9 @@ test('covers the FALSE branch for total-downloads element (when missing)', async
   // Verify that the script reached the end (finalizeUI) despite the missing element
   const container = document.getElementById('stats-container')
   expect(container.style.display).toBe('block')
+
+  while (attachedDomListeners.length > 0) {
+    const listener = attachedDomListeners.pop()
+    originalRemoveEventListener('DOMContentLoaded', listener)
+  }
 })

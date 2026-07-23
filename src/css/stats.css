@@ -2,7 +2,6 @@
   --stats-error-color: #e74c3c;
   --badge-pre-bg: #f39c12;
   --badge-pre-color: #fff;
-  /* --border-radius: 0.25rem; */
   --border-radius: 0;
 }
 
@@ -40,7 +39,6 @@ header h1 {
   margin-top: 0;
   font-size: 1.2rem;
   color: var(--text-color);
-  /* opacity: 0.8; */
 }
 
 .big-number {
@@ -244,7 +242,3 @@ header h1 {
 .author-link:hover {
   text-decoration: underline;
 }
-
-/* footer {
-  display: none;
-} */
