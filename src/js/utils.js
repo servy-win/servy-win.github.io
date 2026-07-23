@@ -9,7 +9,7 @@ import { initGA } from './ga.js'
 /**
  * Orchestrates the initialization of all common layout components and tracking.
  * Should be called once per page entry point (e.g., in main.js, stats.js).
- * * @returns {void}
+ * @returns {void}
  */
 export const initCommonLayout = () => {
   // Initialize Google Analytics and Google Ads Conversion Tracking
@@ -32,7 +32,7 @@ export const initCommonLayout = () => {
  * Initializes the mobile navigation hamburger menu.
  * Handles toggling active states, ARIA attributes, scroll locking, 
  * and "click-outside" auto-closure.
- * * @returns {void}
+ * @returns {void}
  */
 export const initHeaderHamburger = () => {
   const hamburger = document.getElementById('hamburger-menu')
@@ -85,7 +85,7 @@ export const initHeaderHamburger = () => {
 /**
  * Initializes the Dark Mode theme switcher.
  * Synchronizes state with localStorage and OS-level system preferences.
- * * @returns {void}
+ * @returns {void}
  */
 export const initToggleDarkMode = () => {
   const toggleBtn = document.getElementById('dark-mode-toggle')
@@ -131,7 +131,7 @@ export const initToggleDarkMode = () => {
 /**
  * Initializes the "Back to Top" button with performance-optimized scroll listening.
  * Uses requestAnimationFrame (rAF) to prevent layout thrashing during scroll.
- * * @returns {void}
+ * @returns {void}
  */
 export const initBackToTop = () => {
   const backToTopBtn = document.getElementById('back-to-top')
@@ -171,7 +171,7 @@ export const initBackToTop = () => {
 
 /**
  * Dynamically injects the current year into the footer copyright notice.
- * * @returns {void}
+ * @returns {void}
  */
 export const initCopyrightYear = () => {
   const yearElement = document.getElementById('year')

@@ -12,3 +12,7 @@ header h1 {
   width: 100%;
   max-width: 600px;
 }
+
+.form-container .honeypot {
+  display: none;
+}

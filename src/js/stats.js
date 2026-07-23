@@ -234,7 +234,7 @@ function renderStats(releases) {
   const dateOpts = { year: 'numeric', month: 'long', day: 'numeric' }
 
   // Clear existing list if re-rendering
-  list.innerHTML = ''
+  list.replaceChildren()
 
   releases.forEach((release, index) => {
     const releaseDownloads = release.assets.reduce((sum, asset) => sum + asset.download_count, 0)
@@ -256,7 +256,8 @@ function renderStats(releases) {
     releaseLink.href = release.html_url
     releaseLink.className = 'release-link'
     releaseLink.target = '_blank'
-    releaseLink.rel = 'noopener'
+    releaseLink.ariaLabel = `Release ${release.tag_name}`
+    releaseLink.rel = 'noopener noreferrer'
     releaseLink.textContent = release.tag_name
     h3.appendChild(releaseLink)
     releaseTitle.appendChild(h3)
@@ -277,7 +278,7 @@ function renderStats(releases) {
 
     const releaseDate = document.createElement('div')
     releaseDate.className = 'release-date'
-    releaseDate.textContent = new Date(release.published_at).toLocaleDateString('en-US', dateOpts)
+    releaseDate.textContent = release.published_at ? new Date(release.published_at).toLocaleDateString('en-US', dateOpts) : 'N/A'
 
     releaseHeader.appendChild(releaseTitle)
     releaseHeader.appendChild(releaseDate)
@@ -305,11 +306,11 @@ function renderStats(releases) {
     const authorLink = document.createElement('a')
     authorLink.href = release.author.html_url
     authorLink.target = '_blank'
-    authorLink.rel = 'noopener'
+    authorLink.rel = 'noopener noreferrer'
     authorLink.className = 'author-link'
     const avatar = document.createElement('img')
     avatar.src = release.author.avatar_url
-    avatar.alt = ''
+    avatar.alt = release.author.login
     avatar.className = 'avatar'
     authorLink.appendChild(avatar)
     authorLink.appendChild(document.createTextNode(release.author.login))
