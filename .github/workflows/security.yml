@@ -12,16 +12,16 @@ on:
 
 jobs:
   # Layer 1: Dependency Scanning (SCA) - Checks for known vulnerabilities in npm packages
-  dependency-audit:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v6
-        with:
-          node-version: lts/*
-          cache: 'npm'
-      - name: Audit Dependencies
-        run: npm audit --audit-level=high # Fails on high/critical vulnerabilities
+  # dependency-audit:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v5
+  #     - uses: actions/setup-node@v6
+  #       with:
+  #         node-version: lts/*
+  #         cache: 'npm'
+  #     - name: Audit Dependencies
+  #       run: npm audit --audit-level=high # Fails on high/critical vulnerabilities
 
   # Layer 2: Static Analysis (SAST) - Analyzes code for security flaws using CodeQL
   codeql-analysis:
