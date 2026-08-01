@@ -333,11 +333,13 @@
   --name="MyService" `
   --path="C:\Program Files\nodejs\node.exe" `
   --startupDir="C:\MyServer" `
-  --params="server.js"</code></pre>
+  --params="server.js" `
+  --enableHealth</code></pre>
       </div>
       <p>This creates a service named <code>MyService</code> that runs your Node.js server in the background and starts
-        automatically
-        with Windows.</p>
+        automatically with Windows, and has <a
+          href="https://github.com/aelassas/servy/wiki/Health-Monitoring-&-Recovery" target="_blank"
+          rel="noopener noreferrer">health monitoring</a> enabled.</p>
       <p>
         Explore more <a href="https://github.com/aelassas/servy/wiki/Examples-&-Recipes" target="_blank"
           rel="noopener noreferrer">examples and recipes</a>
