@@ -1,4 +1,4 @@
-# GitHub Actions workflow to perform security auditing (SCA, SAST, and Secret Scanning)
+# GitHub Actions workflow to perform security auditing (SAST and Secret Scanning)
 name: security
 
 on:
@@ -11,19 +11,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  # Layer 1: Dependency Scanning (SCA) - Checks for known vulnerabilities in npm packages
-  # dependency-audit:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v5
-  #     - uses: actions/setup-node@v6
-  #       with:
-  #         node-version: lts/*
-  #         cache: 'npm'
-  #     - name: Audit Dependencies
-  #       run: npm audit --audit-level=high # Fails on high/critical vulnerabilities
-
-  # Layer 2: Static Analysis (SAST) - Analyzes code for security flaws using CodeQL
+  # Static Analysis (SAST) - Analyzes code for security flaws using CodeQL
   codeql-analysis:
     runs-on: ubuntu-latest
     permissions:
@@ -37,7 +25,7 @@ jobs:
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
 
-  # Layer 3: Secret Scanning - Ensures no passwords, API keys, or tokens are committed
+  # Secret Scanning - Ensures no passwords, API keys, or tokens are committed
   secret-scan:
     runs-on: ubuntu-latest
     steps:

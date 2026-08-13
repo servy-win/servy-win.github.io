@@ -121,6 +121,7 @@ header h1 {
 /* Stats Grid */
 .release-stats {
   display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   margin-bottom: 1.5rem;
   font-size: 0.95rem;

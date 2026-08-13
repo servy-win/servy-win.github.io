@@ -36,7 +36,13 @@
 
   <script>
     (function () {
-      const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      let savedTheme;
+      try {
+        savedTheme = localStorage.getItem('theme');
+      } catch {
+        savedTheme = null;
+      }
+      const theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>
@@ -135,7 +141,6 @@
           <input type="text" id="name" name="name" placeholder="Name" autocomplete="name" required>
           <label for="email" class="sr-only">Email</label>
           <input type="email" id="email" name="email" placeholder="Email" autocomplete="email" required>
-          <span id="email-error" role="alert"></span>
           <label for="message" class="sr-only">Message</label>
           <textarea id="message" name="message" placeholder="Message" required></textarea>
           <input type="text" name="_gotcha" tabindex="-1" class="honeypot">

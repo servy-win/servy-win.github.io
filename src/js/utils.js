@@ -6,6 +6,22 @@
 
 import { initGA } from './ga.js'
 
+const getStoredTheme = () => {
+  try {
+    return localStorage.getItem('theme')
+  } catch {
+    return null
+  }
+}
+
+const storeTheme = (theme) => {
+  try {
+    localStorage.setItem('theme', theme)
+  } catch {
+    // Storage may be unavailable in privacy-restricted browsing contexts.
+  }
+}
+
 /**
  * Orchestrates the initialization of all common layout components and tracking.
  * Should be called once per page entry point (e.g., in main.js, stats.js).
@@ -72,7 +88,7 @@ export const initHeaderHamburger = () => {
   })
 
   // Close when a navigation link is clicked (useful for anchor links)
-  document.querySelectorAll('.header-link').forEach(link => {
+  document.querySelectorAll('.header-link, .header-servy').forEach(link => {
     link.addEventListener('click', closeMenu)
   })
 
@@ -107,7 +123,7 @@ export const initToggleDarkMode = () => {
 
   // 2. Listen for OS-level theme changes
   mediaQuery.addEventListener('change', (e) => {
-    if (!localStorage.getItem('theme')) {
+    if (!getStoredTheme()) {
       root.setAttribute('data-theme', e.matches ? 'dark' : 'light')
       updateAriaPressed()
     }
@@ -119,10 +135,10 @@ export const initToggleDarkMode = () => {
 
     if (isDark) {
       root.setAttribute('data-theme', 'light')
-      localStorage.setItem('theme', 'light')
+      storeTheme('light')
     } else {
       root.setAttribute('data-theme', 'dark')
-      localStorage.setItem('theme', 'dark')
+      storeTheme('dark')
     }
     updateAriaPressed()
   })

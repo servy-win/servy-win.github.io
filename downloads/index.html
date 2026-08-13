@@ -40,7 +40,13 @@
 
   <script>
     (function () {
-      const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      let savedTheme;
+      try {
+        savedTheme = localStorage.getItem('theme');
+      } catch {
+        savedTheme = null;
+      }
+      const theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>
@@ -126,9 +132,9 @@
   </header>
 
   <main class="container">
-    <div id="loading" class="stats-loading">Loading release data...</div>
-    <div id="error" class="stats-error" style="display: none;"></div>
-    <div id="stats-container" style="display: none;">
+    <div id="loading" class="stats-loading" role="status" aria-live="polite">Loading release data...</div>
+    <div id="error" class="stats-error" role="alert" aria-live="assertive" style="display: none;"></div>
+    <div id="stats-container" aria-live="polite" style="display: none;">
       <section class="total-downloads-card">
         <h2>Total Downloads</h2>
         <div class="big-number" id="total-downloads">0</div>

@@ -70,9 +70,10 @@ npm run build
 
 The build process includes:
 * Minification via Terser.
-* CSS minification and prefixing.
-* Asset hashing for cache busting.
-* HTML validation and linting.
+* CSS minification and hashed asset filenames via Vite.
+* CSS preload injection for generated pages.
+
+Run `npm run validate:html` and `npm run lint` separately to validate HTML and JavaScript.
 
 ## Code Quality
 

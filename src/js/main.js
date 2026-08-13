@@ -50,7 +50,15 @@ const initCodeBlocks = () => {
      * Provides visual feedback by temporarily changing the button text.
      */
     button.addEventListener('click', () => {
-      navigator.clipboard.writeText(codeElement.textContent)
+      const writeText = navigator.clipboard?.writeText
+
+      if (!writeText) {
+        button.textContent = 'Unavailable'
+        setTimeout(() => { button.textContent = 'Copy' }, 2000)
+        return
+      }
+
+      writeText.call(navigator.clipboard, codeElement.textContent)
         .then(() => {
           button.textContent = 'Copied!'
           

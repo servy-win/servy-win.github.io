@@ -237,7 +237,9 @@ function renderStats(releases) {
   list.replaceChildren()
 
   releases.forEach((release, index) => {
-    const releaseDownloads = release.assets.reduce((sum, asset) => sum + asset.download_count, 0)
+    const assets = Array.isArray(release.assets) ? release.assets : []
+    const author = release.author || {}
+    const releaseDownloads = assets.reduce((sum, asset) => sum + (asset.download_count || 0), 0)
     totalDownloads += releaseDownloads
 
     // --- Card ---
@@ -304,16 +306,16 @@ function renderStats(releases) {
     authorLabel.className = 'label'
     authorLabel.textContent = 'Author:'
     const authorLink = document.createElement('a')
-    authorLink.href = release.author.html_url
+    authorLink.href = author.html_url || '#'
     authorLink.target = '_blank'
     authorLink.rel = 'noopener noreferrer'
     authorLink.className = 'author-link'
     const avatar = document.createElement('img')
-    avatar.src = release.author.avatar_url
+    avatar.src = author.avatar_url || ''
     avatar.alt = ''
     avatar.className = 'avatar'
     authorLink.appendChild(avatar)
-    authorLink.appendChild(document.createTextNode(release.author.login))
+    authorLink.appendChild(document.createTextNode(author.login || 'Unknown'))
     authorStat.appendChild(authorLabel)
     authorStat.appendChild(authorLink)
 
@@ -328,13 +330,13 @@ function renderStats(releases) {
     const assetsList = document.createElement('ul')
     assetsList.className = 'assets-list'
 
-    if (release.assets.length === 0) {
+    if (assets.length === 0) {
       const noAssets = document.createElement('li')
       noAssets.className = 'no-assets'
       noAssets.textContent = 'No assets available'
       assetsList.appendChild(noAssets)
     } else {
-      release.assets.forEach(asset => {
+      assets.forEach(asset => {
         const li = document.createElement('li')
         li.className = 'asset-item'
 

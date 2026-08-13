@@ -13,7 +13,7 @@
     "lhci": "npm run build && lhci autorun",
     "prepare": "husky",
     "ncu": "npm-check-updates -u",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test": "node --no-warnings --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test:coverage": "npm test -- --coverage --no-cache",
     "size": "ls -lh dist/assets",
     "budget-check": "lhci autorun"

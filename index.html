@@ -87,7 +87,13 @@
   </script>
   <script>
     (function () {
-      const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      let savedTheme;
+      try {
+        savedTheme = localStorage.getItem('theme');
+      } catch {
+        savedTheme = null;
+      }
+      const theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>
@@ -173,7 +179,7 @@
       <div class="hero-container">
         <div class="hero-text">
           <h1>Professional-Grade Windows Service Wrapper</h1>
-          <p class="hero-lead">with Real-Time Monitoring</p>
+          <p class="hero-lead">With Real-Time Monitoring</p>
           <!-- <p class="hero-lead">A modern, secure alternative to NSSM and WinSW with deep observability</p> -->
 
           <ul class="hero-list">
