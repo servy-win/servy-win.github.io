@@ -57,12 +57,6 @@
   --footer-link: var(--dark);
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 /* Dark theme variables */
 [data-theme="dark"] {
   --primary: #56BFD7;
