@@ -12,23 +12,23 @@
   <meta name="theme-color" content="#00add8">
 
   <!-- Primary SEO -->
-  <title>Servy - Professional-Grade Windows Service Wrapper</title>
+  <title>Servy - Run Any App as a Native Windows Service</title>
   <meta name="description"
-    content="Servy lets you run any app as a native Windows service with full control over working directory, startup type, process priority, logging, health checks, environment variables, dependencies, pre-launch and post-launch hooks, and parameters. Full-Featured Alternative to NSSM, WinSW & FireDaemon Pro.">
+    content="Servy lets you run any app as a native Windows service with full control over working directory, startup type, process priority, logging, health checks, environment variables, dependencies, pre-launch and post-launch hooks, and parameters.">
 
   <!-- MS Application Metadata -->
   <meta name="application-name" content="Servy">
-  <meta name="msapplication-tooltip" content="Professional-Grade Windows Service Wrapper">
+  <meta name="msapplication-tooltip" content="Run Any App as a Native Windows Service">
 
   <!-- Open Graph / Facebook / LinkedIn -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Servy - Turn Any App into a Native Windows Service">
   <meta property="og:description"
-    content="Servy lets you run any app as a native Windows service with full control over working directory, startup type, process priority, logging, health checks, environment variables, dependencies, pre-launch and post-launch hooks, and parameters. Full-Featured Alternative to NSSM, WinSW & FireDaemon Pro.">
+    content="Servy lets you run any app as a native Windows service with full control over working directory, startup type, process priority, logging, health checks, environment variables, dependencies, pre-launch and post-launch hooks, and parameters.">
   <meta property="og:image" content="https://servy-win.github.io/servy-tiny.png">
   <meta property="og:image:width" content="1366">
   <meta property="og:image:height" content="715">
-  <meta property="og:image:alt" content="Servy: Modern Windows Service Wrapper">
+  <meta property="og:image:alt" content="Servy: Run Any App as a Native Windows Service">
   <meta property="og:url" content="https://servy-win.github.io/">
   <meta property="og:site_name" content="Servy">
   <meta property="og:locale" content="en_US">
@@ -36,11 +36,11 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Servy: Modern Windows Service Wrapper">
+  <meta name="twitter:title" content="Servy: Run Any App as a Native Windows Service">
   <meta name="twitter:description"
-    content="Servy lets you run any app as a native Windows service with full control over working directory, startup type, process priority, logging, health checks, environment variables, dependencies, pre-launch and post-launch hooks, and parameters. Full-Featured Alternative to NSSM, WinSW & FireDaemon Pro.">
+    content="Servy lets you run any app as a native Windows service with full control over working directory, startup type, process priority, logging, health checks, environment variables, dependencies, pre-launch and post-launch hooks, and parameters.">
   <meta name="twitter:image" content="https://servy-win.github.io/servy-tiny.png">
-  <meta name="twitter:image:alt" content="Servy: Modern Windows Service Wrapper">
+  <meta name="twitter:image:alt" content="Servy: Run Any App as a Native Windows Service">
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -50,7 +50,7 @@
     "name": "Servy",
     "operatingSystem": "Windows",
     "applicationCategory": "UtilitiesApplication",
-    "description": "Run any application or script as a native Windows service with real-time monitoring. Full-Featured Alternative to NSSM, WinSW & FireDaemon Pro.",
+    "description": "Run any application or script as a native Windows service with real-time monitoring.",
     "image": "https://servy-win.github.io/servy-tiny.png",
     "downloadUrl": "https://github.com/aelassas/servy/releases/latest",
     "author": {
@@ -178,7 +178,7 @@
     <section class="hero">
       <div class="hero-container">
         <div class="hero-text">
-          <h1>Professional-Grade Windows Service Wrapper</h1>
+          <h1>Run Any App as a Native Windows Service</h1>
           <p class="hero-lead">With Real-Time Monitoring</p>
           <!-- <p class="hero-lead">A modern, secure alternative to NSSM and WinSW with deep observability</p> -->
 
@@ -208,7 +208,7 @@
                   d="M10.8519 0.52594L3.89189 7.10404L1.14811 4.51081L0 5.59592L3.89189 9.27426L12 1.61105L10.8519 0.52594Z"
                   fill="currentColor" />
               </svg>
-              <span>Real-Time CPU/RAM Telemetry and Live Output Streaming</span>
+              <span>Monitor CPU/RAM Usage and Stream stdout/stderr in Real Time</span>
             </li>
             <li>
               <svg class="check-icon" width="12" height="10" viewBox="0 0 12 10" fill="none"
@@ -241,12 +241,12 @@
 
           <div class="cta">
             <a href="https://github.com/aelassas/servy/releases/latest" class="cta-btn" target="_blank"
-              rel="noopener noreferrer" aria-label="Download">
+              rel="noopener noreferrer" aria-label="Download the Latest Release">
               Download
             </a>
 
             <a href="https://github.com/aelassas/servy/wiki/Overview" class="cta-btn cta-btn-secondary" target="_blank"
-              rel="noopener noreferrer" aria-label="Get Started">
+              rel="noopener noreferrer" aria-label="Read the Quick Start Guide">
               Get Started
             </a>
           </div>
@@ -311,15 +311,17 @@
         <li><strong>Auto-Recovery</strong> Automatic restarts that recover from crashes, hangs, and failures.</li>
         <li><strong>Full Process Control</strong> Granular management of directories, priorities, and environment
           variables.</li>
-        <li><strong>Enterprise Auth</strong> Support for Local System, Active Directory, and gMSA accounts.</li>
-        <li><strong>Lifecycle Hooks</strong> Pre and post-launch/stop scripts with built-in logging and timeouts.</li>
-        <li><strong>Live Monitoring</strong> Real-time CPU/RAM graphs with live stdout/stderr streaming.</li>
+        <li><strong>Enterprise Auth</strong> Run services under Local System, Active Directory, or gMSA accounts.</li>
+        <li><strong>Lifecycle Hooks</strong> Pre-launch, post-launch, pre-stop, and post-stop hooks with built-in
+          logging and timeouts.</li>
+        <li><strong>Live Monitoring</strong> Monitor CPU/RAM usage and stream stdout/stderr while a service is running.</li>
         <li><strong>Graceful Shutdown</strong> Safe termination using graceful shutdown, <code>Ctrl+C</code>, falling
           back to a recursive force-kill.</li>
         <li><strong>Health Checks</strong> Automated failure detection, instant alerts via Windows or email, and ping
           URLs (e.g., <a href="https://healthchecks.io/" target="_blank" rel="noopener noreferrer">healthchecks.io</a>).
         </li>
-        <li><strong>Visual Dependencies</strong> Interactive dependency trees and easy configuration exports.</li>
+        <li><strong>Visual Dependencies</strong> Visualize service dependencies and export configurations for repeatable
+          deployments.</li>
       </ul>
     </section>
 
@@ -334,7 +336,7 @@
       <p>Here's a minimal example using the CLI to run a Node.js app as a Windows service:</p>
       <div class="code-block">
         <div class="code-header">PowerShell</div>
-        <button type="button" class="copy-btn" aria-label="Copy Example command">Copy</button>
+        <button type="button" class="copy-btn" aria-label="Copy PowerShell command">Copy</button>
         <pre><code>servy-cli install `
   --name="MyService" `
   --path="C:\Program Files\nodejs\node.exe" `
@@ -358,19 +360,19 @@
       <div class="use-cases-grid">
         <div class="use-case-item">
           <h3>Web Servers &amp; APIs</h3>
-          <p>Run Node.js, Python, Go, or Java
-            backend servers as resilient Windows services that start automatically on boot.</p>
+          <p>Run Node.js, Python, Go, or Java servers as Windows services that start automatically and recover after
+            failures.</p>
         </div>
 
         <div class="use-case-item">
           <h3>AI Models &amp; LLMs </h3>
-          <p>Host local LLMs or AI APIs (like Ollama or Stable Diffusion) as persistent services so your models are
+          <p>Run local LLMs or AI APIs (like Ollama or Stable Diffusion) as persistent services so your models are
             operational 24/7 without active desktop sessions.</p>
         </div>
 
         <div class="use-case-item">
           <h3>Background Workers</h3>
-          <p>Keep data processing scripts, message queue consumers (RabbitMQ/Kafka), and long-running workers active in
+          <p>Run data processing scripts, message queue consumers (RabbitMQ/Kafka), and long-running workers active in
             the background without a logged-in session.</p>
         </div>
 
@@ -418,13 +420,13 @@
         real-time CPU/RAM monitoring, stdout/stderr streaming, heartbeat pings, notifications, and CPU affinity, the
         core concept remains the same.</p>
       <div class="video-container">
-        <lite-youtube videoid="biHq17j4RbI" title="Servy - Professional-Grade Windows Service Wrapper" params="rel=0"
+        <lite-youtube videoid="biHq17j4RbI" title="Servy - Run Any App as a Native Windows Service" params="rel=0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></lite-youtube>
       </div>
     </section>
 
     <section>
-      <h2>Getting Started</h2>
+      <h2>Install Servy</h2>
       <p>
         Download the latest release from <a href="https://github.com/aelassas/servy/releases/latest" target="_blank"
           rel="noopener noreferrer">GitHub</a> or install via a package manager:
