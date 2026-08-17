@@ -97,6 +97,30 @@ describe('Main Page Clipboard UI Interactions', () => {
     expect(btn.textContent).toBe('Copy')
   })
 
+  test('displays "Unavailable" if navigator.clipboard is missing', async () => {
+    jest.useFakeTimers()
+
+    // Temporarily wipe out navigator.clipboard to trigger the !writeText branch
+    Object.defineProperty(navigator, 'clipboard', {
+      value: undefined,
+      configurable: true
+    })
+
+    await import(`../src/js/main.js?t=${Date.now() + 3}`)
+    window.dispatchEvent(new Event('DOMContentLoaded'))
+
+    const btn = document.querySelector('#valid .copy-btn')
+    btn.click()
+
+    expect(btn.textContent).toBe('Unavailable')
+
+    // Fast-forward time to verify it resets back to 'Copy'
+    jest.advanceTimersByTime(2000)
+    expect(btn.textContent).toBe('Copy')
+
+    jest.useRealTimers()
+  })
+
   test('returns early if button or code element is missing', async () => {
     // This targets the "if (!button || !codeElement) return" line
     await import(`../src/js/main.js?t=${Date.now() + 2}`)
