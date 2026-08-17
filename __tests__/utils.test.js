@@ -9,6 +9,18 @@ jest.unstable_mockModule('../src/js/ga.js', () => ({
 const { initGA } = await import('../src/js/ga.js')
 const utils = await import('../src/js/utils.js')
 
+test('getStoredTheme returns null safely if localStorage throws an error', () => {
+  // Force localStorage.getItem to throw an error (simulating storage blocking/privacy mode)
+  const spy = jest.spyOn(Storage.prototype, 'getItem').mockImplementation(() => {
+    throw new Error('SecurityError: LocalStorage is disabled')
+  })
+
+  // Calling initToggleDarkMode calls getStoredTheme internally
+  expect(() => utils.initToggleDarkMode()).not.toThrow()
+
+  spy.mockRestore()
+})
+
 describe('initCommonLayout', () => {
   beforeEach(() => {
     // Reset DOM
@@ -111,32 +123,32 @@ describe('Utility Functions (utils.js)', () => {
     })
   })
 
-test('initBackToTop throttles multiple scroll events', async () => {
-  // 1. Reset modules to clear internal variables like 'rAFId'
-  jest.resetModules()
-  const { initBackToTop } = await import('../src/js/utils.js')
+  test('initBackToTop throttles multiple scroll events', async () => {
+    // 1. Reset modules to clear internal variables like 'rAFId'
+    jest.resetModules()
+    const { initBackToTop } = await import('../src/js/utils.js')
 
-  // 2. Setup a fresh DOM and Spy
-  document.body.innerHTML = '<button id="back-to-top"></button>'
-  const rAFSpy = jest.spyOn(window, 'requestAnimationFrame').mockReturnValue(123)
+    // 2. Setup a fresh DOM and Spy
+    document.body.innerHTML = '<button id="back-to-top"></button>'
+    const rAFSpy = jest.spyOn(window, 'requestAnimationFrame').mockReturnValue(123)
 
-  // 3. Initialize (This calls updateBackToTopButton once immediately)
-  initBackToTop()
-  
-  // 4. Clear that initial call so we only track the scrolls
-  rAFSpy.mockClear()
+    // 3. Initialize (This calls updateBackToTopButton once immediately)
+    initBackToTop()
 
-  // 5. Trigger first scroll -> Sets rAFId to 123
-  window.dispatchEvent(new Event('scroll'))
-  
-  // 6. Trigger second scroll -> Sees rAFId is 123, skips 'if (!rAFId)'
-  window.dispatchEvent(new Event('scroll'))
+    // 4. Clear that initial call so we only track the scrolls
+    rAFSpy.mockClear()
 
-  // 7. Success: Only 1 rAF call from the two scrolls
-  expect(rAFSpy).toHaveBeenCalled()
+    // 5. Trigger first scroll -> Sets rAFId to 123
+    window.dispatchEvent(new Event('scroll'))
 
-  rAFSpy.mockRestore()
-})
+    // 6. Trigger second scroll -> Sees rAFId is 123, skips 'if (!rAFId)'
+    window.dispatchEvent(new Event('scroll'))
+
+    // 7. Success: Only 1 rAF call from the two scrolls
+    expect(rAFSpy).toHaveBeenCalled()
+
+    rAFSpy.mockRestore()
+  })
 
   test('initHeaderHamburger toggles active class on click', () => {
     utils.initHeaderHamburger()
