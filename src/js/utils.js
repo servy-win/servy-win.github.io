@@ -6,7 +6,7 @@
 
 import { initGA } from './ga.js'
 
-const getStoredTheme = () => {
+export const getStoredTheme = () => {
   try {
     return localStorage.getItem('theme')
   } catch {

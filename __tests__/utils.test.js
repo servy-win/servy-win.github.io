@@ -15,8 +15,9 @@ test('getStoredTheme returns null safely if localStorage throws an error', () =>
     throw new Error('SecurityError: LocalStorage is disabled')
   })
 
-  // Calling initToggleDarkMode calls getStoredTheme internally
-  expect(() => utils.initToggleDarkMode()).not.toThrow()
+  // Call getStoredTheme directly to execute the try/catch block immediately
+  const result = utils.getStoredTheme()
+  expect(result).toBeNull()
 
   spy.mockRestore()
 })
