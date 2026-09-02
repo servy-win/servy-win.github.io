@@ -66,4 +66,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         # Takes the artifact from the build job and pushes it to the Pages infrastructure
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

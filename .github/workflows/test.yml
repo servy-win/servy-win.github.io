@@ -16,6 +16,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
+        with:
+          # Required for Codecov to find the base commit for comparison
+          fetch-depth: 2
 
       - name: Set up Node
         uses: actions/setup-node@v6
@@ -38,8 +41,8 @@ jobs:
           NODE_OPTIONS: --experimental-vm-modules
 
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@75cd11691c0faa626561e295848008c8a7dddffe #v5.5.4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./cobertura-coverage.xml
-          directory: ./coverage       
+          directory: ./coverage
