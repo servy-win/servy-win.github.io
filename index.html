@@ -202,7 +202,7 @@
               <svg class="check-icon" width="12" height="10" aria-hidden="true">
                 <use href="#icon-check" />
               </svg>
-              <span>Manage with a Desktop UI, the CLI, or PowerShell</span>
+              <span>Manage with Desktop UI, CLI, or PowerShell</span>
             </li>
             <li>
               <svg class="check-icon" width="12" height="10" aria-hidden="true">
@@ -220,13 +220,13 @@
               <svg class="check-icon" width="12" height="10" aria-hidden="true">
                 <use href="#icon-check" />
               </svg>
-              <span>Monitor CPU/RAM and Stream stdout/stderr Live</span>
+              <span>Monitor CPU/RAM and Console Output in Real Time</span>
             </li>
             <li>
               <svg class="check-icon" width="12" height="10" aria-hidden="true">
                 <use href="#icon-check" />
               </svg>
-              <span>Automatic Crash Recovery and Configurable Log Rotation</span>
+              <span>Automatic Recovery and Configurable Log Rotation</span>
             </li>
             <li>
               <svg class="check-icon" width="12" height="10" aria-hidden="true">
@@ -262,37 +262,6 @@
           </div>
         </div>
 
-        <div class="hero-figure">
-          <svg class="servy-mascot" xmlns="http://www.w3.org/2000/svg" viewBox="0 -120 512 632" aria-hidden="true">
-            <line x1="160" y1="512" x2="160" y2="-100" stroke="#99CBD7" stroke-width="14" />
-            <line x1="352" y1="512" x2="352" y2="-100" stroke="#99CBD7" stroke-width="14" />
-
-            <line x1="160" y1="420" x2="352" y2="420" stroke="#99CBD7" stroke-width="14" />
-            <line x1="160" y1="320" x2="352" y2="320" stroke="#99CBD7" stroke-width="14" />
-            <line x1="160" y1="220" x2="352" y2="220" stroke="#99CBD7" stroke-width="14" />
-            <line x1="160" y1="120" x2="352" y2="120" stroke="#99CBD7" stroke-width="14" />
-            <line x1="160" y1="20" x2="352" y2="20" stroke="#99CBD7" stroke-width="14" />
-            <line x1="160" y1="-80" x2="352" y2="-80" stroke="#99CBD7" stroke-width="14" />
-
-            <rect x="210" y="280" width="20" height="40" rx="10" fill="#0284c7" />
-            <rect x="282" y="280" width="20" height="40" rx="10" fill="#0284c7" />
-
-            <rect x="186" y="160" width="140" height="130" rx="32" fill="#0ea5e9" />
-
-            <path d="M 186 210 L 326 210" stroke="#0284c7" stroke-width="6" opacity="0.4" />
-
-            <line x1="256" y1="160" x2="256" y2="120" stroke="#0ea5e9" stroke-width="8" stroke-linecap="round" />
-            <circle cx="256" cy="120" r="10" fill="#FDDD00" />
-
-            <path d="M 186 240 Q 170 250 160 250" fill="none" stroke="#0ea5e9" stroke-width="16"
-              stroke-linecap="round" />
-            <circle cx="160" cy="250" r="16" fill="#0ea5e9" />
-            <path d="M 326 210 Q 340 200 352 200" fill="none" stroke="#0ea5e9" stroke-width="16"
-              stroke-linecap="round" />
-            <circle cx="352" cy="200" r="16" fill="#0ea5e9" />
-          </svg>
-        </div>
-
       </div>
     </section>
 
@@ -302,7 +271,6 @@
 
     <section class="features-grid">
       <h2>Why use Servy?</h2>
-
 
       <ul>
         <li>
@@ -349,17 +317,17 @@
 
     <section>
       <h2>Quick Example</h2>
-      <p>Manage services with the <a href="https://github.com/aelassas/servy/wiki/Servy-Desktop-App" target="_blank"
-          rel="noopener noreferrer">desktop app (GUI)</a>, the <a
-          href="https://github.com/aelassas/servy/wiki/Servy-CLI" target="_blank" rel="noopener noreferrer">CLI</a>, or
+      <p>
+        Servy can be managed using the
+        <a href="https://github.com/aelassas/servy/wiki/Servy-Desktop-App" target="_blank"
+          rel="noopener noreferrer">Desktop App</a>,
+        <a href="https://github.com/aelassas/servy/wiki/Servy-CLI" target="_blank" rel="noopener noreferrer">CLI</a>, or
         <a href="https://github.com/aelassas/servy/wiki/Servy-PowerShell-Module" target="_blank"
-          rel="noopener noreferrer">PowerShell</a>.
+          rel="noopener noreferrer">PowerShell Module</a>.
       </p>
-      <p>The example below uses the CLI to run a Node.js app as a Windows service. Run it from an elevated PowerShell
-        prompt, since installing and starting services requires administrator privileges.</p>
 
       <div class="code-block">
-        <div class="code-header">PowerShell</div>
+        <div class="code-header">PowerShell (Elevated)</div>
         <button type="button" class="copy-btn" aria-label="Copy install command">Copy</button>
         <pre><code>servy-cli install `
   --name="MyService" `
@@ -368,15 +336,17 @@
   --params="server.js" `
   --enableHealth</code></pre>
       </div>
-      <p>This creates a service named <code>MyService</code> that runs your Node.js server in the background, starts
-        automatically with Windows, and is watched by <a
-          href="https://github.com/aelassas/servy/wiki/Health-Monitoring-&-Recovery" target="_blank"
-          rel="noopener noreferrer">health monitoring</a>.</p>
 
       <p>
-        Find more <a href="https://github.com/aelassas/servy/wiki/Examples-&-Recipes" target="_blank"
+        This installs <code>MyService</code> to run a Node.js application in the background with auto-startup and
+        <a href="https://github.com/aelassas/servy/wiki/Health-Monitoring-&-Recovery" target="_blank"
+          rel="noopener noreferrer">health monitoring</a>.
+      </p>
+
+      <p>
+        See additional <a href="https://github.com/aelassas/servy/wiki/Examples-&-Recipes" target="_blank"
           rel="noopener noreferrer">examples and recipes</a>
-        for Python, Java, Go, and other popular frameworks.
+        for Python, Java, Go, and other runtimes.
       </p>
     </section>
 
@@ -491,7 +461,7 @@ scoop install servy</code></pre>
       </p> -->
     </section>
 
-    <section>
+    <!-- <section>
       <h2>Quick Links</h2>
       <ul>
         <li>
@@ -525,7 +495,7 @@ scoop install servy</code></pre>
           </a>
         </li>
       </ul>
-    </section>
+    </section> -->
 
     <section id="support">
       <h2>Support &amp; Contributing</h2>

@@ -493,24 +493,6 @@ section.hero h1 {
   color: var(--hero-lead-text);
 }
 
-.hero-figure {
-  flex: 1;
-  display: none;
-  justify-content: flex-end;
-  align-items: stretch;
-}
-
-.hero-figure svg {
-  overflow: visible;
-}
-
-.servy-mascot {
-  width: 100%;
-  max-width: 380px;
-  height: 100%;
-  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
-}
-
 header h1 {
   font-size: 2.4rem;
   font-weight: 500;
@@ -585,10 +567,6 @@ header .hero-list svg {
     display: inline-block;
     text-align: left !important;
     padding: 0 1rem !important;
-  }
-
-  .hero-figure {
-    display: none;
   }
 }
 
