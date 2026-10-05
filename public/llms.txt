@@ -1,0 +1,46 @@
+# Servy
+
+> Servy is a free, open-source Windows service wrapper. It runs any executable or script as a native Windows service and manages its lifecycle, including startup, shutdown, crash recovery, logging, and health monitoring. It can be managed through a desktop app, a command-line interface, or a PowerShell module.
+
+Servy is an alternative to tools such as NSSM and WinSW. It is licensed under the MIT license and is available through WinGet, Chocolatey, Scoop, Patch My PC, and GitHub Releases.
+
+Key capabilities:
+
+- Run any application as a native Windows service
+- Auto-recovery after crashes, hangs, and failures
+- Per-service security isolation, with support for gMSA, Active Directory, and Local System accounts
+- Pre-launch, post-launch, pre-stop, and post-stop hooks
+- Real-time CPU and RAM monitoring, with stdout and stderr streaming
+- Health checks, notifications, and heartbeat pings
+- Log rotation and configurable process priority, working directory, and environment variables
+
+## Website
+
+- [Home](https://servy-win.github.io/): Overview, quick example, use cases, and installation options
+- [Downloads](https://servy-win.github.io/downloads/): Release history and download statistics
+- [Contact](https://servy-win.github.io/contact/): Inquiries, suggestions, and support
+
+## Documentation
+
+- [Wiki](https://github.com/aelassas/servy/wiki): Full documentation
+- [Overview](https://github.com/aelassas/servy/wiki/Overview): Introduction to Servy
+- [Installation Guide](https://github.com/aelassas/servy/wiki/Installation-Guide): Installing Servy
+- [Usage](https://github.com/aelassas/servy/wiki/Usage): Using Servy
+- [Servy Desktop App](https://github.com/aelassas/servy/wiki/Servy-Desktop-App): Desktop application
+- [Servy CLI](https://github.com/aelassas/servy/wiki/Servy-CLI): Command-line interface
+- [Servy PowerShell Module](https://github.com/aelassas/servy/wiki/Servy-PowerShell-Module): PowerShell module
+- [Examples and Recipes](https://github.com/aelassas/servy/wiki/Examples-&-Recipes): Examples for Python, Java, Go, Node.js, and other frameworks
+- [FAQ](https://github.com/aelassas/servy/wiki/FAQ): Frequently asked questions
+
+## Source and Releases
+
+- [GitHub Repository](https://github.com/aelassas/servy): Source code and issue tracker
+- [Latest Release](https://github.com/aelassas/servy/releases/latest): Installers and binaries
+- [Changelog](https://github.com/aelassas/servy/blob/main/CHANGELOG.md): Release notes
+- [Roadmap](https://github.com/aelassas/servy/blob/main/ROADMAP.md): Planned features
+- [License](https://github.com/aelassas/servy/blob/main/LICENSE.txt): MIT license
+
+## Optional
+
+- [Website Source](https://github.com/servy-win/servy-win.github.io): Source code of this website
+- [Sponsor Servy](https://github.com/sponsors/aelassas): Support the development of Servy
