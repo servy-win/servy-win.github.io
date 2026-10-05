@@ -1,0 +1,29 @@
+{
+  "specVersion": "1.0",
+  "entries": [
+    {
+      "identifier": "urn:air:servy-win.github.io:docs:llms-txt",
+      "displayName": "Servy Overview for LLMs",
+      "type": "text/markdown",
+      "url": "https://servy-win.github.io/llms.txt",
+      "description": "Markdown summary of Servy, a Windows service wrapper, with links to the documentation, downloads, and source code.",
+      "representativeQueries": [
+        "what is Servy and what does it do",
+        "tool to run any application as a Windows service",
+        "alternative to NSSM or WinSW for Windows services"
+      ]
+    },
+    {
+      "identifier": "urn:air:servy-win.github.io:docs:wiki",
+      "displayName": "Servy Documentation",
+      "type": "text/html",
+      "url": "https://github.com/aelassas/servy/wiki",
+      "description": "Installation guide, usage, CLI and PowerShell reference, and examples for running apps as Windows services with Servy.",
+      "representativeQueries": [
+        "how to install Servy",
+        "run a Node.js or Python app as a Windows service from the command line",
+        "configure health checks and automatic restart for a Windows service"
+      ]
+    }
+  ]
+}
