@@ -12,21 +12,19 @@ export default defineConfig({
     outDir: './dist',
     manifest: true,
     emptyOutDir: true,
-    rollupOptions: {
+    reportCompressedSize: false,
+    modulePreload: { polyfill: false },
+    rolldownOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
         stats: resolve(__dirname, 'downloads/index.html'),
         contact: resolve(__dirname, 'contact/index.html'),
       },
-      // No manualChunks — let Rollup handle code splitting automatically
-    },
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true, // Remove console statements
-      },
-      format: {
-        comments: false, // Remove comments from output
+      output: {
+        comments: false,
+        minify: {
+          compress: { dropConsole: true },
+        },
       },
     },
   },

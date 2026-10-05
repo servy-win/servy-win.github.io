@@ -31,6 +31,19 @@ function getHtmlFiles(dir, base = '') {
 
 const pages = getHtmlFiles(distDir)
 
+// Collect CSS of an entry and of the chunks it imports (shared CSS lives in imported chunks)
+function collectCss(key, seen = new Set()) {
+  const chunk = manifest[key]
+  if (!chunk || seen.has(key)) return []
+  seen.add(key)
+
+  const css = [...(chunk.css || [])]
+  for (const imported of chunk.imports || []) {
+    css.push(...collectCss(imported, seen))
+  }
+  return css
+}
+
 // Inject preload into each page
 pages.forEach((page) => {
   const filePath = path.join(distDir, page)
@@ -40,10 +53,16 @@ pages.forEach((page) => {
     return
   }
 
-  // Try to get page-specific entry, fallback to index
-  const entry = manifest[page] || manifest['index.html']
+  // Manifest keys always use forward slashes
+  const key = page.split(path.sep).join('/')
 
-  const cssFiles = entry?.css || []
+  // Static pages without a Vite entry (e.g. site verification files) have no CSS
+  if (!manifest[key]) {
+    console.log(`Skipping ${page}: not a Vite entry`)
+    return
+  }
+
+  const cssFiles = [...new Set(collectCss(key))]
 
   if (cssFiles.length === 0) {
     console.warn(`No CSS found for ${page}`)
