@@ -158,6 +158,10 @@ section {
   margin-bottom: 2rem;
 }
 
+.svg-sprite {
+  position: absolute;
+}
+
 
 /* ==========================================================================
    5. TYPOGRAPHY
@@ -694,18 +698,40 @@ div.cta {
   border-color: var(--primary);
 }
 
-.features-grid li strong {
-  display: block;
-  color: var(--primary);
-  margin-bottom: 0.25rem;
+.features-grid li h3 {
+  margin: 0 0 0.25rem;
   font-size: 1.1rem;
+}
+
+.features-grid li p {
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.section-intro {
+  max-width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .features-grid li,
+  .use-case-item {
+    transition: none;
+  }
+
+  .features-grid li:hover,
+  .use-case-item:hover {
+    transform: none;
+  }
 }
 
 .use-cases-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
 }
 
 .use-case-item {
@@ -731,6 +757,69 @@ div.cta {
   margin-bottom: 0;
   font-size: 0.95rem;
   line-height: 1.6;
+}
+
+/* Support buttons */
+.support-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+
+.support-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 150px;
+  min-height: 44px;
+  padding: 0.6rem 1.25rem;
+  box-sizing: border-box;
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.support-btn:hover {
+  opacity: .95;
+}
+
+/* Dark button on the light theme, light button on the dark theme */
+.support-btn-github {
+  background: #24292f;
+  border-color: #24292f;
+  color: #fff;
+}
+
+[data-theme="dark"] .support-btn-github {
+  background: #f0f6fc;
+  border-color: #f0f6fc;
+  color: #1b1f24;
+}
+
+.support-btn-paypal {
+  background: var(--custom-btn-bg);
+  border-color: var(--custom-btn-bg);
+  color: var(--custom-btn-text);
+}
+
+.support-btn .heart {
+  color: inherit;
+  margin: 0 0.5rem 0 0;
+}
+
+.support-btn-github .heart {
+  color: #e5262c;
+}
+
+@media (max-width: 600px) {
+  .support-btn {
+    flex: 1 1 100%;
+  }
 }
 
 /* Grids Media Queries */
