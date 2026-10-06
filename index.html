@@ -220,13 +220,7 @@
               <svg class="check-icon" width="12" height="10" aria-hidden="true">
                 <use href="#icon-check" />
               </svg>
-              <span>Monitor CPU/RAM and Console Output in Real Time</span>
-            </li>
-            <li>
-              <svg class="check-icon" width="12" height="10" aria-hidden="true">
-                <use href="#icon-check" />
-              </svg>
-              <span>Automatic Recovery and Configurable Log Rotation</span>
+              <span>Monitor CPU/RAM and Console Output with Automatic Recovery</span>
             </li>
             <li>
               <svg class="check-icon" width="12" height="10" aria-hidden="true">
@@ -313,6 +307,47 @@
           <p>Visualize service dependencies and export configurations for repeatable deployments.</p>
         </li>
       </ul>
+    </section>
+
+    <section>
+      <h2>Get Started</h2>
+      <p>
+        Download the latest release from <a href="https://github.com/aelassas/servy/releases/latest" target="_blank"
+          rel="noopener noreferrer">GitHub</a> or install via a package manager:
+      </p>
+
+      <h3>WinGet</h3>
+      <div class="code-block">
+        <button type="button" class="copy-btn" aria-label="Copy WinGet command">Copy</button>
+        <pre><code>winget install servy</code></pre>
+      </div>
+
+      <h3>Chocolatey</h3>
+      <div class="code-block">
+        <button type="button" class="copy-btn" aria-label="Copy Chocolatey command">Copy</button>
+        <pre><code>choco install -y servy</code></pre>
+      </div>
+
+      <h3>Scoop</h3>
+      <div class="code-block">
+        <button type="button" class="copy-btn" aria-label="Copy Scoop command">Copy</button>
+        <pre><code>scoop bucket add extras
+scoop install servy</code></pre>
+      </div>
+
+      <h3>Patch My PC</h3>
+      <p>
+        Servy is available in the official <a href="https://patchmypc.com/supported-products/" target="_blank"
+          rel="noopener noreferrer">Patch My PC catalog</a> for enterprise automated deployment and
+        updates via Microsoft Intune and ConfigMgr (SCCM).
+      </p>
+
+      <!-- <p class="blockquote">
+        Servy has been reviewed by Microsoft Security Intelligence and is confirmed safe. It is digitally signed and
+        performs only standard installation tasks and does not contain malware, adware, or unwanted software. Servy
+        passes VirusTotal scans and is published in the Windows Package Manager (WinGet), Chocolatey, and Scoop. You can
+        safely install it from GitHub, WinGet, Chocolatey, or Scoop.
+      </p> -->
     </section>
 
     <section>
@@ -420,47 +455,6 @@
       </div>
     </section> -->
 
-    <section>
-      <h2>Get Started</h2>
-      <p>
-        Download the latest release from <a href="https://github.com/aelassas/servy/releases/latest" target="_blank"
-          rel="noopener noreferrer">GitHub</a> or install via a package manager:
-      </p>
-
-      <h3>WinGet</h3>
-      <div class="code-block">
-        <button type="button" class="copy-btn" aria-label="Copy WinGet command">Copy</button>
-        <pre><code>winget install servy</code></pre>
-      </div>
-
-      <h3>Chocolatey</h3>
-      <div class="code-block">
-        <button type="button" class="copy-btn" aria-label="Copy Chocolatey command">Copy</button>
-        <pre><code>choco install -y servy</code></pre>
-      </div>
-
-      <h3>Scoop</h3>
-      <div class="code-block">
-        <button type="button" class="copy-btn" aria-label="Copy Scoop command">Copy</button>
-        <pre><code>scoop bucket add extras
-scoop install servy</code></pre>
-      </div>
-
-      <h3>Patch My PC</h3>
-      <p>
-        Servy is available in the official <a href="https://patchmypc.com/supported-products/" target="_blank"
-          rel="noopener noreferrer">Patch My PC catalog</a> for enterprise automated deployment and
-        updates via Microsoft Intune and ConfigMgr (SCCM).
-      </p>
-
-      <!-- <p class="blockquote">
-        Servy has been reviewed by Microsoft Security Intelligence and is confirmed safe. It is digitally signed and
-        performs only standard installation tasks and does not contain malware, adware, or unwanted software. Servy
-        passes VirusTotal scans and is published in the Windows Package Manager (WinGet), Chocolatey, and Scoop. You can
-        safely install it from GitHub, WinGet, Chocolatey, or Scoop.
-      </p> -->
-    </section>
-
     <!-- <section>
       <h2>Quick Links</h2>
       <ul>
@@ -501,12 +495,9 @@ scoop install servy</code></pre>
       <h2>Support &amp; Contributing</h2>
       <p>
         Servy is free and open source. If it has helped you, saved you time, or powered your production workflows,
-        consider supporting its development and maintenance.
-      </p>
-
-      <p>
-        Maintaining the project, publishing signed releases, and shipping security updates takes real time and
-        resources. Your support keeps Servy active, independent, and free for everyone.
+        consider supporting its development and maintenance. Maintaining the project, publishing signed releases, and
+        shipping security updates takes real time and resources. Your support keeps Servy active, independent, and free
+        for everyone.
       </p>
 
       <div class="support-links">
@@ -526,44 +517,38 @@ scoop install servy</code></pre>
           rel="noopener noreferrer">Buy Me a Coffee</a>
       </div>
 
-      <p>
+      <!-- <p>
         If you have suggestions, feature requests, or bug reports, feel free to
         <a href="https://github.com/aelassas/servy/issues" target="_blank" rel="noopener noreferrer">open an
           issue</a> or <a href="https://github.com/aelassas/servy/pulls" target="_blank"
           rel="noopener noreferrer">submit a pull request</a>.
-      </p>
+      </p> -->
     </section>
 
     <section id="acknowledgments">
       <h2>Acknowledgments</h2>
       <p>
         Special thanks to <a href="https://github.com/Christophe-Rogiers" target="_blank"
-          rel="noopener noreferrer">Christophe Rogiers</a>, who helped make Servy more robust,
-        more secure, and reliable through his countless contributions, insightful advice,
-        and dedication to code quality. Thanks Christophe for being a key part of the project.
+          rel="noopener noreferrer">Christophe Rogiers</a> for his countless contributions, insightful advice, and
+        dedication to code quality.
       </p>
       <p>
         Thanks to <a href="https://signpath.io/?utm_source=foundation&utm_medium=github&utm_campaign=servy"
-          target="_blank" rel="noopener noreferrer">SignPath</a> for providing a free code signing service, and to the
+          target="_blank" rel="noopener noreferrer">SignPath</a> and the
         <a href="https://signpath.org/?utm_source=foundation&utm_medium=github&utm_campaign=servy" target="_blank"
-          rel="noopener noreferrer">SignPath Foundation</a> for supplying a free code signing certificate.
-      </p>
-      <p>
-        Thanks to <a href="https://www.jetbrains.com/" target="_blank" rel="noopener noreferrer">JetBrains</a>
-        for providing an <a href="https://www.jetbrains.com/community/opensource/" target="_blank"
-          rel="noopener noreferrer">open-source license</a> for their tools. Their software made it much
-        easier to profile, debug, and optimize Servy, helping improve its performance and stability.
-      </p>
-      <p>
-        Thanks to everyone who tested Servy, reported issues, and suggested improvements on GitHub and Reddit.
-        Your feedback and contributions have shaped the project and made it better with every release.
-      </p>
-      <a href="https://signpath.org/?utm_source=foundation&utm_medium=github&utm_campaign=servy" target="_blank"
+          rel="noopener noreferrer">SignPath Foundation</a> for free code signing, to
+        <a href="https://www.jetbrains.com/" target="_blank" rel="noopener noreferrer">JetBrains</a> for an
+        <a href="https://www.jetbrains.com/community/opensource/" target="_blank" rel="noopener noreferrer">open-source
+          license</a>, and to everyone who tested Servy, reported issues, and
+        suggested improvements on GitHub and Reddit.
+      </p> <a href="https://signpath.org/?utm_source=foundation&utm_medium=github&utm_campaign=servy" target="_blank"
         rel="noopener noreferrer" class="logo">
-        <img alt="SignPath Foundation" src="/signpath.png" width="54" height="51" loading="lazy" decoding="async" fetchpriority="low">
+        <img alt="SignPath Foundation" src="/signpath.png" width="54" height="51" loading="lazy" decoding="async"
+          fetchpriority="low">
       </a>
       <a href="https://www.jetbrains.com/community/opensource/" target="_blank" rel="noopener noreferrer" class="logo">
-        <img alt="JetBrains Open" src="/jetbrains.svg" width="54" height="51" loading="lazy" decoding="async" fetchpriority="low">
+        <img alt="JetBrains Open" src="/jetbrains.svg" width="54" height="51" loading="lazy" decoding="async"
+          fetchpriority="low">
       </a>
     </section>
 
@@ -598,26 +583,6 @@ scoop install servy</code></pre>
       &copy; <span id="year"></span> Servy by
       <a href="https://aelassas.github.io/" target="_blank" rel="noopener noreferrer">Akram El Assas</a>. All rights
       reserved.
-    </p>
-
-    <p>
-      <a href="https://twelve.tools" target="_blank" rel="noopener noreferrer"><img
-          src="https://twelve.tools/badge0-white.svg" alt="Featured on Twelve Tools" width="148" height="40"
-          loading="lazy" decoding="async" fetchpriority="low"></a>
-
-      <!-- <a href="https://daniellaunches.com" target="_blank" rel="noopener noreferrer">
-        <img src="https://daniellaunches.com/badge-light.svg" alt="Featured on DanielLaunches" width="183" height="40">
-      </a> -->
-
-      <a href="https://startupfa.me/s/servy?utm_source=servy-win.github.io" target="_blank"
-        rel="noopener noreferrer"><img src="https://startupfa.me/badge?t=classic&theme=light"
-          alt="Servy - Featured on Startup Fame" width="126" height="40" loading="lazy" decoding="async"
-          fetchpriority="low"></a>
-
-      <a href="https://indiechains.com" target="_blank" rel="noopener noreferrer"><img
-          src="https://api.indiechains.com/badge/db512c11287a5a97772f5e48b1a9e37c27a6e4b679d35ad8.svg?theme=light"
-          alt="Linked with Indie Chains" width="180" height="40" loading="lazy" decoding="async"
-          fetchpriority="low"></a>
     </p>
   </footer>
 
