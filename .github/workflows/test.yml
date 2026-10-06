@@ -17,8 +17,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
         with:
-          # Required for Codecov to find the base commit for comparison
-          fetch-depth: 2
+          # Fetch full history so Codecov has commit messages, PR bases, and diff info
+          fetch-depth: 0
 
       - name: Set up Node
         uses: actions/setup-node@v6
@@ -32,7 +32,6 @@ jobs:
 
       - name: Run Linting
         run: npm run lint
-        # This assumes you have a "lint": "eslint ." script in your package.json
 
       - name: Run Tests
         run: npm run test:coverage
@@ -41,8 +40,8 @@ jobs:
           NODE_OPTIONS: --experimental-vm-modules
 
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@75cd11691c0faa626561e295848008c8a7dddffe #v5.5.4
+        uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./cobertura-coverage.xml
-          directory: ./coverage
+          files: ./coverage/cobertura-coverage.xml
+          fail_ci_if_error: true
