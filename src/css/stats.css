@@ -16,6 +16,10 @@ header h1 {
   color: var(--text-color);
 }
 
+.stats-loading {
+  min-height: 40vh;
+}
+
 .stats-error {
   color: var(--stats-error-color);
 }
@@ -66,10 +70,11 @@ header h1 {
   border-radius: var(--border-radius);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 260px;
 }
 
 .release-card.latest {
-  /* border: 2px solid var(--primary); */
   position: relative;
 }
 
