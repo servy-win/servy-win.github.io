@@ -29,8 +29,6 @@ The project employs several advanced front-end techniques to ensure optimal perf
 * **Performance Throttling:** Scroll-based UI updates (such as the back to top button) are throttled using `requestAnimationFrame` to avoid layout thrashing.
 * **Resource Preloading:** A custom injection script handles CSS preloading to prevent render-blocking delays.
 
-
-
 ## Project Structure
 
 * **index.html:** The main landing page.
