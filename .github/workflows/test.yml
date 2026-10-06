@@ -44,4 +44,6 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage/cobertura-coverage.xml
+          commit_parent: ${{ github.event.pull_request.base.sha || github.event.before }}
+          override_commit: ${{ github.event.pull_request.head.sha || github.sha }}
           fail_ci_if_error: true
