@@ -87,4 +87,4 @@ The site is automatically deployed to GitHub Pages via GitHub Actions upon mergi
 
 ## License
 
-This website source code is released under the MIT License. Details can be found in the [LICENSE](https://github.com/servy-win/servy-win.github.io/blob/main/LICENSE.txt) file.
+This website source code is released under the MIT License. Details can be found in the [LICENSE.txt](https://github.com/servy-win/servy-win.github.io/blob/main/LICENSE.txt) file.
