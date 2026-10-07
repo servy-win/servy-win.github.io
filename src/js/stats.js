@@ -6,7 +6,7 @@
  */
 
 import * as utils from './utils.js'
-import '../css/style.css'
+import '../css/base.css'
 import '../css/stats.css'
 
 const REPO = 'aelassas/servy'
@@ -217,6 +217,7 @@ function finalizeUI() {
   const container = document.getElementById('stats-container')
   if (loading) loading.style.display = 'none'
   if (container) container.style.display = 'block'
+  document.body.classList.remove('is-loading')
 }
 
 /**
@@ -238,6 +239,7 @@ function handleError(err) {
     errorDiv.textContent = messages[err.message] || messages[err.name] || 'Failed to load statistics.'
     errorDiv.style.display = 'block'
   }
+  document.body.classList.remove('is-loading')
 }
 
 /**

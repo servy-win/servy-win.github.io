@@ -5,11 +5,11 @@
   <meta charset="UTF-8">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-  <link rel="preconnect" href="https://formspree.io" crossorigin>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Akram El Assas">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#00add8">
+  <meta name="color-scheme" content="light dark">
 
   <title>Servy - Contact</title>
   <meta name="description" content="Servy contact page for inquiries, suggestions, and support.">
@@ -19,7 +19,7 @@
   <meta property="og:image" content="https://servy-win.github.io/servy-tiny.png">
   <meta property="og:image:width" content="1366">
   <meta property="og:image:height" content="715">
-  <meta property="og:image:alt" content="Servy: Run Any App as a Native Windows Service">
+  <meta property="og:image:alt" content="Servy: Enterprise-Grade Windows Service Wrapper">
   <meta property="og:url" content="https://servy-win.github.io/contact/">
   <meta property="og:site_name" content="Servy">
   <meta property="og:locale" content="en_US">
@@ -27,11 +27,10 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Servy: Run Any App as a Native Windows Service">
-  <meta name="twitter:description"
-    content="Servy lets you run any app as a native Windows service with full control over working directory, startup type, process priority, logging, health checks, environment variables, dependencies, pre-launch and post-launch hooks, and parameters. Full-Featured Alternative to NSSM, WinSW & FireDaemon Pro.">
+  <meta name="twitter:title" content="Servy - Contact">
+  <meta name="twitter:description" content="Get in touch with the Servy team for inquiries, suggestions, and support.">
   <meta name="twitter:image" content="https://servy-win.github.io/servy-tiny.png">
-  <meta name="twitter:image:alt" content="Servy: Run Any App as a Native Windows Service">
+  <meta name="twitter:image:alt" content="Servy: Enterprise-Grade Windows Service Wrapper">
 
   <script>
     (function () {
@@ -55,13 +54,12 @@
       <div class="nav-links" id="nav-links">
         <a href="/" class="header-link">Home</a>
 
-        <a href="https://github.com/aelassas/servy/wiki" target="_blank" rel="noopener noreferrer" class="header-link"
-          aria-label="View Servy documentation" title="View Servy documentation">Docs</a>
+        <a href="https://github.com/aelassas/servy/wiki" target="_blank" rel="noopener noreferrer" class="header-link" title="View Servy documentation">Docs</a>
 
-        <a href="/downloads/" class="header-link" aria-label="View Servy Downloads page"
+        <a href="/downloads/" class="header-link"
           title="View Servy download statistics">Downloads</a>
 
-        <a href="/#support" class="header-link support-link" aria-label="Support Servy development"
+        <a href="/#support" class="header-link support-link"
           title="Support Servy development">
           <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
             class="heart">
@@ -137,12 +135,12 @@
       <div class="form-container">
         <form action="https://formspree.io/f/xyzdljoq" method="POST">
           <label for="name" class="sr-only">Name</label>
-          <input type="text" id="name" name="name" placeholder="Name" autocomplete="name" required>
+          <input type="text" id="name" name="name" placeholder="Name" autocomplete="name" maxlength="100" required>
           <label for="email" class="sr-only">Email</label>
-          <input type="email" id="email" name="email" placeholder="Email" autocomplete="email" required>
+          <input type="email" id="email" name="email" placeholder="Email" autocomplete="email" maxlength="254" required>
           <label for="message" class="sr-only">Message</label>
-          <textarea id="message" name="message" placeholder="Message" required></textarea>
-          <input type="text" name="_gotcha" tabindex="-1" class="honeypot">
+          <textarea id="message" name="message" placeholder="Message" maxlength="5000" required></textarea>
+          <input type="text" name="_gotcha" tabindex="-1" class="honeypot" autocomplete="off" aria-hidden="true">
           <button type="submit">Send</button>
         </form>
       </div>

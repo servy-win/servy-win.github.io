@@ -7,7 +7,8 @@
 import * as utils from './utils.js'
 // import 'lite-youtube-embed/src/lite-yt-embed.css'
 // import 'lite-youtube-embed'
-import '../css/style.css'
+import '../css/base.css'
+import '../css/home.css'
 
 /**
  * Initialize page-specific logic once the DOM is fully loaded.

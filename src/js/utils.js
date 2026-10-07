@@ -178,7 +178,7 @@ export const initBackToTop = () => {
   }
 
   updateBackToTopButton()
-  window.addEventListener('scroll', handleScroll)
+  window.addEventListener('scroll', handleScroll, { passive: true })
 
   backToTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
