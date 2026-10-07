@@ -12,6 +12,7 @@ export default defineConfig({
     outDir: './dist',
     manifest: true,
     emptyOutDir: true,
+    cssMinify: 'lightningcss',   // Deepest CSS minification for faster FCP/LCP
     reportCompressedSize: false,
     modulePreload: { polyfill: false },
     rolldownOptions: {
@@ -23,7 +24,11 @@ export default defineConfig({
       output: {
         comments: false,
         minify: {
-          compress: { dropConsole: true },
+          compress: {
+            passes: 2,           // Extra compression pass for minimum file size
+            drop_console: true,  // Removes console statements
+            drop_debugger: true
+          },
         },
       },
     },
