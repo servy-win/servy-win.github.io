@@ -108,6 +108,9 @@
       <path d="M10.8519 0.52594L3.89189 7.10404L1.14811 4.51081L0 5.59592L3.89189 9.27426L12 1.61105L10.8519 0.52594Z"
         fill="currentColor" />
     </symbol>
+    <symbol id="icon-star" viewBox="0 0 24 24">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+    </symbol>
   </svg>
 
   <header>
@@ -189,7 +192,7 @@
       <div class="hero-container">
         <div class="hero-text">
           <h1>Enterprise-Grade Windows Service Wrapper</h1>
-          <p class="hero-lead">with Real-Time Monitoring &amp; Least-Privilege Security</p>
+          <p class="hero-lead">with Real-Time Monitoring &amp; Hardened Security</p>
 
           <ul class="hero-list">
             <li>
@@ -222,18 +225,6 @@
               </svg>
               <span>Monitor CPU/RAM and Console Output with Automatic Recovery</span>
             </li>
-            <li>
-              <svg class="check-icon" width="12" height="10" aria-hidden="true">
-                <use href="#icon-check" />
-              </svg>
-              <span>Digitally Signed and Verified by Microsoft Security Intelligence</span>
-            </li>
-            <li>
-              <svg class="check-icon" width="12" height="10" aria-hidden="true">
-                <use href="#icon-check" />
-              </svg>
-              <span>Install via WinGet, Chocolatey, Scoop, Patch My PC, or GitHub</span>
-            </li>
           </ul>
 
           <div class="cta">
@@ -248,12 +239,28 @@
             </a>
           </div>
 
-          <div class="star">
-            <p>
-              ⭐ Love Servy? <a href="https://github.com/aelassas/servy/" target="_blank" rel="noopener noreferrer">Star
-                us on GitHub</a>. It costs nothing but means a lot and helps the project grow!
-            </p>
-          </div>
+          <ul class="hero-list-secondary">
+            <li>
+              <svg class="check-icon" width="12" height="10" aria-hidden="true">
+                <use href="#icon-check" />
+              </svg>
+              <span>Digitally Signed and Verified by Microsoft Security Intelligence</span>
+            </li>
+            <li>
+              <svg class="check-icon" width="12" height="10" aria-hidden="true">
+                <use href="#icon-check" />
+              </svg>
+              <span>Available on WinGet, Chocolatey, Scoop, Patch My PC, and GitHub</span>
+            </li>
+            <li class="star">
+              <svg class="star-icon" width="14" height="14" aria-hidden="true">
+                <use href="#icon-star" />
+              </svg>
+              <span>Love Servy?&nbsp;<a href="https://github.com/aelassas/servy/" target="_blank"
+                  rel="noopener noreferrer">Star us on GitHub</a>. It costs nothing but means a lot and helps the
+                project grow!</span>
+            </li>
+          </ul>
         </div>
 
       </div>

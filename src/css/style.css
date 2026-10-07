@@ -497,7 +497,13 @@ section.hero h1 {
 
 .hero-text {
   text-align: left;
-  padding-bottom: 4rem;
+  padding-bottom: 3.5rem;
+}
+
+@media (max-width: 992px) {
+.hero-text {
+  padding-bottom: 4.5rem;
+}
 }
 
 .hero-lead {
@@ -543,16 +549,51 @@ header .hero-list {
 header .hero-list li {
   line-height: 1.125rem;
   margin-bottom: 0.5rem;
-  padding-left: 1.5rem;
+  padding-left: 1.2rem;
   position: relative;
   font-size: 1rem;
 }
 
-header .hero-list svg {
+header .hero-list svg,
+header .hero-list-secondary svg {
   left: 0;
   margin-right: 0.6875rem;
   position: absolute;
   top: 0.3125rem;
+}
+
+header .hero-list-secondary {
+  list-style: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-left: 1.2rem;
+  text-align: left;
+}
+
+header .hero-list-secondary li {
+  line-height: 1.125rem;
+  margin-bottom: 0.5rem;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+header .hero-list-secondary li  {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: 0.78rem;
+  line-height: 1.25rem;
+  margin: 0;
+}
+
+header .hero-list-secondary li.star .star-icon {
+  fill: var(--custom-btn-bg);
+  vertical-align: middle;
+}
+
+header .hero-list-secondary li.star a {
+  color: var(--btn-text);
+  text-decoration: underline;
 }
 
 /* Hero Media Queries */
@@ -634,6 +675,61 @@ div.cta {
 .cta-btn-secondary:hover {
   background: var(--header-dark);
   opacity: .95;
+}
+
+/* Trust badges (hero) */
+.trust-badges {
+  margin: 0.25rem 1rem 1rem;
+}
+
+.trust-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0 0 0.5rem;
+  padding: 0;
+  font-size: 0.8125rem;
+  line-height: 1.2;
+}
+
+.trust-list li {
+  padding: 0.3rem 0.65rem;
+  border: 1px solid rgb(255 255 255 / 55%);
+  border-radius: var(--border-radius);
+  color: var(--btn-text);
+}
+
+.trust-list li.trust-label {
+  padding: 0.3rem 0.1rem;
+  border: 0;
+  color: var(--hero-lead-text);
+}
+
+.trust-list li:has(> a) {
+  padding: 0;
+}
+
+.trust-list a {
+  display: block;
+  padding: 0.3rem 0.65rem;
+  color: var(--btn-text);
+  text-decoration: none;
+}
+
+.trust-list a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 992px) {
+  .trust-badges {
+    margin: 0.25rem 1rem 1rem;
+  }
+
+  .trust-list {
+    justify-content: center;
+  }
 }
 
 /* Support buttons */
@@ -1073,25 +1169,4 @@ footer p {
   vertical-align: middle;
   margin-right: 8px;
   margin-bottom: -1px;
-}
-
-.star {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-}
-
-.star p {
-  font-size: 0.78rem;
-  line-height: 1.25rem;
-  margin: 0;
-}
-
-header .star {
-  margin-bottom: 0;
-}
-
-header .star a {
-  color: var(--btn-text);
-  text-decoration: underline;
 }
