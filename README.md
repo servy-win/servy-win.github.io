@@ -67,7 +67,7 @@ npm run build
 ```
 
 The build process includes:
-* Minification via Terser.
+* Minification.
 * CSS minification and hashed asset filenames via Vite.
 * CSS preload injection for generated pages.
 
