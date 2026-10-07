@@ -38,6 +38,7 @@ export default defineConfig({
         removeEmptyAttributes: true,
         minifyCSS: true,
         minifyJS: true,
+        processScripts: ['application/ld+json'],
       },
     }),
   ],
