@@ -267,6 +267,7 @@ div.cta {
 @media (max-width: 600px) {
   .support-btn {
     flex: 1 1 100%;
+    padding: 0.7rem 0;
   }
 
   div.cta {
