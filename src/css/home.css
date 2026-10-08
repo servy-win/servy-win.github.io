@@ -222,7 +222,7 @@ div.cta {
   align-items: center;
   justify-content: center;
   min-width: 150px;
-  padding: 0.6rem 1.25rem;
+  padding: 0.5rem 1rem;
   box-sizing: border-box;
   background: var(--support-btn-bg);
   color: var(--support-btn-text);
