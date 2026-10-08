@@ -392,6 +392,54 @@ div.cta {
    12. CODE BLOCKS
    ========================================================================== */
 
+.pkg-manager-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.pkg-manager-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.pkg-manager-item h3 {
+  min-width: 130px;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.pkg-manager-item .pkg-desc {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+.code-block-small pre {
+  padding: 0.5rem 0.8rem;
+}
+
+.code-block-small code {
+  font-size: 0.78rem;
+}
+
+.code-block-small .copy-btn {
+  top: 3px;
+  right: 0.4rem;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+}
+
+@media (max-width: 640px) {
+  .pkg-manager-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+}
+
 .code-block {
   position: relative;
   display: inline-block;
@@ -447,7 +495,6 @@ code {
   font-family: var(--code-font);
   font-size: 0.84rem;
 }
-
 
 /* ==========================================================================
    13. MEDIA (IMAGES & VIDEO)
