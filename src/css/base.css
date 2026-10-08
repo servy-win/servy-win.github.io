@@ -51,7 +51,7 @@
   --heart-color: #fff;
 
   /* pre code */
-  --code-bg: #f5f5f5;
+  --code-bg: var(--bg-color);
   --code-color: #23272f;
   --code-border: #ccc;
   --code-comment: #818181;
@@ -101,7 +101,7 @@
   --support-btn-github-text: #1b1f24;
 
   /* pre code */
-  --code-bg: #23272F;
+  --code-bg: var(--bg-color);
   --code-color: #dfdfdf;
   --code-border: #292c3c;
   --code-comment: #aaa;
