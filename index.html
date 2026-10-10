@@ -275,11 +275,12 @@
       <ul>
         <li>
           <h3>Universal Access</h3>
-          <p>Install and manage services from the desktop app, CLI, or PowerShell.</p>
+          <p>Install and manage services from the desktop app, CLI, PowerShell, or embedded installers.</p>
         </li>
         <li>
           <h3>Auto-Recovery</h3>
-          <p>Automatically restart services after crashes, hangs, or unexpected exits.</p>
+          <p>Automatically restart services after crashes, hangs, or unexpected exits, or execute custom failure
+            programs.</p>
         </li>
         <li>
           <h3>Full Process Control</h3>
@@ -316,45 +317,39 @@
       </ul>
     </section>
 
-    <section>
+    <section class="get-started-section">
       <h2>Get Started</h2>
       <p>
         Download the latest release from <a href="https://github.com/aelassas/servy/releases/latest" target="_blank"
           rel="noopener noreferrer">GitHub</a> or install via a package manager:
       </p>
 
-      <h3>WinGet</h3>
-      <div class="code-block">
-        <button type="button" class="copy-btn" aria-label="Copy WinGet command">Copy</button>
-        <pre><code>winget install servy</code></pre>
-      </div>
+      <div class="pkg-manager-grid">
+        <div class="pkg-manager-item">
+          <h3>WinGet</h3>
+          <div class="code-block code-block-small">
+            <button type="button" class="copy-btn" aria-label="Copy WinGet command">Copy</button>
+            <pre><code>winget install servy</code></pre>
+          </div>
+        </div>
 
-      <h3>Chocolatey</h3>
-      <div class="code-block">
-        <button type="button" class="copy-btn" aria-label="Copy Chocolatey command">Copy</button>
-        <pre><code>choco install -y servy</code></pre>
-      </div>
+        <div class="pkg-manager-item">
+          <h3>Chocolatey</h3>
+          <div class="code-block code-block-small">
+            <button type="button" class="copy-btn" aria-label="Copy Chocolatey command">Copy</button>
+            <pre><code>choco install -y servy</code></pre>
+          </div>
+        </div>
 
-      <h3>Scoop</h3>
-      <div class="code-block">
-        <button type="button" class="copy-btn" aria-label="Copy Scoop command">Copy</button>
-        <pre><code>scoop bucket add extras
+        <div class="pkg-manager-item">
+          <h3>Scoop</h3>
+          <div class="code-block code-block-small">
+            <button type="button" class="copy-btn" aria-label="Copy Scoop command">Copy</button>
+            <pre><code>scoop bucket add extras
 scoop install servy</code></pre>
+          </div>
+        </div>
       </div>
-
-      <h3>Patch My PC</h3>
-      <p>
-        Servy is available in the official <a href="https://patchmypc.com/supported-products/" target="_blank"
-          rel="noopener noreferrer">Patch My PC catalog</a> for enterprise automated deployment and
-        updates via Microsoft Intune and ConfigMgr (SCCM).
-      </p>
-
-      <!-- <p class="blockquote">
-        Servy has been reviewed by Microsoft Security Intelligence and is confirmed safe. It is digitally signed and
-        performs only standard installation tasks and does not contain malware, adware, or unwanted software. Servy
-        passes VirusTotal scans and is published in the Windows Package Manager (WinGet), Chocolatey, and Scoop. You can
-        safely install it from GitHub, WinGet, Chocolatey, or Scoop.
-      </p> -->
     </section>
 
     <section>
@@ -368,7 +363,7 @@ scoop install servy</code></pre>
           rel="noopener noreferrer">PowerShell</a>.
       </p>
 
-      <div class="code-block">
+      <div class="code-block code-block-small">
         <div class="code-header">PowerShell (Elevated)</div>
         <button type="button" class="copy-btn" aria-label="Copy install command">Copy</button>
         <pre><code>servy-cli install `
@@ -382,11 +377,8 @@ scoop install servy</code></pre>
       <p>
         This installs <code>MyService</code> to run a Node.js server in the background with auto-startup and
         <a href="https://github.com/aelassas/servy/wiki/Health-Monitoring-&-Recovery" target="_blank"
-          rel="noopener noreferrer">health monitoring</a>.
-      </p>
-
-      <p>
-        See additional <a href="https://github.com/aelassas/servy/wiki/Examples-&-Recipes" target="_blank"
+          rel="noopener noreferrer">health monitoring</a>. See additional <a
+          href="https://github.com/aelassas/servy/wiki/Examples-&-Recipes" target="_blank"
           rel="noopener noreferrer">examples and recipes</a>
         for Python, Java, Go, and other runtimes.
       </p>
@@ -404,20 +396,18 @@ scoop install servy</code></pre>
 
         <div class="use-case-item">
           <h3>AI Models &amp; LLMs</h3>
-          <p>Host local LLMs and AI APIs such as Ollama or Stable Diffusion as always-on services, with no desktop
-            session required.</p>
+          <p>Host local LLMs and AI APIs such as Ollama or Stable Diffusion as always-on services.</p>
         </div>
 
         <div class="use-case-item">
           <h3>Background Workers</h3>
-          <p>Keep data pipelines, message queue consumers (RabbitMQ, Kafka), and other long-running workers alive in the
+          <p>Keep message queue consumers (RabbitMQ, Kafka), and long-running workers alive in the
             background.</p>
         </div>
 
         <div class="use-case-item">
           <h3>CI/CD &amp; DevOps</h3>
-          <p>Keep self-hosted build agents (GitHub Actions, GitLab Runners, Jenkins) online and restart them
-            automatically after a crash or reboot.</p>
+          <p>Keep self-hosted build agents (GitHub Actions, GitLab Runners, Jenkins) online.</p>
         </div>
 
         <div class="use-case-item">
@@ -427,26 +417,24 @@ scoop install servy</code></pre>
 
         <div class="use-case-item">
           <h3>Database Proxies</h3>
-          <p>Run database tunnels and proxies (Cloud SQL Auth Proxy, Ngrok) as services for stable connectivity in
-            development.</p>
+          <p>Run database tunnels and proxies (Cloud SQL Auth Proxy, Ngrok) as services for stable connectivity.</p>
         </div>
 
         <div class="use-case-item">
           <h3>Remote Management Agents</h3>
-          <p>Run monitoring agents and remote administration tools such as MeshCentral as background services for
+          <p>Run monitoring agents and remote tools as background services for
             uninterrupted access.</p>
         </div>
 
         <div class="use-case-item">
           <h3>Network Utilities &amp; Proxies</h3>
-          <p>Run DNS servers, reverse proxies (Caddy, Nginx), or VPN clients in the background for reliable local
+          <p>Run DNS servers, reverse proxies (Caddy, Nginx), or VPN clients in the background for reliable
             networking.</p>
         </div>
 
         <div class="use-case-item">
           <h3>Legacy App Modernization</h3>
-          <p>Wrap older console apps and CLI tools that were never built as services, and give them lifecycle
-            management and health monitoring.</p>
+          <p>Wrap tools that were never built as services, and give them lifecycle management and health monitoring.</p>
         </div>
       </div>
     </section>
