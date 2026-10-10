@@ -14,6 +14,18 @@
       ]
     },
     {
+      "identifier": "urn:air:servy-win.github.io:docs:llms-full-txt",
+      "displayName": "Servy Full Documentation Context",
+      "type": "text/markdown",
+      "url": "https://servy-win.github.io/llms-full.txt",
+      "description": "Complete concatenated Markdown documentation context compiled from all Servy Wiki pages.",
+      "representativeQueries": [
+        "Servy full documentation",
+        "Servy CLI and PowerShell module specifications",
+        "Servy advanced configuration log rotation and lifecycle hooks"
+      ]
+    },
+    {
       "identifier": "urn:air:servy-win.github.io:docs:wiki",
       "displayName": "Servy Documentation",
       "type": "text/html",
