@@ -1,0 +1,6 @@
+# Standard Search Engine & AI Crawlers
+User-agent: *
+Allow: /
+
+# Dedicated Sitemap Pointer
+Sitemap: https://servy-win.github.io/sitemap.xml
