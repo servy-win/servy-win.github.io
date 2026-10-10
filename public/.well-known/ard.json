@@ -4,7 +4,7 @@
     {
       "identifier": "urn:air:servy-win.github.io:docs:llms-txt",
       "displayName": "Servy Overview & Quick Reference for LLMs",
-      "type": "text/markdown",
+      "type": "text/markdown; profile=\"urn:air:agent-skills\"",
       "url": "https://servy-win.github.io/llms.txt",
       "description": "Structured Markdown summary of Servy, containing CLI and PowerShell quick syntax references and index links to all documentation sections.",
       "representativeQueries": [
@@ -17,7 +17,7 @@
     {
       "identifier": "urn:air:servy-win.github.io:docs:llms-full-txt",
       "displayName": "Servy Complete Full-Text Documentation for LLMs",
-      "type": "text/markdown",
+      "type": "text/markdown; profile=\"urn:air:agent-skills\"",
       "url": "https://servy-win.github.io/llms-full.txt",
       "description": "Complete concatenated Markdown documentation suite for Servy, including CLI parameters, PowerShell cmdlets, lifecycle hooks, log rotation, and recovery settings.",
       "representativeQueries": [
@@ -30,7 +30,7 @@
     {
       "identifier": "urn:air:servy-win.github.io:docs:wiki",
       "displayName": "Servy Official Wiki Documentation",
-      "type": "text/html",
+      "type": "application/ai-registry+json",
       "url": "https://github.com/aelassas/servy/wiki",
       "description": "Comprehensive wiki covering installation, CLI & PowerShell references, desktop GUI app, CI/CD automation, recipes for Node.js/Python/Java, and security isolation.",
       "representativeQueries": [
