@@ -3,38 +3,41 @@
   "entries": [
     {
       "identifier": "urn:air:servy-win.github.io:docs:llms-txt",
-      "displayName": "Servy Overview for LLMs",
-      "type": "text/markdown",
+      "displayName": "Servy Overview & Quick Reference for LLMs",
+      "type": "application/ai-registry+json",
       "url": "https://servy-win.github.io/llms.txt",
-      "description": "Markdown summary of Servy, a Windows service wrapper, with links to the documentation, downloads, and source code.",
+      "description": "Structured Markdown summary of Servy, containing CLI and PowerShell quick syntax references and index links to all documentation sections.",
       "representativeQueries": [
         "what is Servy and what does it do",
-        "tool to run any application as a Windows service",
-        "alternative to NSSM or WinSW for Windows services"
+        "tool to run any application or script as a Windows service",
+        "open source alternative to NSSM or WinSW for Windows service management",
+        "Servy CLI syntax and Servy.psm1 cmdlet reference"
       ]
     },
     {
       "identifier": "urn:air:servy-win.github.io:docs:llms-full-txt",
-      "displayName": "Servy Full Documentation Context",
-      "type": "text/markdown",
+      "displayName": "Servy Complete Full-Text Documentation for LLMs",
+      "type": "application/ai-registry+json",
       "url": "https://servy-win.github.io/llms-full.txt",
-      "description": "Complete concatenated Markdown documentation context compiled from all Servy Wiki pages.",
+      "description": "Complete concatenated Markdown documentation suite for Servy, including CLI parameters, PowerShell cmdlets, lifecycle hooks, log rotation, and recovery settings.",
       "representativeQueries": [
-        "Servy full documentation",
-        "Servy CLI and PowerShell module specifications",
-        "Servy advanced configuration log rotation and lifecycle hooks"
+        "full Servy command line and PowerShell module documentation",
+        "how to configure pre-launch and post-stop lifecycle hooks in Servy",
+        "Servy health monitoring heartbeat and crash auto-recovery configuration",
+        "Servy log rotation and stdout stderr redirection settings"
       ]
     },
     {
       "identifier": "urn:air:servy-win.github.io:docs:wiki",
-      "displayName": "Servy Documentation",
-      "type": "text/html",
+      "displayName": "Servy Official Wiki Documentation",
+      "type": "application/ai-registry+json",
       "url": "https://github.com/aelassas/servy/wiki",
-      "description": "Installation guide, usage, CLI and PowerShell reference, and examples for running apps as Windows services with Servy.",
+      "description": "Comprehensive wiki covering installation, CLI & PowerShell references, desktop GUI app, CI/CD automation, recipes for Node.js/Python/Java, and security isolation.",
       "representativeQueries": [
-        "how to install Servy",
-        "run a Node.js or Python app as a Windows service from the command line",
-        "configure health checks and automatic restart for a Windows service"
+        "how to install Servy via WinGet, Scoop, or Chocolatey",
+        "run a Node.js, Python, or Go app as a Windows service",
+        "configure gMSA and service account isolation for a Servy service",
+        "embed Servy in custom WiX or Inno Setup installers"
       ]
     }
   ]
