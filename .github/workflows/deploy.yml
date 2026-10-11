@@ -6,10 +6,12 @@ on:
   push:
     branches: ["main"]
     paths:
-      - "public/llms-full.txt"
-      - "public/llms.txt"
+      - "public/**"
       - "src/**"
       - "index.html"
+      - "contact/index.html"
+      - "downloads/index.html"
+      - "vite.config.js"
       - "package*.json"
       - ".github/workflows/deploy.yml"
   # Allows manual triggering from the Actions tab
