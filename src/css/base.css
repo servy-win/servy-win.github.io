@@ -44,7 +44,7 @@
   --support-btn-github-border: #24292f;
   --support-btn-github-text: #fff;
   --support-btn-github-heart: #e5262c;
---support-btn-paypal-bg: #FFC439;
+  --support-btn-paypal-bg: #FFC439;
   --support-btn-paypal-border: #FFC439;
   --support-btn-paypal-text: #003087;
 
@@ -168,7 +168,7 @@ a {
 .container {
   flex: 1 0 auto;
   width: calc(100% - 2rem);
-  max-width: 1092px;
+  max-width: 992px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
@@ -179,6 +179,9 @@ section {
 
 .svg-sprite {
   position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
 }
 
 

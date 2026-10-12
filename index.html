@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
   <link rel="preload" href="/fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Akram El Assas">
@@ -329,11 +329,30 @@
           rel="noopener noreferrer">GitHub</a> or install via a package manager:
       </p>
 
-      <div class="code-block code-block-small">
+      <!-- <div class="code-block code-block-small">
         <div class="code-header">PowerShell</div>
         <pre><code>winget install servy                         # WinGet
 choco install -y servy                       # Chocolatey
 scoop bucket add extras; scoop install servy # Scoop</code></pre>
+      </div> -->
+
+      <h3>WinGet</h3>
+      <div class="code-block code-block-small">
+        <button type="button" class="copy-btn" aria-label="Copy WinGet command">Copy</button>
+        <pre><code>winget install servy</code></pre>
+      </div>
+
+      <h3>Chocolatey</h3>
+      <div class="code-block code-block-small">
+        <button type="button" class="copy-btn" aria-label="Copy Chocolatey command">Copy</button>
+        <pre><code>choco install -y servy</code></pre>
+      </div>
+
+      <h3>Scoop</h3>
+      <div class="code-block code-block-small">
+        <button type="button" class="copy-btn" aria-label="Copy Scoop command">Copy</button>
+        <pre><code>scoop bucket add extras
+scoop install servy</code></pre>
       </div>
 
       <!-- <div class="pkg-manager-grid">
@@ -377,7 +396,7 @@ scoop install servy</code></pre>
 
       <div class="code-block code-block-small">
         <div class="code-header">CMD / PowerShell (Elevated)</div>
-        <!-- <button type="button" class="copy-btn" aria-label="Copy install command">Copy</button> -->
+        <button type="button" class="copy-btn" aria-label="Copy install command">Copy</button>
         <pre><code>servy-cli install --name="NodeApp" --path="%ProgramFiles%\nodejs\node.exe" --startupDir="C:\apps\nodeapp" --params="server.js"</code></pre>
       </div>
 
