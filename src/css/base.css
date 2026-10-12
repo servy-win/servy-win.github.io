@@ -44,9 +44,9 @@
   --support-btn-github-border: #24292f;
   --support-btn-github-text: #fff;
   --support-btn-github-heart: #e5262c;
-  --support-btn-paypal-bg: var(--custom-btn-bg);
-  --support-btn-paypal-border: var(--custom-btn-bg);
-  --support-btn-paypal-text: var(--custom-btn-text);
+--support-btn-paypal-bg: #FFC439;
+  --support-btn-paypal-border: #FFC439;
+  --support-btn-paypal-text: #003087;
 
   --heart-color: #fff;
 
@@ -99,6 +99,11 @@
   --support-btn-github-bg: #f0f6fc;
   --support-btn-github-border: #f0f6fc;
   --support-btn-github-text: #1b1f24;
+
+  /* PayPal support button */
+  --support-btn-paypal-bg: #0070BA;      
+  --support-btn-paypal-border: #0070BA;
+  --support-btn-paypal-text: #ffffff;
 
   /* pre code */
   --code-bg: var(--form-bg);
