@@ -163,7 +163,7 @@ a {
 .container {
   flex: 1 0 auto;
   width: calc(100% - 2rem);
-  max-width: 992px;
+  max-width: 1092px;
   margin: 2rem auto;
   padding: 0 1rem;
 }

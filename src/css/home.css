@@ -29,13 +29,13 @@ section.hero h1 {
   margin-top: 4rem;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1092px) {
   section.hero h1 {
     margin-bottom: 0.1rem;
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1092px) {
   section.hero h1 {
     margin-bottom: 0.5rem;
   }
@@ -61,7 +61,7 @@ section.hero h1 {
   padding-bottom: 3.5rem;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1092px) {
   .hero-text {
     padding-bottom: 4.5rem;
   }
@@ -136,13 +136,13 @@ header .hero-list-secondary li.star a {
 }
 
 /* Hero Media Queries */
-@media (min-width: 992px) {
+@media (min-width: 1092px) {
   section.hero {
-    min-width: 992px;
+    min-width: 1092px;
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1092px) {
   section.hero {
     min-width: 80%;
   }
