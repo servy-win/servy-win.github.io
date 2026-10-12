@@ -329,31 +329,17 @@
           rel="noopener noreferrer">GitHub</a> or install via a package manager:
       </p>
 
-      <div class="pkg-manager-grid">
-        <div class="pkg-manager-item">
-          <h3>WinGet</h3>
-          <div class="code-block code-block-small">
-            <button type="button" class="copy-btn" aria-label="Copy WinGet command">Copy</button>
-            <pre><code>winget install servy</code></pre>
-          </div>
-        </div>
+      <div class="code-block code-block-small">
+<!-- <button type="button" class="copy-btn" aria-label="Copy install commands">Copy</button>         -->
+<pre><code># WinGet
+winget install servy
 
-        <div class="pkg-manager-item">
-          <h3>Chocolatey</h3>
-          <div class="code-block code-block-small">
-            <button type="button" class="copy-btn" aria-label="Copy Chocolatey command">Copy</button>
-            <pre><code>choco install -y servy</code></pre>
-          </div>
-        </div>
+# Chocolatey
+choco install -y servy
 
-        <div class="pkg-manager-item">
-          <h3>Scoop</h3>
-          <div class="code-block code-block-small">
-            <button type="button" class="copy-btn" aria-label="Copy Scoop command">Copy</button>
-            <pre><code>scoop bucket add extras
+# Scoop
+scoop bucket add extras
 scoop install servy</code></pre>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -370,7 +356,7 @@ scoop install servy</code></pre>
 
       <div class="code-block code-block-small">
         <div class="code-header">PowerShell (Elevated)</div>
-        <button type="button" class="copy-btn" aria-label="Copy install command">Copy</button>
+        <!-- <button type="button" class="copy-btn" aria-label="Copy install command">Copy</button> -->
         <pre><code>servy-cli install `
   --name="MyService" `
   --path="C:\Program Files\nodejs\node.exe" `
@@ -526,19 +512,14 @@ scoop install servy</code></pre>
     <section id="acknowledgments">
       <h2>Acknowledgments</h2>
       <p>
-        Special thanks to <a href="https://github.com/Christophe-Rogiers" target="_blank"
-          rel="noopener noreferrer">Christophe Rogiers</a> for his countless contributions, insightful advice, and
-        dedication to code quality.
-      </p>
-      <p>
         Thanks to <a href="https://signpath.io/?utm_source=foundation&utm_medium=github&utm_campaign=servy"
           target="_blank" rel="noopener noreferrer">SignPath</a> and the
         <a href="https://signpath.org/?utm_source=foundation&utm_medium=github&utm_campaign=servy" target="_blank"
           rel="noopener noreferrer">SignPath Foundation</a> for free code signing, to
         <a href="https://www.jetbrains.com/" target="_blank" rel="noopener noreferrer">JetBrains</a> for an
         <a href="https://www.jetbrains.com/community/opensource/" target="_blank" rel="noopener noreferrer">open-source
-          license</a>, and to everyone who tested Servy, reported issues, and
-        suggested improvements on GitHub and Reddit.
+          license</a>, and to everyone who tested Servy, reported issues, and suggested improvements on GitHub and
+        Reddit.
       </p>
       <div class="acknowledgments-logos">
         <a href="https://signpath.org/?utm_source=foundation&utm_medium=github&utm_campaign=servy" target="_blank"
@@ -558,27 +539,20 @@ scoop install servy</code></pre>
 
   <footer>
     <div class="footer-links">
+      <!-- Core Links -->
       <a href="https://github.com/aelassas/servy" target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href="https://github.com/aelassas/servy/wiki" target="_blank" rel="noopener noreferrer">Docs</a>
-      <a href="https://github.com/aelassas/servy/issues" target="_blank" rel="noopener noreferrer">Issues</a>
       <a href="/downloads/">Downloads</a>
+      <a href="/contact/">Contact</a>
+      <a href="/#support">Support</a>
+
+      <!-- Project Metadata Links -->
       <a href="https://github.com/aelassas/servy/blob/main/CHANGELOG.md" target="_blank"
         rel="noopener noreferrer">Changelog</a>
       <a href="https://github.com/aelassas/servy/blob/main/ROADMAP.md" target="_blank"
         rel="noopener noreferrer">Roadmap</a>
       <a href="https://github.com/aelassas/servy/blob/main/LICENSE.txt" target="_blank"
         rel="noopener noreferrer">License</a>
-      <a href="/contact/">Contact</a>
-      <a href="https://github.com/sponsors/aelassas" target="_blank" rel="noopener noreferrer">Support</a>
-      <a href="https://github.com/servy-win/servy-win.github.io" target="_blank" rel="noopener noreferrer"
-        class="footer-link-source">
-        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path
-            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-          </path>
-        </svg>
-        Website Source
-      </a>
     </div>
 
     <p>
