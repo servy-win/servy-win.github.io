@@ -331,15 +331,9 @@
 
       <div class="code-block code-block-small">
         <!-- <button type="button" class="copy-btn" aria-label="Copy install commands">Copy</button>         -->
-        <pre><code># WinGet
-winget install servy
-
-# Chocolatey
-choco install -y servy
-
-# Scoop
-scoop bucket add extras
-scoop install servy</code></pre>
+        <pre><code>winget install servy                          # WinGet
+choco install -y servy                        # Chocolatey
+scoop bucket add extras; scoop install servy  # Scoop</code></pre>
       </div>
 
       <!-- <div class="pkg-manager-grid">
@@ -382,21 +376,14 @@ scoop install servy</code></pre>
       </p>
 
       <div class="code-block code-block-small">
-        <div class="code-header">PowerShell (Elevated)</div>
+        <!-- <div class="code-header">PowerShell (Elevated)</div> -->
         <!-- <button type="button" class="copy-btn" aria-label="Copy install command">Copy</button> -->
-        <pre><code>servy-cli install `
-  --name="MyService" `
-  --path="C:\Program Files\nodejs\node.exe" `
-  --startupDir="C:\MyServer" `
-  --params="server.js" `
-  --enableHealth</code></pre>
+        <pre><code>servy-cli install --name="NodeApp" --path="%ProgramFiles%\nodejs\node.exe" --startupDir="C:\apps\nodeapp" --params="server.js"</code></pre>
       </div>
 
       <p>
-        This installs <code>MyService</code> to run a Node.js server in the background with auto-startup and
-        <a href="https://github.com/aelassas/servy/wiki/Health-Monitoring-&-Recovery" target="_blank"
-          rel="noopener noreferrer">health monitoring</a>. See additional <a
-          href="https://github.com/aelassas/servy/wiki/Examples-&-Recipes" target="_blank"
+        This installs <code>NodeApp</code> to run a Node.js server in the background with auto-startup. See additional
+        <a href="https://github.com/aelassas/servy/wiki/Examples-&-Recipes" target="_blank"
           rel="noopener noreferrer">examples and recipes</a>
         for Python, Java, Go, and other runtimes.
       </p>
