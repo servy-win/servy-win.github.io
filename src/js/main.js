@@ -42,35 +42,42 @@ const initCodeBlocks = () => {
   codeBlocks.forEach(block => {
     const button = block.querySelector('.copy-btn')
     const codeElement = block.querySelector('code')
+    const useElement = button?.querySelector('use')
 
     // Safety check to ensure the block has the expected internal structure
-    if (!button || !codeElement) return
+    if (!button || !codeElement || !useElement) return
+
+    let timeoutId = null
+
+    /**
+     * Resets the button to its initial copy state.
+     */
+    const resetState = () => {
+      useElement.setAttribute('href', '#icon-copy')
+      button.classList.remove('copied')
+    }
 
     /**
      * Handles the click event to copy code text to the system clipboard.
-     * Provides visual feedback by temporarily changing the button text.
+     * Provides visual feedback by temporarily changing the button icon.
      */
     button.addEventListener('click', () => {
       const writeText = navigator.clipboard?.writeText
 
-      if (!writeText) {
-        button.textContent = 'Unavailable'
-        setTimeout(() => { button.textContent = 'Copy' }, 2000)
-        return
-      }
+      if (!writeText) return
+
+      if (timeoutId) clearTimeout(timeoutId)
 
       writeText.call(navigator.clipboard, codeElement.textContent)
         .then(() => {
-          button.textContent = 'Copied!'
+          useElement.setAttribute('href', '#icon-check')
+          button.classList.add('copied')
           
-          // Revert button text after 2 seconds
-          setTimeout(() => {
-            button.textContent = 'Copy'
-          }, 2000)
+          // Revert button icon after 2 seconds
+          timeoutId = setTimeout(resetState, 2000)
         })
-        .catch(() => { 
-          button.textContent = 'Failed' 
-          setTimeout(() => { button.textContent = 'Copy' }, 2000)
+        .catch(() => {
+          resetState()
         })
     })
   })

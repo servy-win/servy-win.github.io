@@ -51,16 +51,16 @@
   --heart-color: #fff;
 
   /* pre code */
-  --code-bg: var(--form-bg);
+  --code-bg: #edf2f7;
   --code-color: #23272f;
   --code-border: #ccc;
   --code-comment: #818181;
   --code-radius: 0;
   --code-font: 'JetBrains Mono', 'Cascadia Code', 'Segoe UI Mono', 'Consolas', monospace;
 
-  --code-btn-bg: #007D9C;
-  --code-btn-bg-hover: #006A85;
-  --code-btn-color: #fff;
+  --code-btn-bg: var(--code-bg);
+  --code-btn-bg-hover: #e2e8f0;
+  --code-btn-color: var(--code-color);
   --code-btn-padding: 0.3rem 0.6rem;
   --code-btn-font-size: 0.85rem;
   --code-btn-radius: 0;
@@ -101,7 +101,7 @@
   --support-btn-github-text: #1b1f24;
 
   /* PayPal support button */
-  --support-btn-paypal-bg: #0070BA;      
+  --support-btn-paypal-bg: #0070BA;
   --support-btn-paypal-border: #0070BA;
   --support-btn-paypal-text: #ffffff;
 
@@ -111,8 +111,9 @@
   --code-border: #292c3c;
   --code-comment: #aaa;
 
-  --code-btn-bg: #0077C8;
-  --code-btn-bg-hover: #106FBF;
+  --code-btn-bg: var(--code-bg);
+  --code-btn-bg-hover: #333A45;
+  --code-btn-color: var(--code-color);
 
   --form-bg: #23272F;
   --form-border: #23272F;
@@ -168,7 +169,7 @@ a {
 .container {
   flex: 1 0 auto;
   width: calc(100% - 2rem);
-  max-width: 992px;
+  max-width: 1024px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
@@ -678,6 +679,7 @@ footer p {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .nav-links,
   .nav-links.active,
   .hamburger span,

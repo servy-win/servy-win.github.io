@@ -118,6 +118,14 @@
     <symbol id="icon-star" viewBox="0 0 24 24">
       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
     </symbol>
+    <symbol id="icon-copy" viewBox="0 0 16 16">
+      <path
+        d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"
+        fill="currentColor" />
+      <path
+        d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"
+        fill="currentColor" />
+    </symbol>
   </svg>
 
   <header>
@@ -338,22 +346,41 @@ scoop bucket add extras; scoop install servy # Scoop</code></pre>
 
       <h3>WinGet</h3>
       <div class="code-block code-block-small">
-        <button type="button" class="copy-btn" aria-label="Copy WinGet command">Copy</button>
+        <button type="button" class="copy-btn" aria-label="Copy WinGet command">
+          <svg class="copy-icon" width="16" height="16" aria-hidden="true">
+            <use href="#icon-copy" />
+          </svg>
+        </button>
         <pre><code>winget install servy</code></pre>
       </div>
 
       <h3>Chocolatey</h3>
       <div class="code-block code-block-small">
-        <button type="button" class="copy-btn" aria-label="Copy Chocolatey command">Copy</button>
+        <button type="button" class="copy-btn" aria-label="Copy Chocolatey command">
+          <svg class="copy-icon" width="16" height="16" aria-hidden="true">
+            <use href="#icon-copy" />
+          </svg>
+        </button>
         <pre><code>choco install -y servy</code></pre>
       </div>
 
       <h3>Scoop</h3>
       <div class="code-block code-block-small">
-        <button type="button" class="copy-btn" aria-label="Copy Scoop command">Copy</button>
+        <button type="button" class="copy-btn" aria-label="Copy Scoop command">
+          <svg class="copy-icon" width="16" height="16" aria-hidden="true">
+            <use href="#icon-copy" />
+          </svg>
+        </button>
         <pre><code>scoop bucket add extras
 scoop install servy</code></pre>
       </div>
+
+      <h3>Patch My PC</h3>
+      <p>
+        Servy is available in the official <a href="https://patchmypc.com/supported-products/" target="_blank"
+          rel="noopener noreferrer">Patch My PC catalog</a> for enterprise automated deployment and updates via
+        Microsoft Intune and ConfigMgr.
+      </p>
 
       <!-- <div class="pkg-manager-grid">
         <div class="pkg-manager-item">
@@ -395,8 +422,12 @@ scoop install servy</code></pre>
       </p>
 
       <div class="code-block code-block-small">
-        <div class="code-header">CMD / PowerShell (Elevated)</div>
-        <button type="button" class="copy-btn" aria-label="Copy install command">Copy</button>
+        <!-- <div class="code-header">CMD / PowerShell (Elevated)</div> -->
+        <button type="button" class="copy-btn" aria-label="Copy Install command">
+          <svg class="copy-icon" width="16" height="16" aria-hidden="true">
+            <use href="#icon-copy" />
+          </svg>
+        </button>
         <pre><code>servy-cli install --name="NodeApp" --path="%ProgramFiles%\nodejs\node.exe" --startupDir="C:\apps\nodeapp" --params="server.js"</code></pre>
       </div>
 

@@ -47,10 +47,14 @@ describe('Main Page Clipboard UI Interactions', () => {
     document.body.innerHTML = `
       <div class="code-block" id="valid">
         <code>console.log('test')</code>
-        <button class="copy-btn">Copy</button>
+        <button class="copy-btn">
+          <svg><use href="#icon-copy"></use></svg>
+        </button>
       </div>
       <div class="code-block" id="invalid">
-        <button class="copy-btn">Copy</button>
+        <button class="copy-btn">
+          <svg><use href="#icon-copy"></use></svg>
+        </button>
       </div>`
   })
 
@@ -61,16 +65,25 @@ describe('Main Page Clipboard UI Interactions', () => {
     await import(`../src/js/main.js?t=${Date.now()}`)
     window.dispatchEvent(new Event('DOMContentLoaded'))
 
-    const btn = document.querySelector('.copy-btn')
+    const btn = document.querySelector('#valid .copy-btn')
+    const useEl = btn.querySelector('use')
 
     // Trigger the click
     btn.click()
+
+    // Wait for the clipboard promise to resolve
+    await Promise.resolve()
+    await Promise.resolve()
+
+    expect(useEl.getAttribute('href')).toBe('#icon-check')
+    expect(btn.classList.contains('copied')).toBe(true)
 
     // Wait for the clipboard promise to resolve AND the timer to finish
     // This flushes microtasks (promises) and macrotasks (timers) in order
     await jest.advanceTimersByTimeAsync(2000)
 
-    expect(btn.textContent).toBe('Copy')
+    expect(useEl.getAttribute('href')).toBe('#icon-copy')
+    expect(btn.classList.contains('copied')).toBe(false)
 
     jest.useRealTimers()
   })
@@ -84,17 +97,22 @@ describe('Main Page Clipboard UI Interactions', () => {
     window.dispatchEvent(new Event('DOMContentLoaded'))
 
     const btn = document.querySelector('#valid .copy-btn')
+    const useEl = btn.querySelector('use')
+
     btn.click()
 
     // Wait for the rejection to process
     await Promise.resolve()
     await Promise.resolve()
 
-    expect(btn.textContent).toBe('Failed')
+    expect(useEl.getAttribute('href')).toBe('#icon-copy')
+    expect(btn.classList.contains('copied')).toBe(false)
 
     // Fast-forward time
     jest.advanceTimersByTime(2000)
-    expect(btn.textContent).toBe('Copy')
+    expect(useEl.getAttribute('href')).toBe('#icon-copy')
+
+    jest.useRealTimers()
   })
 
   test('displays "Unavailable" if navigator.clipboard is missing', async () => {
@@ -110,13 +128,15 @@ describe('Main Page Clipboard UI Interactions', () => {
     window.dispatchEvent(new Event('DOMContentLoaded'))
 
     const btn = document.querySelector('#valid .copy-btn')
+    const useEl = btn.querySelector('use')
+
     btn.click()
 
-    expect(btn.textContent).toBe('Unavailable')
+    expect(useEl.getAttribute('href')).toBe('#icon-copy')
 
     // Fast-forward time to verify it resets back to 'Copy'
     jest.advanceTimersByTime(2000)
-    expect(btn.textContent).toBe('Copy')
+    expect(useEl.getAttribute('href')).toBe('#icon-copy')
 
     jest.useRealTimers()
   })
