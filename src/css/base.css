@@ -55,7 +55,7 @@
   --code-color: #23272f;
   --code-border: #ccc;
   --code-comment: #818181;
-  --code-radius: 0;
+  --code-radius: 6px;
   --code-font: 'JetBrains Mono', 'Cascadia Code', 'Segoe UI Mono', 'Consolas', monospace;
 
   --code-btn-bg: var(--code-bg);
@@ -63,13 +63,13 @@
   --code-btn-color: var(--code-color);
   --code-btn-padding: 0.3rem 0.6rem;
   --code-btn-font-size: 0.85rem;
-  --code-btn-radius: 0;
+  --code-btn-radius: 4px;
 
   --form-bg: #fafafa;
   --form-border: #e0e0e0;
   --form-focus-border: var(--header-dark);
   --border: #f2f2f2;
-  --border-radius: 0;
+  --border-radius: 4px;
   --input-bg: #fff;
   --placeholder-text-color: #727272;
 
