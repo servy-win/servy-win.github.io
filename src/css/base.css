@@ -55,6 +55,7 @@
   --code-color: #23272f;
   --code-border: #ccc;
   --code-comment: #818181;
+  --code-string: #0f766e;
   --code-radius: 6px;
   --code-font: 'JetBrains Mono', 'Cascadia Code', 'Segoe UI Mono', 'Consolas', monospace;
 
@@ -96,9 +97,9 @@
   --btn-bg: #0077C8;
 
   /* Dark button on the light theme, light button on the dark theme */
-  --support-btn-github-bg: #f0f6fc;
-  --support-btn-github-border: #f0f6fc;
-  --support-btn-github-text: #1b1f24;
+  --support-btn-github-bg: #000;
+  --support-btn-github-border: #000;
+  --support-btn-github-text: #fff;
 
   /* PayPal support button */
   --support-btn-paypal-bg: #0070BA;
@@ -110,6 +111,7 @@
   --code-color: #dfdfdf;
   --code-border: #292c3c;
   --code-comment: #aaa;
+  --code-string: #80deea;
 
   --code-btn-bg: var(--code-bg);
   --code-btn-bg-hover: #333A45;
