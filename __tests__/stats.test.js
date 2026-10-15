@@ -137,6 +137,16 @@ describe('renderStats', () => {
     expect(byId('total-downloads').textContent).toBe('2,000')
   })
 
+  test('sets full datetime and timezone in the title tooltip on release date without "at"', () => {
+    renderStats([makeRelease('v1.0.0', { published_at: '2024-01-01T15:30:00Z' })])
+
+    const dateEl = document.querySelector('.release-date')
+    expect(dateEl.title).toBeTruthy()
+    expect(dateEl.title).toContain('2024')
+    expect(dateEl.title).not.toContain(' at ')
+    expect(dateEl.title).toMatch(/\d{1,2}:\d{2}/)
+  })
+
   test('marks the newest stable release as latest, even when a pre-release is listed first', () => {
     renderStats([
       makeRelease('v3.0.0-beta', { prerelease: true }),

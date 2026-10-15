@@ -324,7 +324,7 @@ function buildAssetItem(asset, formatter) {
   return li
 }
 
-function buildReleaseCard(release, isLatest, formatter, dateOpts) {
+function buildReleaseCard(release, isLatest, formatter, dateOpts, fullDateOpts) {
   const assets = Array.isArray(release.assets) ? release.assets : []
   const author = release.author || {}
 
@@ -348,6 +348,13 @@ function buildReleaseCard(release, isLatest, formatter, dateOpts) {
 
   const releaseDate = el('div', 'release-date',
     release.published_at ? new Date(release.published_at).toLocaleDateString('en-US', dateOpts) : 'N/A')
+
+  if (release.published_at) {
+    const dateObj = new Date(release.published_at)
+    releaseDate.title = dateObj
+      .toLocaleString('en-US', fullDateOpts)
+      .replace(' at ', ', ')
+  }
 
   releaseHeader.appendChild(releaseTitle)
   releaseHeader.appendChild(releaseDate)
@@ -412,6 +419,14 @@ export function renderStats(releases) {
   const renderId = ++latestRenderId
   const formatter = new Intl.NumberFormat('en-US')
   const dateOpts = { year: 'numeric', month: 'long', day: 'numeric' }
+  const fullDateOpts = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZoneName: 'short'
+  }
 
   // The newest stable release is "Latest", even when a pre-release is listed first
   const latestIndex = releases.findIndex(release => !release.prerelease)
@@ -425,7 +440,7 @@ export function renderStats(releases) {
     const end = Math.min(start + RENDER_BATCH_SIZE, releases.length)
     const fragment = document.createDocumentFragment()
     releases.slice(start, end).forEach((release, offset) => {
-      fragment.appendChild(buildReleaseCard(release, start + offset === latestIndex, formatter, dateOpts))
+      fragment.appendChild(buildReleaseCard(release, start + offset === latestIndex, formatter, dateOpts, fullDateOpts))
     })
     list.appendChild(fragment)
 
