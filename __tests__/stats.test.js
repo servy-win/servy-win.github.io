@@ -10,7 +10,7 @@ jest.unstable_mockModule('../src/js/utils.js', () => ({
 }))
 
 const utils = await import('../src/js/utils.js')
-const { init, fetchStats, renderStats, formatSize, slimRelease } = await import('../src/js/stats.js')
+const { init, fetchStats, renderStats, formatSize, slimRelease, formatFullDateTime } = await import('../src/js/stats.js')
 
 const CACHE_KEY = 'github_stats_aelassas/servy'
 const TIME_KEY = `${CACHE_KEY}_timestamp`
@@ -19,10 +19,14 @@ const ETAG_KEY = `${CACHE_KEY}_etag`
 const DOM = `
   <div id="loading"></div>
   <div id="error" style="display: none;"></div>
-  <div id="stats-container" style="display: none;"></div>
-  <span id="last-updated"></span>
-  <div id="total-downloads"></div>
-  <div id="releases-list"></div>
+  <div id="stats-container" style="display: none;">
+    <section class="total-downloads-card">
+      <h2>Total Downloads</h2>
+      <div class="big-number" id="total-downloads">0</div>
+      <p id="last-updated"></p>
+    </section>
+    <div id="releases-list"></div>
+  </div>
   <footer></footer>
 `
 
@@ -61,7 +65,7 @@ const seedCache = (releases, timestamp, etag = null) => {
 
 const waitFor = async (assertion, timeout = 1000) => {
   const start = Date.now()
-  for (;;) {
+  for (; ;) {
     try {
       return assertion()
     } catch (err) {
@@ -85,6 +89,20 @@ beforeEach(() => {
 afterEach(() => {
   jest.useRealTimers()
   jest.restoreAllMocks()
+})
+
+describe('formatFullDateTime', () => {
+  test('returns an empty string when timestamp is falsy', () => {
+    expect(formatFullDateTime(null)).toBe('')
+    expect(formatFullDateTime(undefined)).toBe('')
+  })
+
+  test('formats timestamp into full local date and time without "at"', () => {
+    const formatted = formatFullDateTime('2024-01-01T15:30:00Z')
+    expect(formatted).toContain('2024')
+    expect(formatted).not.toContain(' at ')
+    expect(formatted).toMatch(/\d{1,2}:\d{2}/)
+  })
 })
 
 describe('formatSize', () => {
@@ -244,6 +262,8 @@ describe('fetchStats: network', () => {
     expect(byId('stats-container').style.display).toBe('block')
     expect(byId('total-downloads').textContent).toBe('1')
     expect(byId('last-updated').textContent).toMatch(/^Last updated: /)
+    expect(byId('last-updated').textContent).not.toContain(' at ')
+    expect(document.querySelector('.total-downloads-card').title).toMatch(/^Last updated: /)
     expect(document.querySelector('.release-link').textContent).toBe('v1.0.0')
 
     const cached = JSON.parse(localStorage.getItem(CACHE_KEY))
@@ -455,14 +475,19 @@ describe('fetchStats: errors', () => {
 
 describe('fetchStats: optional elements', () => {
   test('does not throw when UI elements are missing', async () => {
-    ;['last-updated', 'loading', 'stats-container', 'total-downloads'].forEach(id => byId(id).remove())
+    ;['last-updated', 'loading', 'stats-container', 'total-downloads'].forEach(id => byId(id)?.remove())
+
+    // Re-attach releases-list so renderStats can render cards without stats-container
+    const list = document.createElement('div')
+    list.id = 'releases-list'
+    document.body.appendChild(list)
+
     globalThis.fetch.mockResolvedValue(response([makeRelease('v7.2.3')]))
 
     await expect(fetchStats()).resolves.toBeUndefined()
 
-    expect(document.querySelector('.release-link').textContent).toBe('v7.2.3')
+    expect(document.querySelector('.release-link')?.textContent).toBe('v7.2.3')
   })
-
   test('does not throw on errors when the error element is missing', async () => {
     jest.spyOn(console, 'error').mockImplementation(() => { })
     byId('error').remove()

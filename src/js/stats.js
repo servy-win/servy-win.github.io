@@ -20,6 +20,28 @@ const PAGE_SIZE = 100
 const RENDER_BATCH_SIZE = 10
 
 /**
+ * Helper to format a timestamp into a full local datetime string,
+ * replacing " at " with ", ".
+ * @param {number|string|Date} ts 
+ * @returns {string}
+ */
+export function formatFullDateTime(ts) {
+  if (!ts) return ''
+  const dateObj = new Date(ts)
+  const fullDateOpts = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZoneName: 'short'
+  }
+  return dateObj
+    .toLocaleString('en-US', fullDateOpts)
+    .replace(' at ', ', ')
+}
+
+/**
  * Entry point for the Statistics page.
  * The fetch starts before layout initialization so the two overlap.
  * @returns {Promise<void>}
@@ -195,18 +217,19 @@ function showReleases(releases, timestamp) {
 }
 
 /**
- * Updates the "Last Updated" text in the UI.
+ * Updates the "Last Updated" text and tooltip in the UI.
  * @param {number} ts - Unix timestamp.
  */
 function updateTimestampUI(ts) {
   const el = document.getElementById('last-updated')
   if (!el || !ts) return
-  // Use 'en-US' explicitly for consistent formatting
-  const dateStr = new Date(ts).toLocaleString('en-US', {
-    dateStyle: 'medium',
-    timeStyle: 'short'
-  })
+  const dateStr = formatFullDateTime(ts)
   el.textContent = `Last updated: ${dateStr}`
+
+  const card = document.querySelector('.total-downloads-card')
+  if (card) {
+    card.title = `Last updated: ${dateStr}`
+  }
 }
 
 /**
@@ -324,7 +347,7 @@ function buildAssetItem(asset, formatter) {
   return li
 }
 
-function buildReleaseCard(release, isLatest, formatter, dateOpts, fullDateOpts) {
+function buildReleaseCard(release, isLatest, formatter, dateOpts) {
   const assets = Array.isArray(release.assets) ? release.assets : []
   const author = release.author || {}
 
@@ -350,10 +373,7 @@ function buildReleaseCard(release, isLatest, formatter, dateOpts, fullDateOpts) 
     release.published_at ? new Date(release.published_at).toLocaleDateString('en-US', dateOpts) : 'N/A')
 
   if (release.published_at) {
-    const dateObj = new Date(release.published_at)
-    releaseDate.title = dateObj
-      .toLocaleString('en-US', fullDateOpts)
-      .replace(' at ', ', ')
+    releaseDate.title = formatFullDateTime(release.published_at)
   }
 
   releaseHeader.appendChild(releaseTitle)
@@ -419,14 +439,6 @@ export function renderStats(releases) {
   const renderId = ++latestRenderId
   const formatter = new Intl.NumberFormat('en-US')
   const dateOpts = { year: 'numeric', month: 'long', day: 'numeric' }
-  const fullDateOpts = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    timeZoneName: 'short'
-  }
 
   // The newest stable release is "Latest", even when a pre-release is listed first
   const latestIndex = releases.findIndex(release => !release.prerelease)
@@ -440,7 +452,7 @@ export function renderStats(releases) {
     const end = Math.min(start + RENDER_BATCH_SIZE, releases.length)
     const fragment = document.createDocumentFragment()
     releases.slice(start, end).forEach((release, offset) => {
-      fragment.appendChild(buildReleaseCard(release, start + offset === latestIndex, formatter, dateOpts, fullDateOpts))
+      fragment.appendChild(buildReleaseCard(release, start + offset === latestIndex, formatter, dateOpts))
     })
     list.appendChild(fragment)
 
