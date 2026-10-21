@@ -2,6 +2,7 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
 import { createHtmlPlugin } from 'vite-plugin-html'
+import { compression } from 'vite-plugin-compression2'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -12,7 +13,8 @@ export default defineConfig({
     outDir: './dist',
     manifest: true,
     emptyOutDir: true,
-    cssMinify: 'lightningcss',   // Deepest CSS minification for faster FCP/LCP
+    target: 'es2022',
+    cssMinify: 'lightningcss',
     reportCompressedSize: false,
     modulePreload: { polyfill: false },
     rolldownOptions: {
@@ -21,17 +23,10 @@ export default defineConfig({
         stats: resolve(__dirname, 'downloads/index.html'),
         contact: resolve(__dirname, 'contact/index.html'),
       },
-      output: {
-        comments: false,
-        minify: {
-          compress: {
-            passes: 2,           // Extra compression pass for minimum file size
-            drop_console: true,  // Removes console statements
-            drop_debugger: true
-          },
-        },
-      },
     },
+  },
+  esbuild: {
+    drop: ['console', 'debugger'],
   },
   plugins: [
     createHtmlPlugin({
@@ -46,5 +41,7 @@ export default defineConfig({
         processScripts: ['application/ld+json'],
       },
     }),
+    compression({ algorithm: 'gzip' }),
+    compression({ algorithm: 'brotliCompress' }),
   ],
 })
