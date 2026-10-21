@@ -1,20 +1,6 @@
 /* Home page styles (index.html only) */
 
 /* ==========================================================================
-   2. FONTS
-   ========================================================================== */
-
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 400;
-  /* Key for Speed Index */
-  font-display: swap;
-  src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
-}
-
-
-/* ==========================================================================
    8. HERO SECTION
    ========================================================================== */
 
@@ -424,7 +410,7 @@ div.cta {
 }
 
 .code-block-small code {
-  font-size: 0.78rem;
+  font-size: 0.85rem;
 }
 
 .code-block-small .copy-btn {
