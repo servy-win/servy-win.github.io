@@ -57,7 +57,7 @@
   --code-comment: #818181;
   --code-string: #0f766e;
   --code-radius: 6px;
-  --code-font: 'SF Mono', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+  --code-font: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, "Liberation Mono", monospace;
 
   --code-btn-bg: var(--code-bg);
   --code-btn-bg-hover: #e2e8f0;
