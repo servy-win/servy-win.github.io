@@ -266,12 +266,14 @@ function handleError(err) {
 }
 
 /**
- * Formats a byte count into a human-readable string (KB, MB, etc.).
+ * Formats a byte count to match GitHub's exact file size display logic.
  * @param {number} bytes
  * @returns {string}
  */
 export function formatSize(bytes) {
+  if (typeof bytes !== 'number' || isNaN(bytes) || bytes < 0) return '0 B'
   if (bytes < 1024) return `${bytes} B`
+
   const units = ['KB', 'MB', 'GB', 'TB']
   let size = bytes / 1024
   let unitIndex = 0
@@ -281,7 +283,18 @@ export function formatSize(bytes) {
     unitIndex++
   }
 
-  const display = size >= 10 ? Math.round(size * 10) / 10 : size.toFixed(2)
+  let display
+  if (size >= 100) {
+    // GitHub rounds sizes >= 100 to the nearest whole integer
+    display = Math.round(size).toString()
+  } else if (size >= 10) {
+    // Sizes between 10 and 99 get up to 1 decimal place without trailing .0
+    display = (Math.round(size * 10) / 10).toString()
+  } else {
+    // Sizes under 10 get up to 2 decimal places
+    display = (Math.round(size * 100) / 100).toString()
+  }
+
   // eslint-disable-next-line security/detect-object-injection
   return `${display} ${units[unitIndex]}`
 }

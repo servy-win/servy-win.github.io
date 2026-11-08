@@ -108,11 +108,13 @@ describe('formatFullDateTime', () => {
 describe('formatSize', () => {
   test.each([
     [500, '500 B'],
-    [2048, '2.00 KB'],
-    [5 * 1024 * 1024, '5.00 MB'],
-    [12 * 1024 * 1024, '12 MB'],
-    [15.5 * 1024 * 1024, '15.5 MB'],
-    [3 * 1024 ** 3, '3.00 GB'],
+    [2048, '2 KB'],
+    [33485, '32.7 KB'],
+    [2149580, '2.05 MB'],
+    [4508876, '4.3 MB'],
+    [125000000, '119 MB'],
+    [126353408, '121 MB'], // 120.5 * 1024 * 1024 = 126353408
+    [3 * 1024 ** 3, '3 GB'],
   ])('formats %d bytes as %s', (bytes, expected) => {
     expect(formatSize(bytes)).toBe(expected)
   })
