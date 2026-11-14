@@ -7,7 +7,7 @@
 
 /**
  * Initializes Google Analytics and other Google tracking IDs using a lazy-loading strategy.
- * The scripts are only injected once the user performs an interaction (scroll, touch, or mouse move).
+ * The scripts are only injected once the user performs an interaction (mouse move or touch).
  * * @param {...string} ids - One or more Google tracking IDs (e.g., 'G-XXXXX', 'AW-XXXXX').
  * @returns {void}
  */
@@ -56,8 +56,6 @@ export function initGA(...ids) {
   const startAnalytics = () => {
     window.removeEventListener('mousemove', startAnalytics)
     window.removeEventListener('touchstart', startAnalytics)
-    window.removeEventListener('scroll', startAnalytics)
-    window.removeEventListener('keydown', startAnalytics)
 
     loadAnalytics()
   }
@@ -66,6 +64,4 @@ export function initGA(...ids) {
   // Passive listeners are used to improve scroll performance.
   window.addEventListener('mousemove', startAnalytics, { once: true, passive: true })
   window.addEventListener('touchstart', startAnalytics, { once: true, passive: true })
-  window.addEventListener('scroll', startAnalytics, { once: true, passive: true })
-  window.addEventListener('keydown', startAnalytics, { once: true, passive: true })
 }

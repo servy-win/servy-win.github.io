@@ -1,4 +1,4 @@
-import { jest, describe, beforeEach, test, expect } from '@jest/globals'
+import { jest, describe, beforeEach, afterEach, test, expect } from '@jest/globals'
 import { initGA } from '../src/js/ga.js'
 
 describe('Google Analytics Initialization (ga.js)', () => {
@@ -7,6 +7,12 @@ describe('Google Analytics Initialization (ga.js)', () => {
     delete window.dataLayer
     delete window.gtag
     jest.clearAllMocks()
+  })
+
+  afterEach(() => {
+    // Flush any unconsumed interaction listeners attached to global window
+    window.dispatchEvent(new Event('mousemove'))
+    document.head.innerHTML = ''
   })
 
   test('requires an ID to initialize', () => {
@@ -22,8 +28,8 @@ describe('Google Analytics Initialization (ga.js)', () => {
     // Script shouldn't exist before interaction
     expect(document.querySelector('script')).toBeNull()
 
-    // Trigger scroll event to simulate interaction
-    window.dispatchEvent(new Event('scroll'))
+    // Trigger mousemove event to simulate interaction
+    window.dispatchEvent(new Event('mousemove'))
 
     const script = document.querySelector('script')
     expect(script).not.toBeNull()
@@ -38,16 +44,14 @@ describe('Google Analytics Initialization (ga.js)', () => {
   test('is idempotent and injects script only once across repeated events', () => {
     initGA('G-TEST1234')
 
-    window.dispatchEvent(new Event('scroll'))
     window.dispatchEvent(new Event('mousemove'))
     window.dispatchEvent(new Event('touchstart'))
-    window.dispatchEvent(new Event('keydown'))
 
     const scripts = document.querySelectorAll('script')
     expect(scripts.length).toBe(1)
   })
 
-  test.each(['mousemove', 'touchstart', 'scroll', 'keydown'])(
+  test.each(['mousemove', 'touchstart'])(
     'triggers script injection on %s event',
     (eventType) => {
       initGA('G-TEST1234')
@@ -62,10 +66,21 @@ describe('Google Analytics Initialization (ga.js)', () => {
     }
   )
 
+  test.each(['scroll', 'keydown'])(
+    'does not trigger script injection on %s event',
+    (eventType) => {
+      initGA('G-TEST1234')
+
+      window.dispatchEvent(new Event(eventType))
+
+      expect(document.querySelector('script')).toBeNull()
+    }
+  )
+
   test('configures multiple IDs correctly on script load', () => {
     initGA('G-1', 'AW-2')
 
-    window.dispatchEvent(new Event('scroll'))
+    window.dispatchEvent(new Event('mousemove'))
 
     const script = document.querySelector('script')
     expect(script).not.toBeNull()
