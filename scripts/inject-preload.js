@@ -78,7 +78,7 @@ pages.forEach((page) => {
     const preloadLink = `<link rel="preload" as="style" href="${href}" crossorigin>`
 
     if (!html.includes(preloadLink)) {
-      html = html.replace('<head>', `<head>\n  ${preloadLink}`)
+      html = html.replace('<head>', `<head>${preloadLink}`)
       injected = true
     }
   })

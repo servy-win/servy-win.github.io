@@ -52,6 +52,30 @@ function terserBundlePlugin() {
   }
 }
 
+function cssPreloadPlugin() {
+  return {
+    name: 'css-preload-plugin',
+    enforce: 'post',
+    generateBundle(_, bundle) {
+      for (const item of Object.values(bundle)) {
+        if (item.type === 'asset' && item.fileName.endsWith('.html')) {
+          const html = item.source.toString()
+          const hrefs = [...html.matchAll(/<link[^>]+rel="stylesheet"[^>]+href="([^"]+)"/g)].map(
+            (match) => match[1]
+          )
+
+          if (hrefs.length > 0) {
+            const preloadTags = [...new Set(hrefs)]
+              .map((href) => `<link rel="preload" as="style" href="${href}" crossorigin>`)
+              .join('')
+            item.source = html.replace('<head>', `<head>${preloadTags}`)
+          }
+        }
+      }
+    },
+  }
+}
+
 function htmlMinifyPlugin() {
   return {
     name: 'html-minify-plugin',
@@ -83,10 +107,10 @@ export default defineConfig({
     target: 'es2022',
     cssMinify: 'lightningcss',
     reportCompressedSize: false,
-    
+
     // Automatically generates fingerprinted modulepreload tags matching output chunks
-    modulePreload: { 
-      polyfill: false 
+    modulePreload: {
+      polyfill: false
     },
     minify: false,
 
@@ -101,6 +125,7 @@ export default defineConfig({
   plugins: [
     terserBundlePlugin(),
     htmlMinifyPlugin(),
+    cssPreloadPlugin(),
     compression({ algorithm: 'gzip' }),
     compression({ algorithm: 'brotliCompress' }),
   ],
