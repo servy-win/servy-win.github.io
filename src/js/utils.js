@@ -29,7 +29,8 @@ const storeTheme = (theme) => {
  */
 export const initCommonLayout = () => {
   // Initialize Google Analytics and Google Ads Conversion Tracking
-  initGA('G-VQ7924LC4H', 'AW-16758312117')
+  // initGA('G-VQ7924LC4H', 'AW-16758312117')
+  initGA('G-VQ7924LC4H')
 
   // Initialize Header Hamburger Menu
   initHeaderHamburger()

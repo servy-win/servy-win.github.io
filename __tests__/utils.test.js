@@ -58,7 +58,8 @@ describe('initCommonLayout', () => {
     expect(document.getElementById('year').textContent).toBe(new Date().getFullYear().toString())
 
     // Now initGA will be recognized as a mock function
-    expect(initGA).toHaveBeenCalledWith('G-VQ7924LC4H', 'AW-16758312117')
+    // expect(initGA).toHaveBeenCalledWith('G-VQ7924LC4H', 'AW-16758312117')
+    expect(initGA).toHaveBeenCalledWith('G-VQ7924LC4H')
   })
 })
 
