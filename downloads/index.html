@@ -11,11 +11,13 @@
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#00add8">
 
-  <title>Servy - Downloads</title>
-  <meta name="description" content="Downloads and release history for Servy.">
+  <title data-i18n="downloads.title">Servy - Downloads</title>
+  <meta name="description" data-i18n-content="downloads.description"
+    content="Downloads and release history for Servy.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Servy - Downloads">
-  <meta property="og:description" content="View downloads and release history for Servy.">
+  <meta property="og:title" data-i18n-content="downloads.title" content="Servy - Downloads">
+  <meta property="og:description" data-i18n-content="downloads.ogDescription"
+    content="View downloads and release history for Servy.">
   <meta property="og:image" content="https://servy-win.github.io/servy-tiny.png">
   <meta property="og:image:width" content="1366">
   <meta property="og:image:height" content="715">
@@ -32,8 +34,9 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Servy - Downloads">
-  <meta name="twitter:description" content="Downloads and release history for Servy.">
+  <meta name="twitter:title" data-i18n-content="downloads.title" content="Servy - Downloads">
+  <meta name="twitter:description" data-i18n-content="downloads.description"
+    content="Downloads and release history for Servy.">
   <meta name="twitter:image" content="https://servy-win.github.io/servy-tiny.png">
   <meta name="twitter:image:alt" content="Servy: Run Any App as a Native Windows Service">
 
@@ -57,29 +60,57 @@
       <a href="/" class="header-servy">Servy</a>
 
       <div class="nav-links" id="nav-links">
-        <a href="/" class="header-link">Home</a>
+        <a href="/" class="header-link" data-i18n="nav.home">Home</a>
 
         <a href="https://github.com/aelassas/servy/wiki" target="_blank" rel="noopener noreferrer" class="header-link"
-          title="View Servy documentation">Docs</a>
+          title="View Servy documentation" data-i18n="nav.docs" data-i18n-title="nav.docsTitle">Docs</a>
 
         <a href="/downloads/" class="header-link selected" aria-current="page"
-          title="View Servy download statistics">Downloads</a>
+          title="View Servy download statistics" data-i18n="nav.downloads"
+          data-i18n-title="nav.downloadsTitle">Downloads</a>
 
-        <a href="/#support" class="header-link support-link" title="Support Servy development">
+        <a href="/#support" class="header-link support-link" title="Support Servy development"
+          data-i18n-title="nav.supportTitle">
           <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
             class="heart">
             <path
               d="m8 14.25.345.666a.75.75 0 0 1-.69 0l-.008-.004-.018-.01a7.152 7.152 0 0 1-.31-.17 22.055 22.055 0 0 1-3.434-2.414C2.045 10.731 0 8.35 0 5.5 0 2.836 2.086 1 4.25 1 5.797 1 7.153 1.802 8 3.02 8.847 1.802 10.203 1 11.75 1 13.914 1 16 2.836 16 5.5c0 2.85-2.045 5.231-3.885 6.818a22.066 22.066 0 0 1-3.744 2.584l-.018.01-.006.003h-.002ZM4.25 2.5c-1.336 0-2.75 1.164-2.75 3 0 2.15 1.58 4.144 3.365 5.682A20.58 20.58 0 0 0 8 13.393a20.58 20.58 0 0 0 3.135-2.211C12.92 9.644 14.5 7.65 14.5 5.5c0-1.836-1.414-3-2.75-3-1.373 0-2.609.986-3.029 2.456a.749.749 0 0 1-1.442 0C6.859 3.486 5.623 2.5 4.25 2.5Z">
             </path>
           </svg>
-          Support</a>
+          <span data-i18n="nav.support">Support</span></a>
 
-        <a href="/contact/" class="header-link">Contact</a>
+        <a href="/contact/" class="header-link" data-i18n="nav.contact">Contact</a>
       </div>
 
       <div class="header-actions">
+        <div class="lang-dropdown" id="lang-dropdown">
+          <button id="lang-toggle" type="button" class="lang-toggle" aria-haspopup="true" aria-expanded="false"
+            aria-controls="lang-menu" title="Select language" data-i18n-title="nav.selectLanguage">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+              </path>
+            </svg>
+            <span class="sr-only" data-i18n="nav.selectLanguage">Select language</span>
+            <span id="lang-current">EN</span>
+            <svg class="icon chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="lang-menu" id="lang-menu">
+            <button type="button" class="lang-option" data-lang="en" data-selected="true"
+              aria-current="true">English</button>
+            <button type="button" class="lang-option" data-lang="zh" aria-current="false">简体中文</button>
+          </div>
+        </div>
+
         <button id="dark-mode-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode"
-          class="dark-mode-toggle">
+          data-i18n-aria-label="nav.toggleDarkMode" data-i18n-title="nav.toggleDarkMode" class="dark-mode-toggle">
           <!-- Moon icon (default) -->
           <svg class="icon moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -101,7 +132,8 @@
         </button>
 
         <a href="https://github.com/aelassas/servy" class="github-link" target="_blank" rel="noopener noreferrer"
-          aria-label="GitHub repository" title="GitHub repository">
+          aria-label="GitHub repository" title="GitHub repository" data-i18n-aria-label="nav.githubRepo"
+          data-i18n-title="nav.githubRepo">
           <svg height="24" viewBox="0 0 16 16" version="1.1" width="24" aria-hidden="true" fill="white">
             <path fill-rule="evenodd"
               d="M8 0C3.58 0 0 3.58 0 8a8.01 8.01 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2 .37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.65 7.65 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
@@ -110,8 +142,8 @@
       </div>
 
       <div class="hamburger-container">
-        <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation" aria-expanded="false"
-          type="button">
+        <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation"
+          data-i18n-aria-label="nav.toggleNav" aria-expanded="false" type="button">
           <span></span>
           <span></span>
           <span></span>
@@ -121,15 +153,15 @@
       <div class="nav-overlay" aria-hidden="true"></div>
     </nav>
 
-    <h1>Downloads</h1>
+    <h1 data-i18n="downloads.heading">Downloads</h1>
   </header>
 
   <main class="container">
-    <div id="loading" class="stats-loading" role="status" aria-live="polite">Loading release data...</div>
+    <div id="loading" class="stats-loading" role="status" aria-live="polite" data-i18n="downloads.loading">Loading release data...</div>
     <div id="error" class="stats-error" role="alert" aria-live="assertive" style="display: none;"></div>
     <div id="stats-container" aria-live="polite" style="display: none;">
       <section class="total-downloads-card">
-        <h2>Total Downloads</h2>
+        <h2 data-i18n="downloads.totalDownloads">Total Downloads</h2>
         <div class="big-number" id="total-downloads">0</div>
         <p id="last-updated"></p>
       </section>
@@ -141,29 +173,30 @@
   <footer>
     <div class="footer-links">
       <!-- Core Links -->
-      <a href="https://github.com/aelassas/servy" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="https://github.com/aelassas/servy/wiki" target="_blank" rel="noopener noreferrer">Docs</a>
-      <a href="/downloads/">Downloads</a>
-      <a href="/contact/">Contact</a>
-      <a href="/#support">Support</a>
+      <a href="https://github.com/aelassas/servy" target="_blank" rel="noopener noreferrer"
+        data-i18n="footer.github">GitHub</a>
+      <a href="https://github.com/aelassas/servy/wiki" target="_blank" rel="noopener noreferrer"
+        data-i18n="footer.docs">Docs</a>
+      <a href="/downloads/" data-i18n="footer.downloads">Downloads</a>
+      <a href="/contact/" data-i18n="footer.contact">Contact</a>
+      <a href="/#support" data-i18n="footer.support">Support</a>
 
       <!-- Project Metadata Links -->
       <a href="https://github.com/aelassas/servy/blob/main/CHANGELOG.md" target="_blank"
-        rel="noopener noreferrer">Changelog</a>
-      <!-- <a href="https://github.com/aelassas/servy/blob/main/ROADMAP.md" target="_blank"
-        rel="noopener noreferrer">Roadmap</a> -->
+        rel="noopener noreferrer" data-i18n="footer.changelog">Changelog</a>
       <a href="https://github.com/aelassas/servy/blob/main/LICENSE.txt" target="_blank"
-        rel="noopener noreferrer">License</a>
+        rel="noopener noreferrer" data-i18n="footer.license">License</a>
     </div>
 
     <p>
-      &copy; <span id="year"></span> Servy by
+      &copy; <span id="year"></span> <span data-i18n="footer.copyright">Servy by
       <a href="https://wexdev.com/" target="_blank" rel="noopener noreferrer">Akram El Assas</a>. All rights
-      reserved.
+      reserved.</span>
     </p>
   </footer>
 
-  <button id="back-to-top" type="button" aria-label="Back to top" title="Back to top">
+  <button id="back-to-top" type="button" aria-label="Back to top" title="Back to top"
+    data-i18n-aria-label="common.backToTop" data-i18n-title="common.backToTop">
     <svg viewBox="0 0 24 24">
       <path fill-rule="evenodd" clip-rule="evenodd"
         d="M11.4697 8.46967C11.7626 8.17678 12.2374 8.17678 12.5303 8.46967L18.5303 14.4697C18.8232 14.7626 18.8232 15.2374 18.5303 15.5303C18.2374 15.8232 17.7626 15.8232 17.4697 15.5303L12 10.0607L6.53033 15.5303C6.23744 15.8232 5.76256 15.8232 5.46967 15.5303C5.17678 15.2374 5.17678 14.7626 5.46967 14.4697L11.4697 8.46967Z">

@@ -34,7 +34,8 @@ The project employs several advanced front-end techniques to ensure optimal perf
 * **index.html:** The main landing page.
 * **downloads/:** Directory containing the Downloads page.
 * **contact/:** Directory containing the contact form.
-* **src/js/:** Modular JavaScript logic including analytics, utility functions, and API handlers.
+* **public/locales/:** Translation JSON files for English (`en.json`) and Simplified Chinese (`zh.json`).
+* **src/js/:** Modular JavaScript logic including internationalization (`i18n.js`), analytics, utility functions, and API handlers.
 * **src/css/:** Component-based CSS utilizing CSS variables for theme management.
 
 ## Development

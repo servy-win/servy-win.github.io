@@ -513,3 +513,48 @@ describe('init', () => {
       .toBeLessThan(utils.initCommonLayout.mock.invocationCallOrder[0])
   })
 })
+
+describe('localization (langchange)', () => {
+  afterEach(() => {
+    window.currentLang = 'en'
+    delete window.translations
+  })
+
+  test('re-renders release cards and timestamps when language changes to zh', async () => {
+    seedCache([makeRelease('v1.0.0', { prerelease: true })], Date.now())
+    await init()
+
+    window.currentLang = 'zh'
+    window.translations = {
+      'downloads.lastUpdated': '最后更新：',
+      'downloads.badge.prerelease': '预发布',
+      'downloads.label.downloads': '下载量：',
+      'downloads.label.author': '作者：',
+      'downloads.assetsHeading': '发布文件',
+      'downloads.downloadsCountSuffix': '次下载',
+    }
+    window.dispatchEvent(new Event('langchange'))
+
+    expect(document.querySelector('.badge.pre').textContent).toBe('预发布')
+    expect(document.querySelector('.stat .label').textContent).toBe('下载量：')
+    expect(document.querySelector('.assets-section h4').textContent).toBe('发布文件')
+    expect(document.querySelector('.asset-downloads').textContent).toBe('1 次下载')
+    expect(byId('last-updated').textContent).toMatch(/^最后更新：/)
+  })
+
+  test('updates visible error message when language changes after a fetch error', async () => {
+    jest.spyOn(console, 'error').mockImplementation(() => { })
+    globalThis.fetch.mockResolvedValue(response(null, { status: 429 }))
+
+    await init()
+    expect(byId('error').textContent).toContain('Rate limit exceeded')
+
+    window.currentLang = 'zh'
+    window.translations = {
+      'downloads.error.rateLimit': '已超出 GitHub API 请求速率限制，请几分钟后再试。',
+    }
+    window.dispatchEvent(new Event('langchange'))
+
+    expect(byId('error').textContent).toBe('已超出 GitHub API 请求速率限制，请几分钟后再试。')
+  })
+})

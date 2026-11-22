@@ -2,7 +2,7 @@
  * @file stats.js
  * @description Manages fetching and rendering GitHub release statistics for the Servy repository.
  * Features include ETag-based conditional fetching, multi-page results handling, 
- * robust error management, and LocalStorage caching.
+ * robust error management, LocalStorage caching, and i18n localization.
  */
 
 import * as utils from './utils.js'
@@ -18,6 +18,19 @@ const CACHE_DURATION = 65 * 60 * 1000 // GitHub rate limit window is 60m
 const FETCH_TIMEOUT = 10 * 1000
 const PAGE_SIZE = 100
 const RENDER_BATCH_SIZE = 10
+
+let lastRenderedReleases = null
+let lastRenderedTimestamp = null
+let lastFetchError = null
+
+function t(key, fallback) {
+  // eslint-disable-next-line security/detect-object-injection
+  return window.translations?.[key] || fallback
+}
+
+function getLocale() {
+  return window.currentLang === 'zh' ? 'zh-CN' : 'en-US'
+}
 
 /**
  * Helper to format a timestamp into a full local datetime string,
@@ -37,9 +50,26 @@ export function formatFullDateTime(ts) {
     timeZoneName: 'short'
   }
   return dateObj
-    .toLocaleString('en-US', fullDateOpts)
+    .toLocaleString(getLocale(), fullDateOpts)
     .replace(' at ', ', ')
 }
+
+/**
+ * Returns a localized error message for a fetch failure.
+ * @param {Error} err
+ * @returns {string}
+ */
+function getErrorMessage(err) {
+  const messages = {
+    RATE_LIMIT: t('downloads.error.rateLimit', 'Rate limit exceeded (GitHub API). Please try again in a few minutes.'),
+    TIMEOUT: t('downloads.error.timeout', 'Request timed out. Please check your connection and try again.'),
+    NO_DATA: t('downloads.error.noData', 'No releases were found for this repository.'),
+    TypeError: t('downloads.error.network', 'Network error. Please check if you are online.')
+  }
+  return messages[err.message] || messages[err.name] || t('downloads.error.default', 'Failed to load statistics.')
+}
+
+let langListenerAttached = false
 
 /**
  * Entry point for the Statistics page.
@@ -49,6 +79,22 @@ export function formatFullDateTime(ts) {
 export function init() {
   const pending = fetchStats()
   utils.initCommonLayout()
+
+  if (!langListenerAttached) {
+    langListenerAttached = true
+    window.addEventListener('langchange', () => {
+      if (lastRenderedReleases) {
+        renderStats(lastRenderedReleases)
+        updateTimestampUI(lastRenderedTimestamp)
+      } else if (lastFetchError) {
+        const errorDiv = document.getElementById('error')
+        if (errorDiv && errorDiv.style.display !== 'none') {
+          errorDiv.textContent = getErrorMessage(lastFetchError)
+        }
+      }
+    })
+  }
+
   return pending
 }
 
@@ -211,6 +257,7 @@ export async function fetchStats() {
 }
 
 function showReleases(releases, timestamp) {
+  lastFetchError = null
   renderStats(releases)
   updateTimestampUI(timestamp)
   finalizeUI()
@@ -221,14 +268,16 @@ function showReleases(releases, timestamp) {
  * @param {number} ts - Unix timestamp.
  */
 function updateTimestampUI(ts) {
+  lastRenderedTimestamp = ts
   const el = document.getElementById('last-updated')
   if (!el || !ts) return
   const dateStr = formatFullDateTime(ts)
-  el.textContent = `Last updated: ${dateStr}`
+  const label = t('downloads.lastUpdated', 'Last updated:')
+  el.textContent = `${label} ${dateStr}`
 
   const card = document.querySelector('.total-downloads-card')
   if (card) {
-    card.title = `Last updated: ${dateStr}`
+    card.title = `${label} ${dateStr}`
   }
 }
 
@@ -248,18 +297,15 @@ function finalizeUI() {
  * @param {Error} err
  */
 function handleError(err) {
+  lastRenderedReleases = null
+  lastRenderedTimestamp = null
+  lastFetchError = err
   console.error('Stats Fetch Error:', err.message)
   const loading = document.getElementById('loading')
   const errorDiv = document.getElementById('error')
   if (loading) loading.style.display = 'none'
-  const messages = {
-    'RATE_LIMIT': 'Rate limit exceeded (GitHub API). Please try again in a few minutes.',
-    'TIMEOUT': 'Request timed out. Please check your connection and try again.',
-    'NO_DATA': 'No releases were found for this repository.',
-    'TypeError': 'Network error. Please check if you are online.'
-  }
   if (errorDiv) {
-    errorDiv.textContent = messages[err.message] || messages[err.name] || 'Failed to load statistics.'
+    errorDiv.textContent = getErrorMessage(err)
     errorDiv.style.display = 'block'
   }
   document.body.classList.remove('is-loading')
@@ -349,11 +395,12 @@ function buildAssetItem(asset, formatter) {
   if (asset.browser_download_url) assetLink.href = asset.browser_download_url
   assetLink.rel = 'nofollow noopener noreferrer'
   assetLink.appendChild(createAssetIcon())
-  assetLink.appendChild(document.createTextNode(asset.name || 'Unnamed asset'))
+  assetLink.appendChild(document.createTextNode(asset.name || t('downloads.unnamedAsset', 'Unnamed asset')))
 
   const assetMeta = el('span', 'asset-meta')
   assetMeta.appendChild(el('span', 'asset-size', formatSize(Number(asset.size) || 0)))
-  assetMeta.appendChild(el('span', 'asset-downloads', `${formatter.format(Number(asset.download_count) || 0)} downloads`))
+  const downloadsSuffix = t('downloads.downloadsCountSuffix', 'downloads')
+  assetMeta.appendChild(el('span', 'asset-downloads', `${formatter.format(Number(asset.download_count) || 0)} ${downloadsSuffix}`))
 
   li.appendChild(assetLink)
   li.appendChild(assetMeta)
@@ -374,16 +421,16 @@ function buildReleaseCard(release, isLatest, formatter, dateOpts) {
   const releaseLink = el('a', 'release-link', release.tag_name)
   if (release.html_url) releaseLink.href = release.html_url
   releaseLink.target = '_blank'
-  releaseLink.setAttribute('aria-label', `Release ${release.tag_name}`)
+  releaseLink.setAttribute('aria-label', `${t('downloads.releaseAriaLabel', 'Release')} ${release.tag_name}`)
   releaseLink.rel = 'noopener noreferrer'
   h3.appendChild(releaseLink)
   releaseTitle.appendChild(h3)
 
-  if (isLatest) releaseTitle.appendChild(el('span', 'badge latest', 'Latest'))
-  if (release.prerelease) releaseTitle.appendChild(el('span', 'badge pre', 'Pre-release'))
+  if (isLatest) releaseTitle.appendChild(el('span', 'badge latest', t('downloads.badge.latest', 'Latest')))
+  if (release.prerelease) releaseTitle.appendChild(el('span', 'badge pre', t('downloads.badge.prerelease', 'Pre-release')))
 
   const releaseDate = el('div', 'release-date',
-    release.published_at ? new Date(release.published_at).toLocaleDateString('en-US', dateOpts) : 'N/A')
+    release.published_at ? new Date(release.published_at).toLocaleDateString(getLocale(), dateOpts) : t('downloads.na', 'N/A'))
 
   if (release.published_at) {
     releaseDate.title = formatFullDateTime(release.published_at)
@@ -396,11 +443,11 @@ function buildReleaseCard(release, isLatest, formatter, dateOpts) {
   const releaseStats = el('div', 'release-stats')
 
   const downloadsStat = el('div', 'stat')
-  downloadsStat.appendChild(el('span', 'label', 'Downloads:'))
+  downloadsStat.appendChild(el('span', 'label', t('downloads.label.downloads', 'Downloads:')))
   downloadsStat.appendChild(el('span', 'value', formatter.format(getReleaseDownloads(release))))
 
   const authorStat = el('div', 'stat')
-  authorStat.appendChild(el('span', 'label', 'Author:'))
+  authorStat.appendChild(el('span', 'label', t('downloads.label.author', 'Author:')))
   const authorLink = el('a', 'author-link')
   authorLink.href = author.html_url || '#'
   authorLink.target = '_blank'
@@ -415,7 +462,7 @@ function buildReleaseCard(release, isLatest, formatter, dateOpts) {
     avatar.decoding = 'async'
     authorLink.appendChild(avatar)
   }
-  authorLink.appendChild(document.createTextNode(author.login || 'Unknown'))
+  authorLink.appendChild(document.createTextNode(author.login || t('downloads.unknownAuthor', 'Unknown')))
   authorStat.appendChild(authorLink)
 
   releaseStats.appendChild(downloadsStat)
@@ -423,11 +470,11 @@ function buildReleaseCard(release, isLatest, formatter, dateOpts) {
 
   // --- Assets Section ---
   const assetsSection = el('div', 'assets-section')
-  assetsSection.appendChild(el('h4', undefined, 'Assets'))
+  assetsSection.appendChild(el('h4', undefined, t('downloads.assetsHeading', 'Assets')))
   const assetsList = el('ul', 'assets-list')
 
   if (assets.length === 0) {
-    assetsList.appendChild(el('li', 'no-assets', 'No assets available'))
+    assetsList.appendChild(el('li', 'no-assets', t('downloads.noAssets', 'No assets available')))
   } else {
     assets.forEach(asset => assetsList.appendChild(buildAssetItem(asset, formatter)))
   }
@@ -446,11 +493,12 @@ function buildReleaseCard(release, isLatest, formatter, dateOpts) {
  * @returns {void}
  */
 export function renderStats(releases) {
+  lastRenderedReleases = releases
   const list = document.getElementById('releases-list')
   if (!list) return
 
   const renderId = ++latestRenderId
-  const formatter = new Intl.NumberFormat('en-US')
+  const formatter = new Intl.NumberFormat(getLocale())
   const dateOpts = { year: 'numeric', month: 'long', day: 'numeric' }
 
   // The newest stable release is "Latest", even when a pre-release is listed first

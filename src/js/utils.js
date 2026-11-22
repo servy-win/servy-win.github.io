@@ -5,6 +5,7 @@
  */
 
 import { initGA } from './ga.js'
+import { initLanguageMenu, loadInitialLanguage } from './i18n.js'
 
 export const getStoredTheme = () => {
   try {
@@ -34,6 +35,12 @@ export const initCommonLayout = () => {
 
   // Initialize Header Hamburger Menu
   initHeaderHamburger()
+
+  // Initialize Language Menu
+  initLanguageMenu()
+
+  // Load initial language
+  loadInitialLanguage()
 
   // Initialize Dark Mode Toggle
   initToggleDarkMode()

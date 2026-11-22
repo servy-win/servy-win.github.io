@@ -5,8 +5,14 @@ jest.unstable_mockModule('../src/js/ga.js', () => ({
   initGA: jest.fn(),
 }))
 
+jest.unstable_mockModule('../src/js/i18n.js', () => ({
+  initLanguageMenu: jest.fn(),
+  loadInitialLanguage: jest.fn().mockResolvedValue(undefined),
+}))
+
 // 2. You MUST use dynamic imports for the modules you want to mock
 const { initGA } = await import('../src/js/ga.js')
+const { initLanguageMenu, loadInitialLanguage } = await import('../src/js/i18n.js')
 const utils = await import('../src/js/utils.js')
 
 test('getStoredTheme returns null safely if localStorage throws an error', () => {
@@ -60,6 +66,8 @@ describe('initCommonLayout', () => {
     // Now initGA will be recognized as a mock function
     // expect(initGA).toHaveBeenCalledWith('G-VQ7924LC4H', 'AW-16758312117')
     expect(initGA).toHaveBeenCalledWith('G-VQ7924LC4H')
+    expect(initLanguageMenu).toHaveBeenCalledTimes(1)
+    expect(loadInitialLanguage).toHaveBeenCalledTimes(1)
   })
 })
 

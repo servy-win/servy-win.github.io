@@ -538,3 +538,21 @@ pre code {
     height: 0;
   }
 }
+
+/* ==========================================================================
+   14. LOCALIZATION ADJUSTMENTS (SIMPLIFIED CHINESE)
+   ========================================================================== */
+
+html[lang="zh"] section.hero h1 {
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+}
+
+html[lang="zh"] .hero-lead {
+  line-height: 1.65rem;
+}
+
+html[lang="zh"] .features-grid li p,
+html[lang="zh"] .use-case-item p {
+  line-height: 1.65;
+}

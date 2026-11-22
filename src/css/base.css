@@ -74,6 +74,14 @@
   --input-bg: #fff;
   --placeholder-text-color: #727272;
 
+  --dropdown-bg: #fff;
+  --dropdown-text: #23272f;
+  --dropdown-border: #d8dee4;
+  --dropdown-hover-bg: #edf2f7;
+  --dropdown-selected-bg: #e0f2f7;
+  --dropdown-selected-text: #006A85;
+  --dropdown-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+
   --footer-bg: var(--light);
   --footer-text: #555;
   --footer-link: var(--dark);
@@ -124,6 +132,14 @@
   --input-bg: #333A45;
   --placeholder-text-color: #A0A8B8;
 
+  --dropdown-bg: #23272F;
+  --dropdown-text: #e6e8ec;
+  --dropdown-border: #333A45;
+  --dropdown-hover-bg: #333A45;
+  --dropdown-selected-bg: #163842;
+  --dropdown-selected-text: #56BFD7;
+  --dropdown-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+
   --footer-bg: #23272F;
   --footer-text: #bbb;
   --footer-link: var(--secondary);
@@ -136,6 +152,14 @@
 
 html {
   scroll-padding-top: 1rem;
+}
+
+html[lang="zh"] {
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+html[data-loading] body {
+  visibility: hidden;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -209,6 +233,11 @@ section li {
   line-height: 1.6rem;
   margin-left: auto;
   margin-right: auto;
+}
+
+html[lang="zh"] section p,
+html[lang="zh"] section li {
+  line-height: 1.75rem;
 }
 
 p.blockquote {
@@ -416,6 +445,106 @@ a.logo {
   }
 }
 
+
+/* ==========================================================================
+   6B. LANGUAGE SWITCHER DROPDOWN
+   ========================================================================== */
+
+.lang-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.lang-toggle {
+  background: transparent;
+  color: var(--header-light);
+  border: none;
+  cursor: pointer;
+  padding: 0 0.55rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 44px;
+  min-width: 44px;
+  border-radius: var(--border-radius);
+}
+
+.lang-toggle:hover,
+.lang-dropdown.open .lang-toggle {
+  background-color: var(--nav-hover);
+}
+
+.lang-toggle .chevron {
+  transition: transform 0.2s ease;
+}
+
+.lang-dropdown.open .lang-toggle .chevron {
+  transform: rotate(180deg);
+}
+
+.lang-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  right: 0;
+  min-width: 136px;
+  background-color: var(--dropdown-bg);
+  border: 1px solid var(--dropdown-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--dropdown-shadow);
+  padding: 0.3rem;
+  z-index: 1600;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.lang-dropdown.open .lang-menu {
+  display: flex;
+}
+
+.lang-menu .lang-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 38px;
+  min-width: 0;
+  padding: 0.45rem 0.75rem;
+  background: transparent;
+  color: var(--dropdown-text);
+  border: none;
+  border-radius: var(--border-radius);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+}
+
+.lang-menu .lang-option:hover {
+  background-color: var(--dropdown-hover-bg);
+}
+
+.lang-menu .lang-option[data-selected="true"] {
+  background-color: var(--dropdown-selected-bg);
+  color: var(--dropdown-selected-text);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .header-actions {
+    margin-right: 0.5rem;
+  }
+
+  .lang-toggle {
+    padding: 0 0.4rem;
+    gap: 0.25rem;
+  }
+}
 
 /* ==========================================================================
    7. DARK MODE TOGGLE
@@ -685,6 +814,7 @@ footer p {
   .nav-links,
   .nav-links.active,
   .hamburger span,
+  .lang-toggle .chevron,
   #back-to-top {
     transition: none;
   }

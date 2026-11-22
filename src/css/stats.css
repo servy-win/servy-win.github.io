@@ -110,6 +110,7 @@ body.is-loading footer {
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .badge.latest {
@@ -246,4 +247,9 @@ body.is-loading footer {
 /* Author Link Hover Effect */
 .author-link:hover {
   text-decoration: underline;
+}
+
+html[lang="zh"] .stat .label,
+html[lang="zh"] .asset-meta {
+  line-height: 1.5;
 }

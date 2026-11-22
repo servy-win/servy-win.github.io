@@ -14,11 +14,11 @@ import '../css/home.css'
  * Initialize page-specific logic once the DOM is fully loaded.
  */
 window.addEventListener('DOMContentLoaded', () => {
-  
   /**
    * Initialize shared layout features including:
    * - Google Analytics & Ads
    * - Hamburger Menu (Mobile Nav)
+   * - Language Switcher Menu & Initial Language
    * - Dark Mode Toggle & System Preference Sync
    * - Back to Top Button with rAF throttling
    * - Dynamic Footer Copyright Year
@@ -38,8 +38,8 @@ window.addEventListener('DOMContentLoaded', () => {
  */
 const initCodeBlocks = () => {
   const codeBlocks = document.querySelectorAll('.code-block')
-  
-  codeBlocks.forEach(block => {
+
+  codeBlocks.forEach((block) => {
     const button = block.querySelector('.copy-btn')
     const codeElement = block.querySelector('code')
     const useElement = button?.querySelector('use')
@@ -48,6 +48,7 @@ const initCodeBlocks = () => {
     if (!button || !codeElement || !useElement) return
 
     let timeoutId = null
+    let originalLabel = null
 
     /**
      * Resets the button to its initial copy state.
@@ -55,6 +56,10 @@ const initCodeBlocks = () => {
     const resetState = () => {
       useElement.setAttribute('href', '#icon-copy')
       button.classList.remove('copied')
+      if (originalLabel !== null) {
+        button.setAttribute('aria-label', originalLabel)
+        originalLabel = null
+      }
     }
 
     /**
@@ -67,12 +72,16 @@ const initCodeBlocks = () => {
       if (!writeText) return
 
       if (timeoutId) clearTimeout(timeoutId)
+      if (originalLabel === null) {
+        originalLabel = button.getAttribute('aria-label')
+      }
 
       writeText.call(navigator.clipboard, codeElement.textContent)
         .then(() => {
           useElement.setAttribute('href', '#icon-check')
           button.classList.add('copied')
-          
+          button.setAttribute('aria-label', window.translations?.['common.copied'] || 'Copied')
+
           // Revert button icon after 2 seconds
           timeoutId = setTimeout(resetState, 2000)
         })
