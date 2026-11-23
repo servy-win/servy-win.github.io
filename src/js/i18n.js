@@ -24,11 +24,11 @@ window.currentLang = 'en'
 export const supportedLangs = ['en', 'zh']
 
 /**
- * Short display labels for supported languages.
+ * Native display labels for supported languages.
  * @type {Object.<string, string>}
  */
 const langLabels = {
-  en: 'EN',
+  en: 'English',
   zh: '中文',
 }
 

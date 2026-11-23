@@ -32,7 +32,7 @@ const buildDOM = () => {
   document.body.innerHTML = `
     <div class="lang-dropdown" id="lang-dropdown">
       <button id="lang-toggle" type="button" aria-expanded="false">
-        <span id="lang-current">EN</span>
+        <span id="lang-current">English</span>
       </button>
       <div class="lang-menu" id="lang-menu">
         <button type="button" data-lang="en" data-selected="true" aria-current="true">English</button>
