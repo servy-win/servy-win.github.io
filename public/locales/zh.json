@@ -22,6 +22,7 @@
   "common.backToTop": "返回顶部",
   "common.copied": "已复制",
   "home.title": "Servy - 企业级 Windows 服务包装器",
+  "home.keywords": "windows 服务包装器, 将应用作为 windows 服务运行, 服务包装器, nssm 替代, winsw 替代",
   "home.description": "Servy 是一款 Windows 服务包装器，可让您将任何应用程序作为原生 Windows 服务运行，并具备实时监控、自动恢复、日志记录和健康检查功能。",
   "home.ogTitle": "Servy - 企业级 Windows 服务包装器",
   "home.ogDescription": "Servy 可让您将任何应用程序作为原生 Windows 服务运行，全面控制工作目录、启动类型、进程优先级、日志记录、健康检查、环境变量、依赖项、启动前后钩子以及命令行参数。",

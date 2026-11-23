@@ -22,6 +22,7 @@
   "common.backToTop": "Back to top",
   "common.copied": "Copied",
   "home.title": "Servy - Enterprise-Grade Windows Service Wrapper",
+  "home.keywords": "windows service wrapper, run app as windows service, service wrapper, nssm alternative, winsw alternative",
   "home.description": "Servy is a Windows service wrapper that lets you run any app as a native Windows service with real-time monitoring, auto-recovery, logging, and health checks.",
   "home.ogTitle": "Servy - Enterprise-Grade Windows Service Wrapper",
   "home.ogDescription": "Servy lets you run any app as a native Windows service with full control over working directory, startup type, process priority, logging, health checks, environment variables, dependencies, pre-launch and post-launch hooks, and parameters.",
