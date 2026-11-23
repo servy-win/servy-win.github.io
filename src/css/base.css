@@ -320,6 +320,7 @@ a.logo {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  flex-shrink: 0;
 }
 
 .github-link svg {
@@ -383,7 +384,6 @@ a.logo {
     flex-direction: row;
     justify-content: flex-end;
     gap: 0.3rem;
-    width: calc(100% - 2rem);
   }
 }
 
@@ -463,14 +463,18 @@ a.logo {
   cursor: pointer;
   padding: 0 0.55rem;
   font-size: 0.875rem;
-  font-weight: 600;
   font-family: inherit;
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
   min-height: 44px;
   min-width: 44px;
+  white-space: nowrap;
   border-radius: var(--border-radius);
+}
+
+.lang-toggle .icon {
+  flex-shrink: 0;
 }
 
 .lang-toggle:hover,
