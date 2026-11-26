@@ -22,6 +22,8 @@ const SAMPLE_ZH = {
   'nav.docsTitle': '查看 Servy 文档',
 }
 
+let assignMock
+
 const buildDOM = () => {
   document.head.innerHTML = `
     <title data-i18n="home.title">Servy - Enterprise-Grade Windows Service Wrapper</title>
@@ -70,6 +72,7 @@ const mockFetchSuccess = (map = { en: SAMPLE_EN, zh: SAMPLE_ZH }) => {
 beforeEach(() => {
   localStorage.clear()
   sessionStorage.clear()
+  assignMock = jest.spyOn(i18n.navigation, 'assign').mockImplementation(() => {})
   window.currentLang = 'en'
   delete window.translations
   window.history.replaceState({}, '', 'http://localhost/')
@@ -179,19 +182,39 @@ describe('setLang', () => {
   })
 })
 
+describe('switchLang', () => {
+  test('stores language, strips hash, and navigates via navigation.assign', () => {
+    window.history.replaceState({}, '', 'http://localhost/downloads/#support')
+
+    i18n.switchLang('zh')
+
+    expect(localStorage.getItem('lang')).toBe('zh')
+    expect(assignMock).toHaveBeenCalledTimes(1)
+    expect(assignMock).toHaveBeenCalledWith('http://localhost/downloads/?lang=zh')
+  })
+
+  test('falls back to English for unsupported language codes', () => {
+    i18n.switchLang('fr')
+
+    expect(localStorage.getItem('lang')).toBe('en')
+    expect(assignMock).toHaveBeenCalledWith('http://localhost/?lang=en')
+  })
+})
+
 describe('initLanguageMenu', () => {
   test('returns early when required DOM elements are missing', () => {
     document.body.innerHTML = ''
     expect(() => i18n.initLanguageMenu()).not.toThrow()
   })
 
-  test('toggles dropdown, selects language, closes on outside click and Escape, and scrolls anchors', async () => {
+  test('toggles dropdown, reloads on language change, closes on outside click and Escape, and scrolls anchors', () => {
     i18n.initLanguageMenu()
     // Calling twice should be idempotent
     i18n.initLanguageMenu()
 
     const dropdown = document.getElementById('lang-dropdown')
     const toggle = document.getElementById('lang-toggle')
+    const enBtn = document.querySelector('[data-lang="en"]')
     const zhBtn = document.querySelector('[data-lang="zh"]')
 
     toggle.click()
@@ -211,14 +234,21 @@ describe('initLanguageMenu', () => {
     expect(dropdown.classList.contains('open')).toBe(false)
     expect(focusSpy).toHaveBeenCalled()
 
-    // Select Chinese option
+    // Selecting the already-active language closes menu without reloading
+    toggle.click()
+    enBtn.click()
+    expect(dropdown.classList.contains('open')).toBe(false)
+    expect(assignMock).not.toHaveBeenCalled()
+
+    // Selecting a different language closes menu and triggers reload via switchLang
     toggle.click()
     zhBtn.click()
-    await new Promise((resolve) => setTimeout(resolve, 0))
     expect(dropdown.classList.contains('open')).toBe(false)
-    expect(window.currentLang).toBe('zh')
+    expect(localStorage.getItem('lang')).toBe('zh')
+    expect(assignMock).toHaveBeenCalledWith('http://localhost/?lang=zh')
 
     // Anchor link smooth scroll preserves ?lang=zh
+    window.history.replaceState({}, '', 'http://localhost/?lang=zh')
     const supportSection = document.getElementById('support')
     supportSection.scrollIntoView = jest.fn()
     document.getElementById('anchor-support').click()

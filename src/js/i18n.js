@@ -312,6 +312,32 @@ export async function setLang(lang, keepQueryParam = true) {
 }
 
 /**
+ * Wrapper around window.location.assign for testability in jsdom.
+ * @type {{ assign: (url: string) => void }}
+ */
+export const navigation = {
+  assign: (url) => window.location.assign(url),
+}
+
+/**
+ * Persists the selected language and reloads the page with `?lang=<targetLang>`
+ * so analytics registers a distinct pageview for the new language.
+ *
+ * @param {string} lang - Language code to switch to.
+ * @returns {void}
+ */
+export function switchLang(lang) {
+  const targetLang = supportedLangs.includes(lang) ? lang : 'en'
+  storeLang(targetLang)
+
+  const url = new URL(window.location.href)
+  url.searchParams.set('lang', targetLang)
+  url.hash = ''
+
+  navigation.assign(url.toString())
+}
+
+/**
  * Intercepts in-page anchor links so smooth scrolling preserves the active `?lang` query parameter.
  * @returns {void}
  */
@@ -373,8 +399,9 @@ export function initLanguageMenu() {
     btn.addEventListener('click', () => {
       const selectedLang = btn.getAttribute('data-lang')
       closeMenu()
-      if (selectedLang) {
-        setLang(selectedLang, true)
+      if (selectedLang && selectedLang !== window.currentLang) {
+        switchLang(selectedLang) // reloads the page with the new language
+        // setLang(selectedLang, true) // no reload
       }
     })
   })
