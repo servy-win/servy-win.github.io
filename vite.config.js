@@ -7,6 +7,37 @@ import { minify as minifyJs } from 'terser'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
+const i18nHeadPlugin = () => ({
+  name: 'inject-i18n-head',
+  transformIndexHtml() {
+    return [
+      {
+        tag: 'style',
+        children: 'html[data-loading] body { visibility: hidden; }',
+        injectTo: 'head',
+      },
+      {
+        tag: 'script',
+        children: `(function () {
+  const supported = ['en', 'zh'];
+  const urlLang = new URLSearchParams(window.location.search).get('lang');
+  let storedLang = null;
+  try { storedLang = localStorage.getItem('lang'); } catch {}
+  const lang = supported.includes(urlLang)
+    ? urlLang
+    : supported.includes(storedLang)
+      ? storedLang
+      : 'en';
+  if (lang !== 'en') {
+    document.documentElement.setAttribute('data-loading', '');
+  }
+})();`,
+        injectTo: 'head',
+      },
+    ]
+  },
+})
+
 const terserOptions = {
   compress: {
     passes: 3,
@@ -123,6 +154,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    i18nHeadPlugin(),
     terserBundlePlugin(),
     htmlMinifyPlugin(),
     cssPreloadPlugin(),

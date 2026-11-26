@@ -115,30 +115,6 @@
       document.documentElement.setAttribute('data-theme', theme);
     })();
   </script>
-
-  <style>
-    html[data-loading] body {
-      visibility: hidden;
-    }
-  </style>
-  <script>
-    (function () {
-      const supported = ['en', 'zh'];
-      const urlLang = new URLSearchParams(window.location.search).get('lang');
-      let storedLang = null;
-      try {
-        storedLang = localStorage.getItem('lang');
-      } catch { }
-      const lang = supported.includes(urlLang)
-        ? urlLang
-        : supported.includes(storedLang)
-          ? storedLang
-          : 'en';
-      if (lang !== 'en') {
-        document.documentElement.setAttribute('data-loading', '');
-      }
-    })();
-  </script>
 </head>
 
 <body>
