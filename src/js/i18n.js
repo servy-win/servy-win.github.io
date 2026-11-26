@@ -179,13 +179,13 @@ function setCachedTranslations(lang, translations) {
 /**
  * Clear i18n cache on page unload.
  */
-window.addEventListener('beforeunload', () => {
-  try {
-    sessionStorage.removeItem(CACHE_KEY)
-  } catch {
-    // Ignore storage errors on unload
-  }
-})
+// window.addEventListener('beforeunload', () => {
+//   try {
+//     sessionStorage.removeItem(CACHE_KEY)
+//   } catch {
+//     // Ignore storage errors on unload
+//   }
+// })
 
 /**
  * Highlights the currently selected language button and updates the toggle label.

@@ -282,7 +282,7 @@ describe('loadInitialLanguage & window events', () => {
     expect(window.currentLang).toBe('en')
   })
 
-  test('handles popstate and beforeunload events', async () => {
+test('handles popstate event and preserves sessionStorage cache on beforeunload', async () => {
     window.history.replaceState({}, '', 'http://localhost/?lang=zh')
     window.dispatchEvent(new PopStateEvent('popstate'))
     await new Promise((resolve) => setTimeout(resolve, 0))
@@ -290,6 +290,6 @@ describe('loadInitialLanguage & window events', () => {
 
     sessionStorage.setItem('i18n-cache', '{}')
     window.dispatchEvent(new Event('beforeunload'))
-    expect(sessionStorage.getItem('i18n-cache')).toBeNull()
+    expect(sessionStorage.getItem('i18n-cache')).toBe('{}')
   })
 })
